@@ -6,6 +6,16 @@ STACKPROOF AI is an AI automation and business intelligence initiative developin
 
 Our engineering focus is practical automation: reliable workflows, secure integrations, human oversight, and evidence-backed outcomes—not demonstrations presented as production systems.
 
+## Product Demo — S1 Lead Intelligence Engine & S2 CRM Command Centre
+
+Watch the STACKPROOF AI demonstration:
+
+[![Watch the STACKPROOF AI S1 + S2 demo](https://img.youtube.com/vi/Ia0wtpAQp3E/hqdefault.jpg)](https://youtube.com/shorts/Ia0wtpAQp3E)
+
+[**Watch the demo on YouTube**](https://youtube.com/shorts/Ia0wtpAQp3E)
+
+This video is a product demonstration of the S1 Lead Intelligence Engine and S2 CRM Command Centre. Demonstrated workflows and interface behavior should not be interpreted as independent proof of production deployment, reliability, security, or end-to-end backend performance. See [System Status](docs/SYSTEM_STATUS.md) for project-reported status and evidence requirements.
+
 ## What we're building
 
 STACKPROOF AI is organized around ten independently managed systems.
