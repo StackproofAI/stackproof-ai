@@ -2,82 +2,93 @@
 
 **Intelligent business automation. Built for measurable outcomes.**
 
-STACKPROOF AI is developing modular AI-powered business systems that help organizations reduce repetitive work, improve operational visibility, strengthen customer acquisition, and make better use of business data.
+STACKPROOF AI is an AI automation and business intelligence initiative developing modular business systems to reduce repetitive work, improve productivity, strengthen lead generation and CRM operations, and create measurable business value.
 
-Our focus is practical automation: reliable workflows, secure integrations, human oversight, and measurable business value—not demos presented as production systems.
+Our engineering focus is practical automation: reliable workflows, secure integrations, human oversight, and evidence-backed outcomes—not demonstrations presented as production systems.
 
 ## What we're building
 
-STACKPROOF AI is organized around ten independently managed systems:
+STACKPROOF AI is organized around ten independently managed systems.
 
-| System | Purpose | Public project status |
+| System | Purpose | Project-reported status |
 |---|---|---|
-| S1 — Lead Intelligence Engine | Discover, research, validate, qualify, and organize prospects | Core development reported |
-| S2 — CRM Command Centre | Centralize CRM records, lifecycle tracking, and sales activity | Core development reported |
-| S3 — Outreach & Relationship Nurturing | Prepare personalized, permission-aware outreach for human review | Design exists; production blockers remain |
-| S4 — Sales Pipeline & Deal Intelligence | Validate opportunity events and organize deal intelligence | Design exists; production blockers remain |
-| S5 — Client Onboarding & Account Management | Verify approved conversions and coordinate onboarding | Design exists; production blockers remain |
-| S6 — Customer Support Intelligence | Classify requests, assist responses, and surface service trends | Proposed |
-| S7 — Appointment & Scheduling | Coordinate scheduling, reminders, and rescheduling | Proposed |
-| S8 — Marketing & Campaign Intelligence | Support campaign planning, approval, and measurement | Proposed |
-| S9 — Business Operations & Reporting | Monitor workflows, operational KPIs, and recurring reports | Proposed |
-| S10 — Executive Intelligence | Consolidate approved performance data for decision support | Proposed |
+| **S1 — Lead Intelligence Engine** | Discover, research, enrich, validate, qualify, score, and organize prospects | Existing core development |
+| **S2 — CRM Command Centre** | Synchronize CRM data and manage contacts, lifecycle, pipeline, and sales activity | Existing core development |
+| **S3 — Personalized Outreach & Relationship Nurturing** | Prepare personalized, permission-aware outreach drafts for human review | Previously designed; production blockers remain |
+| **S4 — Sales Pipeline & Deal Intelligence** | Validate opportunity events, prevent duplicate processing, and organize deal intelligence | Previously designed; production blockers remain |
+| **S5 — Client Onboarding & Account Management** | Verify approved conversions, create client records, and prepare onboarding drafts | Previously designed; production blockers remain |
+| **S6 — Customer Support & Service Intelligence** | Organize support requests, assist responses, and surface service trends | Proposed |
+| **S7 — Appointment & Scheduling Command Centre** | Coordinate scheduling, reminders, cancellations, and rescheduling | Proposed |
+| **S8 — Marketing & Campaign Intelligence** | Support campaign planning, measurement, and optimization | Proposed |
+| **S9 — Business Operations & Reporting** | Monitor workflows, operational metrics, and recurring reports | Proposed |
+| **S10 — Executive Intelligence & Business Performance** | Consolidate approved performance information for decision support | Proposed |
 
-Statuses describe the current project plan. They are not a claim that each system is deployed or production-ready.
+These are project-reported planning statuses, not independent verification of deployment or production readiness. See [System Status](docs/SYSTEM_STATUS.md).
 
 ## Engineering principles
 
-- **Evidence over assumptions:** distinguish verified results from plans and untested work.
-- **Security by design:** protect credentials, validate inputs, and apply least-privilege access.
-- **Human oversight:** require appropriate review before consequential customer or business actions.
-- **Reliability:** design for idempotency, duplicate prevention, retries, logging, and recovery.
-- **Modularity:** build systems with clear responsibilities, interfaces, and acceptance criteria.
-- **Measurable value:** prioritize outcomes such as time saved, operating cost reduced, and improved conversion.
+- **Correctness over agreement.** Challenge weak assumptions and validate important claims.
+- **Evidence over assumptions.** Separate verified facts, user-provided information, proposals, and untested work.
+- **Production readiness over demonstrations.** Define acceptance criteria and test failure paths.
+- **Simplicity over unnecessary complexity.** Choose maintainable solutions that meet real requirements.
+- **Reliability over speed.** Design for retries, recovery, idempotency, and observability.
+- **Security over convenience.** Apply least privilege, protect credentials, validate inputs, and minimize sensitive data.
+- **Measurable business value over technical novelty.** Prioritize operational and commercial outcomes.
+- **Independent verification over unsupported confidence.** Never claim a system works without test evidence.
 
 ## Technology direction
 
-The planned technology ecosystem may include:
+The Master Engineering Directive prioritizes evaluating:
 
-- [n8n](https://n8n.io/) for workflow automation
-- [OpenAI](https://openai.com/) and [Anthropic Claude](https://www.anthropic.com/) for AI capabilities
-- [Google Workspace](https://workspace.google.com/) for business productivity integrations
-- APIs and webhooks for application connectivity
-- [PostgreSQL](https://www.postgresql.org/) and [Supabase](https://supabase.com/) for data infrastructure
-- CRM platforms such as [HubSpot](https://www.hubspot.com/)
+- [n8n](https://n8n.io/) for workflow automation.
+- [OpenAI](https://openai.com/) and [Anthropic Claude](https://www.anthropic.com/) for AI capabilities.
+- [Google Workspace](https://workspace.google.com/) for business productivity workflows.
+- APIs and webhooks for application connectivity.
+- [PostgreSQL](https://www.postgresql.org/) and [Supabase](https://supabase.com/) for data infrastructure.
+- CRM platforms, including [HubSpot](https://www.hubspot.com/).
 
-Technology choices are evaluated against requirements, security, reliability, cost, and maintainability. Listing a platform here does not imply that a live integration is already deployed.
+These are technology priorities. Listing a platform does not imply that a live integration is configured or deployed.
 
 ## Development lifecycle
 
-Every production-bound system is expected to pass through:
+Production-bound systems are expected to move through:
 
-1. Discovery and requirements
-2. Technical research
-3. Architecture and data contracts
-4. Development
-5. Functional and failure-path testing
-6. Security and quality review
-7. Deployment approval
-8. Monitoring and optimization
+1. Research and requirements.
+2. Architecture and data contracts.
+3. Implementation.
+4. Functional and failure-path testing.
+5. Security and quality review.
+6. Deployment approval.
+7. Monitoring, maintenance, and optimization.
 
-## Repository structure
+## Repository guide
 
-This repository is the public-facing home for STACKPROOF AI project documentation, architecture notes, engineering standards, and approved open-source contributions.
+| Resource | Description |
+|---|---|
+| [Reference Architecture](docs/ARCHITECTURE.md) | Ten-system landscape, logical flow, technology direction, and cross-system requirements |
+| [Engineering Standards](docs/ENGINEERING_STANDARDS.md) | Reliability, security, AI controls, testing, and release gates |
+| [System Status](docs/SYSTEM_STATUS.md) | Transparent project-reported status and required evidence |
+| [Contributing](CONTRIBUTING.md) | How to propose and contribute public changes |
+| [Security Policy](SECURITY.md) | Responsible vulnerability reporting and secret-handling rules |
+| [Bug Report](.github/ISSUE_TEMPLATE/bug_report.md) | Structured issue reporting |
+| [Feature Request](.github/ISSUE_TEMPLATE/feature_request.md) | Structured proposals and acceptance criteria |
 
-Implementation details, client data, credentials, and private workflow exports do not belong in public repositories.
+## Security and responsible operation
+
+Never commit API keys, passwords, tokens, private webhook secrets, customer data, or confidential workflow exports. Production-bound systems must use appropriate authentication, authorization, input validation, duplicate prevention, logging, recovery, and human approval controls.
+
+See [SECURITY.md](SECURITY.md) before reporting a vulnerability.
+
+## Project status and scope
+
+STACKPROOF AI is under active development. This repository currently publishes project documentation and engineering standards. It does not, by itself, contain proof of deployed application code, live integrations, completed security audits, or production certification.
+
+Each system's status must be supported by current implementation and test evidence before it is represented as complete.
 
 ## Collaboration
 
-We welcome thoughtful discussions about business automation, system architecture, reliability, and responsible AI integration.
-
-- Open an issue for a bug report or feature proposal.
-- Review the contribution guidance before submitting changes.
-- Never include secrets, personal data, or client-confidential information in issues or pull requests.
-
-## Project status
-
-STACKPROOF AI is under active development. Public documentation is not a certification of deployment, security audit completion, or production readiness. Each system's status should be supported by current implementation and test evidence before being represented as complete.
+We welcome constructive discussion about business automation, system architecture, reliability, and responsible AI integration. Start with an issue, follow the contribution guidance, and share only sanitized, non-confidential information.
 
 ---
 
-*STACKPROOF AI — Build intelligently. Automate responsibly. Prove the outcome.*
+**STACKPROOF AI — Build intelligently. Automate responsibly. Prove the outcome.**
