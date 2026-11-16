@@ -1,0 +1,68 @@
+name: Repository quality gates
+
+on:
+  push:
+    branches: [main, "production-readiness/**"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  documentation-quality:
+    name: Documentation integrity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Validate required documentation
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+
+          required = [
+              "README.md",
+              "CONTRIBUTING.md",
+              "SECURITY.md",
+              "docs/ARCHITECTURE.md",
+              "docs/ENGINEERING_STANDARDS.md",
+              "docs/SYSTEM_STATUS.md",
+              "docs/PRODUCTION_READINESS_PLAN.md",
+          ]
+
+          missing = [name for name in required if not Path(name).is_file()]
+          if missing:
+              print("FAIL: required documentation is missing:")
+              print("\n".join(f" - {name}" for name in missing))
+              sys.exit(1)
+
+          markdown_files = sorted(Path(".").rglob("*.md"))
+          errors = []
+          for path in markdown_files:
+              text = path.read_text(encoding="utf-8")
+              fence_count = sum(
+                  1 for line in text.splitlines()
+                  if line.lstrip().startswith("```")
+              )
+              if fence_count % 2:
+                  errors.append(f"{path}: unmatched fenced code block")
+
+          if errors:
+              print("FAIL: Markdown integrity checks failed:")
+              print("\n".join(f" - {error}" for error in errors))
+              sys.exit(1)
+
+          print(f"PASS: {len(required)} required documents present.")
+          print(f"PASS: {len(markdown_files)} Markdown files have balanced code fences.")
+          PY

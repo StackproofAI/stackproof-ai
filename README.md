@@ -78,6 +78,7 @@ Production-bound systems are expected to move through:
 | [Reference Architecture](docs/ARCHITECTURE.md) | Ten-system landscape, logical flow, technology direction, and cross-system requirements |
 | [Engineering Standards](docs/ENGINEERING_STANDARDS.md) | Reliability, security, AI controls, testing, and release gates |
 | [System Status](docs/SYSTEM_STATUS.md) | Transparent project-reported status and required evidence |
+| [Production Readiness Plan](docs/PRODUCTION_READINESS_PLAN.md) | Acceptance gates, security controls, and release evidence for S1/S2 |
 | [Contributing](CONTRIBUTING.md) | How to propose and contribute public changes |
 | [Security Policy](SECURITY.md) | Responsible vulnerability reporting and secret-handling rules |
 | [Bug Report](.github/ISSUE_TEMPLATE/bug_report.md) | Structured issue reporting |
