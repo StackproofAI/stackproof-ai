@@ -1,0 +1,10 @@
+{
+  "name": "@stackproof-ai/lead-validation-engine",
+  "version": "0.1.0",
+  "description": "Deterministic, tenant-aware lead validation and normalization for STACKPROOF AI systems.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "exports": { ".": "./src/index.js" },
+  "scripts": { "test": "node --test" },
+  "license": "Apache-2.0"
+}
