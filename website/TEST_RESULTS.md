@@ -33,4 +33,6 @@ Before this refresh, the user confirmed desktop/mobile layout and YouTube playba
 ## Testimonials section update
 - Source markup and navigation link: PASS — `#testimonials` section and navigation anchor added.
 - Review integrity: PASS — no fabricated client quotes, identities, ratings, or outcome metrics; section explains permission and evidence standards.
-- Desktop/mobile production visual check: NOT TESTED — pending live browser verification after deployment.
+- Live production DOM at mobile viewport: PASS — Browser Rendering loaded the deployed page and verified the testimonials section, navigation anchor, all three cards, and the no-fabricated-reviews notice.
+- Desktop screenshot capture: PASS — Browser Rendering returned a screenshot for the testimonials section; visual inspection of the captured image remains NOT TESTED.
+- Mobile visual screenshot inspection: NOT TESTED — rendered DOM and responsive stylesheet are present, but pixel-level visual review remains pending.
