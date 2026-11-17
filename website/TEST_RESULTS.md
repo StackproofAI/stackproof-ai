@@ -1,23 +1,30 @@
 # STACKPROOF AI Website — Test Results
 
-## Candidate: Worker version 13
-Status recorded 2026-11-17. These results distinguish staging/API evidence from browser execution.
+## Production release: Worker version 13
+Status recorded 2026-11-17. Results distinguish verified API state, browser execution, and untested behavior.
 
 | Test | Status | Evidence / notes |
 |---|---|---|
-| Worker version creation | PASS | Cloudflare API returned version 10 and a preview URL. |
-| Production traffic unchanged during staging | PASS | Version created with `deploy:false`; no production deployment was requested in that operation. |
-| HTML/CSS/JS source presence | PASS | Candidate built from current GitHub source files. |
-| Desktop hero visual screenshot | PASS | Cloudflare Browser Rendering captured the 3D hero at 1100×760; the WebGL sphere and orbit scene rendered. |
-| Mobile accessibility tree | PASS | Cloudflare Browser Rendering returned HTTP 200 at 390×844; all primary sections, headings, booking/video iframes, phone, LinkedIn, Instagram, GitHub, mobile navigation control, and direct fallback links for YouTube and Cal.com were present. This confirms semantic structure, not visual layout. |\n| Mobile hero visual screenshot | PASS | Cloudflare Browser Rendering captured the hero at 390×844; headline, CTA, responsive scene, and labels remained visible. |
-| WebGL rendering in a real browser | PASS | Browser Rendering confirmed WebGL context support; shader compilation/linking passed after fixing a uniform precision mismatch; candidate version 11 rendered the 3D sphere and orbit scene. |
-| Reduced-motion runtime behavior | NOT TESTED | Source-level implementation present; browser preference test pending. |
-| Keyboard navigation | NOT TESTED | Semantic links and mobile menu controls are present; interactive keyboard test pending. |
-| Cal.com event route | PASS | Cal.com connector confirms current event URL `/20-min`; direct page returned HTTP 200, displayed 20m duration, and exposed available time buttons. |\n| Cal.com iframe visual | PARTIAL | Candidate iframe shows the correct event title and 20m duration; browser screenshot captured a calendar loading skeleton. Full in-iframe slot rendering and test appointment remain unverified. |
-| YouTube playback | NOT TESTED on candidate | Candidate screenshot attempt ended with a browser-rendering network-connection error. Existing video ID is unchanged; prior production playback was user-confirmed before this refresh. |
-| Core Web Vitals / Lighthouse | NOT TESTED | No measured LCP, INP, CLS, or Lighthouse score available. |
-| Security header behavior | NOT TESTED | Headers are configured in candidate source; response-level browser verification pending. |
-| Production deployment | NOT DEPLOYED | Candidate remains staged; do not treat as live. |
+| Worker version creation | PASS | Cloudflare created Worker version 13: `417648c2-e34a-48fe-af0b-53b4c741e2ba`. |
+| Desktop hero visual | PASS | Browser Rendering screenshot of production at 1100×760 showed the WebGL sphere and orbit scene. |
+| Mobile hero visual | PASS | Browser Rendering screenshot at 390×844 showed headline, CTA, responsive scene, and labels. |
+| Mobile accessibility tree | PASS | Production Browser Rendering returned HTTP 200 at 390×844; primary sections, headings, navigation control, video/booking iframes, social links, and direct fallback links were present. |
+| WebGL context and shader linking | PASS | Browser Rendering confirmed WebGL support; shader compile/link succeeded after fixing a uniform precision mismatch. Production screenshot confirms the scene renders. |
+| Production homepage response | PASS | Production URL returned HTTP 200 and the expected page title. |
+| Health endpoint | PASS | `/health` returned HTTP 200 and “STACKPROOF AI site is online”. |
+| Security response headers | PASS | Production response includes CSP, HSTS, Permissions-Policy, Referrer-Policy, and X-Content-Type-Options. |
+| Cal.com event route | PASS | Connected Cal.com listing confirms `https://cal.com/sean-fields-qf4rle/20-min`; direct page returned HTTP 200, showed a 20-minute duration, and exposed available time buttons. |
+| Cal.com iframe visual | PARTIAL | Embedded frame shows the event title and 20-minute duration; screenshot captured calendar loading placeholders. Direct booking-page fallback is present. Full in-iframe availability and an actual test booking remain unverified. |
+| YouTube playback on new release | NOT TESTED | Browser Rendering screenshot attempt ended with a network-connection error. The video ID is unchanged and a direct YouTube fallback link is present. The prior production design's playback was user-confirmed before this refresh. |
+| Reduced-motion runtime behavior | NOT TESTED | Source-level support is implemented; browser preference test remains pending. |
+| Pointer-driven 3D interaction | NOT TESTED | Pointer-responsive rotation is implemented; a real pointer/touch interaction test remains pending. |
+| Keyboard navigation | NOT TESTED | Semantic links and an accessible mobile menu control are present; full keyboard interaction testing remains pending. |
+| Core Web Vitals / Lighthouse | NOT TESTED | No measured LCP, INP, CLS, or Lighthouse score is available. |
+| Production deployment | PASS | Deployment `730e02d3-737a-4ff8-a769-29978a190575` routes 100% of production traffic to version 13. |
+| Preview URL exposure | PASS | Cloudflare preview URLs were disabled after release. |
+
+## Rollback
+Previous production version 8 (`c75579c6-7473-4a13-a2f3-e974b7d4cbda`) remains available as the rollback target.
 
 ## Prior production baseline
-The user previously confirmed desktop and phone layout passed and video playback was perfect on the prior production design. Those results do not automatically transfer to version 10.
+Before this refresh, the user confirmed desktop/mobile layout and YouTube playback passed on the previous production design. Those user-confirmed tests are not treated as independent tests of the new release.
