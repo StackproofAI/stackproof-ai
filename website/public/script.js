@@ -181,7 +181,7 @@
     if (canvas.width !== width || canvas.height !== height) {
       canvas.width = width; canvas.height = height;
       gl.viewport(0,0,width,height);
-      draw(performance.now());
+      if (reduced && visible) draw(performance.now());
     }
   };
 
