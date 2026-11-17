@@ -51,3 +51,14 @@
 - Version 12 is the current staged Worker candidate: `dc655ff0-f21a-4b9c-b1a5-5aec3e836871`.
 - Preview URL: https://dc655ff0-stackproof-ai-site.stackproofai.workers.dev
 - Version 12 has not yet been promoted to production.
+
+
+## 2026-11-17 — Version 13 release candidate
+- Added direct “Open the demo on YouTube” fallback below the embedded video.
+- Added direct Cal.com booking-page fallback below the embedded booking calendar.
+- Reduced CSS/JS asset cache TTL to five minutes for safer updates.
+- Re-staged as Worker version 13.
+- Version ID: `417648c2-e34a-48fe-af0b-53b4c741e2ba`.
+- Preview URL: https://417648c2-stackproof-ai-site.stackproofai.workers.dev
+- Mobile accessibility tree returned HTTP 200 and includes the two fallback links, booking/video iframes, primary headings, and navigation control.
+- Production promotion remains pending.
