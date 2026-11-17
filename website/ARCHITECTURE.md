@@ -1,43 +1,26 @@
 # STACKPROOF AI Website — Architecture
 
-## Runtime
-A single Cloudflare Worker handles HTTP routing and returns the public website. The deployed Worker embeds HTML, CSS, JavaScript, and SVG favicon content as strings. There is no React, Next.js, Pages build, package manager, or third-party frontend dependency in the production runtime.
+## Production runtime
+- Cloudflare Worker: `stackproof-ai-site`.
+- Public URL: https://stackproof-ai-site.stackproofai.workers.dev
+- GitHub source: `website/public/index.html`, `website/public/style.css`, `website/public/script.js`, `website/public/favicon.svg`.
+- Existing embedded HTML/CSS/JS Worker deployment is preserved; no hosting migration in this release.
+- Three.js is loaded as a pinned ES module from jsDelivr. React/Vite/R3F were not introduced because they require a separate build/deployment migration not needed for this visual redesign.
+
+## Design and interaction
+- Graphite `#0B0F14`, slate `#6F7F90`, electric lime `#C8FF3D`.
+- New editorial agency layout, glass navigation, fine-line grids, drafting circles, coordinates, and isometric 3D stack/checkmark mark.
+- Three.js scene: extruded bevelled planes, metallic materials, lighting, orbit rings, constellation points, pointer parallax.
+- Pixel ratio capped at 2; animation pauses offscreen/hidden; reduced-motion disables continuous animation; context loss or CDN failure uses CSS fallback.
+- Existing site copy, sections, services, process, testimonials, assessment, FAQs, founder, video, Cal.com booking, contact details, social links, legal footer and route endpoints are retained.
 
 ## Routes
-- `/` and `/index.html`: HTML document.
-- `/style.css`: stylesheet.
-- `/script.js`: client-side interactions and WebGL renderer.
-- `/favicon.svg`: brand favicon.
-- `/robots.txt`: crawler instructions.
-- `/sitemap.xml`: sitemap.
-- `/health`: plain-text health response.
-- Other paths: 404.
+`/`, `/index.html`, `/style.css`, `/script.js`, `/favicon.svg`, `/robots.txt`, `/sitemap.xml`, `/health`.
 
-## 3D experience
-- Custom WebGL 1 renderer; no Three.js or React Three Fiber dependency.
-- Procedurally generated UV sphere mesh, two orbit lines, and connected node points.
-- Pointer movement changes the viewing orientation.
-- Animation is paused when the visual is outside the viewport or the browser tab is hidden.
-- Mobile rendering uses lower geometry density and a lower device-pixel-ratio cap.
-- `prefers-reduced-motion: reduce` disables continuous animation while retaining direct pointer interaction.
-- If WebGL is unavailable or shader initialization fails, a CSS 3D-style visual fallback remains visible.
+## Security
+- Retains security response headers.
+- CSP permits the pinned Three.js module host; YouTube privacy-enhanced and Cal.com remain the only iframe origins.
+- No API keys or secrets added to frontend.
 
-## Content and UX
-- Conventional anchor navigation remains available.
-- Mobile navigation is an accessible disclosure button.
-- Core content is ordinary semantic HTML and remains readable without WebGL.
-- Cal.com and YouTube are embedded in their existing sections.
-- Reveal transitions are progressive enhancement; content remains visible when JavaScript or IntersectionObserver is unavailable.
-
-## Security headers
-The Worker sets:
-- `X-Content-Type-Options: nosniff`
-- `Referrer-Policy: strict-origin-when-cross-origin`
-- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
-- A Content Security Policy restricting scripts/styles to same-origin and frames to YouTube's privacy-enhanced host and Cal.com.
-- HSTS for HTTPS.
-
-CSP and security headers were confirmed in the production response. Embedded-provider playback/availability still requires end-to-end user-side confirmation.
-
-## Deployment
-Cloudflare Worker versions are staged separately from traffic deployments. Version 13 is the current production version; the previous production version 8 remains the rollback target. Versions 9–12 were staged candidates; version 10 was superseded after a WebGL shader precision mismatch was found during browser QA. Preview URLs are disabled after release. Promotion and rollback are separate deployment operations.
+## Release QA
+See `TEST_RESULTS.md`. Live rendering, 3D module runtime, mobile visual review, provider end-to-end and Core Web Vitals must be tested before claiming full production QA.
