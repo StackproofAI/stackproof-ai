@@ -40,4 +40,4 @@ The Worker sets:
 Review CSP and embedded-provider behavior during browser QA before production release.
 
 ## Deployment
-Cloudflare Worker versions are staged separately from traffic deployments. Version 10 is the current 3D candidate; the previous production version remains version 8. Version 9 was an earlier staged candidate. Promotion and rollback are separate deployment operations.
+Cloudflare Worker versions are staged separately from traffic deployments. Version 11 is the current 3D candidate; the previous production version remains version 8. Versions 9 and 10 were earlier staged candidates; version 10 was superseded after a WebGL shader precision mismatch was found during browser QA. Promotion and rollback are separate deployment operations.
