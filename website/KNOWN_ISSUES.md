@@ -1,6 +1,6 @@
 # STACKPROOF AI Website — Known Issues and Validation Gaps
 
-1. The 3D candidate is Worker version 12, staged but not yet promoted to production. Version 10 was superseded after browser testing exposed a WebGL shader precision link error.
+1. The 3D candidate is Worker version 13, staged but not yet promoted to production. Version 10 was superseded after browser testing exposed a WebGL shader precision link error.
 2. Browser Rendering returned HTTP 429 during the first QA attempt. Desktop and mobile screenshots, accessibility tree, and browser runtime checks remain outstanding.
 3. WebGL shader compilation/linking and initial desktop/mobile rendering were verified on version 11. Pointer-driven movement and reduced-motion behavior still need interaction testing.
 4. Performance metrics (LCP, INP, CLS, Lighthouse) have not been measured. No score should be claimed.
