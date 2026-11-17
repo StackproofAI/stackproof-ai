@@ -37,7 +37,7 @@ The Worker sets:
 - A Content Security Policy restricting scripts/styles to same-origin and frames to YouTube's privacy-enhanced host and Cal.com.
 - HSTS for HTTPS.
 
-Review CSP and embedded-provider behavior during browser QA before production release.
+CSP and security headers were confirmed in the production response. Embedded-provider playback/availability still requires end-to-end user-side confirmation.
 
 ## Deployment
-Cloudflare Worker versions are staged separately from traffic deployments. Version 13 is the current 3D candidate; the previous production version remains version 8. Versions 9 and 10 were earlier staged candidates; version 10 was superseded after a WebGL shader precision mismatch was found during browser QA. Promotion and rollback are separate deployment operations.
+Cloudflare Worker versions are staged separately from traffic deployments. Version 13 is the current production version; the previous production version 8 remains the rollback target. Versions 9–12 were staged candidates; version 10 was superseded after a WebGL shader precision mismatch was found during browser QA. Preview URLs are disabled after release. Promotion and rollback are separate deployment operations.
