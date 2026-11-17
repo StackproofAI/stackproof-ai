@@ -8,8 +8,8 @@ Status recorded 2026-11-17. These results distinguish staging/API evidence from 
 | Worker version creation | PASS | Cloudflare API returned version 10 and a preview URL. |
 | Production traffic unchanged during staging | PASS | Version created with `deploy:false`; no production deployment was requested in that operation. |
 | HTML/CSS/JS source presence | PASS | Candidate built from current GitHub source files. |
-| Desktop visual screenshot | BLOCKED | Browser Rendering request was rate-limited (HTTP 429); no screenshot result was captured. |
-| Mobile visual screenshot | NOT TESTED | Pending successful browser rendering. |
+| Desktop visual screenshot | NOT TESTED | Screenshot capture has not yet completed. |
+| Mobile accessibility tree | PASS | Cloudflare Browser Rendering returned HTTP 200 at 390×844; all primary sections, headings, booking/video iframes, phone, LinkedIn, Instagram, GitHub, and mobile navigation control were present. This confirms semantic structure, not visual layout. |\n| Mobile visual screenshot | NOT TESTED | Screenshot capture remains pending. |
 | WebGL rendering in a real browser | NOT TESTED | Source implements WebGL with a CSS fallback; runtime rendering is not yet verified. |
 | Reduced-motion runtime behavior | NOT TESTED | Source-level implementation present; browser preference test pending. |
 | Keyboard navigation | NOT TESTED | Semantic links and mobile menu controls are present; interactive keyboard test pending. |
