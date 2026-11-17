@@ -1,6 +1,6 @@
 # STACKPROOF AI Website — Test Results
 
-## Candidate: Worker version 11
+## Candidate: Worker version 12
 Status recorded 2026-11-17. These results distinguish staging/API evidence from browser execution.
 
 | Test | Status | Evidence / notes |
@@ -13,8 +13,8 @@ Status recorded 2026-11-17. These results distinguish staging/API evidence from 
 | WebGL rendering in a real browser | PASS | Browser Rendering confirmed WebGL context support; shader compilation/linking passed after fixing a uniform precision mismatch; candidate version 11 rendered the 3D sphere and orbit scene. |
 | Reduced-motion runtime behavior | NOT TESTED | Source-level implementation present; browser preference test pending. |
 | Keyboard navigation | NOT TESTED | Semantic links and mobile menu controls are present; interactive keyboard test pending. |
-| Cal.com iframe and booking flow | NOT TESTED | Existing event URL preserved; no test appointment made. |
-| YouTube playback | NOT TESTED on candidate | Existing video ID preserved; prior production playback test was user-confirmed before this refresh. |
+| Cal.com event route | PASS | Cal.com connector confirms current event URL `/20-min`; direct page returned HTTP 200, displayed 20m duration, and exposed available time buttons. |\n| Cal.com iframe visual | PARTIAL | Candidate iframe shows the correct event title and 20m duration; browser screenshot captured a calendar loading skeleton. Full in-iframe slot rendering and test appointment remain unverified. |
+| YouTube playback | NOT TESTED on candidate | Candidate screenshot attempt ended with a browser-rendering network-connection error. Existing video ID is unchanged; prior production playback was user-confirmed before this refresh. |
 | Core Web Vitals / Lighthouse | NOT TESTED | No measured LCP, INP, CLS, or Lighthouse score available. |
 | Security header behavior | NOT TESTED | Headers are configured in candidate source; response-level browser verification pending. |
 | Production deployment | NOT DEPLOYED | Candidate remains staged; do not treat as live. |
