@@ -36,3 +36,9 @@
 - Mobile hero screenshot: PASS (390×844).
 - Browser Rendering accessibility tree: PASS (390×844).
 - Version 11 remains staged; production promotion has not occurred.
+
+
+## 2026-11-17 — Booking URL correction
+- Cal.com connector showed the previously embedded `/15min` route is stale; the current event is listed at `https://cal.com/sean-fields-qf4rle/20-min`.
+- The current Cal.com event title is “15 min meeting”, but its configured duration is 20 minutes.
+- Updated the website iframe URL and removed the inaccurate “15-minute introduction” duration claim. The candidate now uses duration-neutral “complimentary introduction” wording.
