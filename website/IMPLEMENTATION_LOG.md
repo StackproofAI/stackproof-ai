@@ -24,3 +24,15 @@
 - Candidate version ID: `48332b8b-7218-48cf-b7e9-8439bfbecf68`
 - Preview URL: https://48332b8b-stackproof-ai-site.stackproofai.workers.dev
 - Production deployment was not changed by version creation.
+
+
+## 2026-11-17 — WebGL validation fix
+- Browser Rendering initially showed the CSS fallback because WebGL program linking failed: `uPointSize` had mismatched vertex/fragment precision.
+- Added explicit `precision mediump float` to the vertex shader so the shared uniform precision matches.
+- Re-staged as Worker version 11.
+- Version 11 ID: `09a681f1-49ff-45ce-a700-e262d35c6135`.
+- Preview URL: https://09a681f1-stackproof-ai-site.stackproofai.workers.dev
+- Desktop hero screenshot: PASS (1100×760).
+- Mobile hero screenshot: PASS (390×844).
+- Browser Rendering accessibility tree: PASS (390×844).
+- Version 11 remains staged; production promotion has not occurred.
