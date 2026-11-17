@@ -110,3 +110,6 @@
 - Corrected source file `website/public/index.html` on the development branch and updated only the isolated preview Worker. Production remains unchanged.
 - Desktop and mobile screenshots were captured by Browser Run, but image payload rendering failed in this review environment; pixel-level visual inspection remains pending.
 - Actual Three.js runtime, WebGL interaction, and performance measurements remain pending.
+
+- Browser Run confirmed the preview's `.hero-visual.core-ready` state after load. In the current implementation this class is added only after Three.js creates the WebGL renderer and invokes the initial scene render.
+- Pixel-level visual review, pointer/touch response, context-loss recovery, and performance profiling remain outstanding.
