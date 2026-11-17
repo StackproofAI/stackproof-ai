@@ -1,0 +1,26 @@
+# STACKPROOF AI Website — Implementation Log
+
+## 2026-11-17 — Premium 3D refresh staged
+- Reworked the homepage into a premium dark operations-focused layout while retaining the B2B consulting positioning.
+- Added custom WebGL operations core with pointer-responsive rotation, a procedural sphere, orbit rings, and node points.
+- Added mobile geometry/DPR reductions, viewport and tab visibility pausing, reduced-motion behavior, and a CSS fallback.
+- Added accessible mobile navigation and progressive scroll reveals.
+- Refined service cards, process section, video presentation, assessment CTA, FAQ, founder section, booking, and contact hierarchy.
+- Added favicon.
+- Preserved the YouTube video, Cal.com 15-minute booking, phone, LinkedIn, Instagram, GitHub, six services, and advisory assessment language.
+- Added restrictive response headers and explicit MIME types for Worker-served assets.
+
+## Source commits
+- Homepage HTML: `7873996c17d94a63bdbc166463aced1b841b5cf0`
+- Main stylesheet: `4725fa2df1117b8b25bf731c79654f9083754dc8`
+- Client script initial: `93ce07dfb741ceb2f2489f0c67b366f677587dd7`
+- Resize animation-loop fix: `a8571ec8a3f5b4bb7c920e1e1e9a6bed9425f574`
+- Reduced-motion pointer fix: `023c21f012d06c02c2bed273340a2192c2cd05e3`
+- Favicon: `8561ec928d136ba5bbd46f7555c239b5088ad97a`
+
+## Cloudflare staging
+- Worker: `stackproof-ai-site`
+- Candidate version: 10
+- Candidate version ID: `48332b8b-7218-48cf-b7e9-8439bfbecf68`
+- Preview URL: https://48332b8b-stackproof-ai-site.stackproofai.workers.dev
+- Production deployment was not changed by version creation.
