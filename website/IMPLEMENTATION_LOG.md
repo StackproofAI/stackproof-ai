@@ -42,3 +42,12 @@
 - Cal.com connector showed the previously embedded `/15min` route is stale; the current event is listed at `https://cal.com/sean-fields-qf4rle/20-min`.
 - The current Cal.com event title is “15 min meeting”, but its configured duration is 20 minutes.
 - Updated the website iframe URL and removed the inaccurate “15-minute introduction” duration claim. The candidate now uses duration-neutral “complimentary introduction” wording.
+
+
+## 2026-11-17 — Version 12 booking correction and final staging
+- Replaced stale Cal.com `/15min` route with the current `/20-min` event URL from the connected Cal.com account.
+- Cal.com currently labels the event “15 min meeting” but its configured duration is 20 minutes; website wording is duration-neutral to avoid a false promise.
+- Direct Cal.com page returned HTTP 200 and exposed available time buttons.
+- Version 12 is the current staged Worker candidate: `dc655ff0-f21a-4b9c-b1a5-5aec3e836871`.
+- Preview URL: https://dc655ff0-stackproof-ai-site.stackproofai.workers.dev
+- Version 12 has not yet been promoted to production.
