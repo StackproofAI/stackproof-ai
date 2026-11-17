@@ -108,3 +108,6 @@ The preview retains the production canonical and Open Graph URLs. The preview mu
 - Desktop 1440×1000 preview screenshot: PASS — reviewed rendered hero composition, navigation, typography, CTA hierarchy, geometric 3D mark, orbit lines, grid, and color contrast at the captured viewport. No obvious clipping or overlap observed in the captured first viewport.
 - Mobile 390×844 preview screenshot: PASS — reviewed compact header/menu control, readable headline, CTA sizing, paragraph wrapping, and vertical stacking. The 3D canvas begins below the initial copy as expected; full-page mobile and tablet review remain pending.
 - These are visual checks of the captured first viewport only, not a complete accessibility or responsive certification.
+
+- Latest preview deployment state: PASS — Cloudflare reports deployment `f28a1487-9d6b-46a0-8a5a-36fc61bb5864` with 100% of preview Worker traffic on version `2db18538-802d-41da-b9d9-181b744286d7`.
+- Production isolation re-check: PASS — production deployment remains `5d67bfcf-873b-4e03-b360-a4a23d4dbbf6`, 100% on version `6c7f8e65-e06e-45da-9984-3e742fcf855f`.
