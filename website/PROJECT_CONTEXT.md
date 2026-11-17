@@ -26,7 +26,7 @@ Owners, operators, and decision-makers at growing businesses. Public positioning
 - Six services: AI Automation Consulting; Business Workflow Automation; Lead Management Automation; AI-Powered Business Operations; Process Optimization; Business Systems Integration.
 - Four-stage method: Discover, Assess, Implement, Optimize.
 - YouTube demonstration: video ID `Ia0wtpAQp3E`.
-- Cal.com booking: https://cal.com/sean-fields-qf4rle/15min
+- Cal.com booking: https://cal.com/sean-fields-qf4rle/20-min (current Cal.com event listing: title “15 min meeting”, actual duration 20 minutes; website copy avoids a duration claim)
 - LinkedIn: https://www.linkedin.com/in/georgefields416
 - Instagram: https://www.instagram.com/stackproofai/
 - GitHub: https://github.com/StackproofAI/stackproof-ai
