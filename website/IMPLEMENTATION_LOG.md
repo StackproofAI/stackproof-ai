@@ -98,7 +98,7 @@
 - Enabled the preview Worker's workers.dev subdomain.
 - Added `noindex,nofollow` to the preview HTML and changed its robots response to disallow crawling.
 - Retained production canonical and Open Graph URLs in the preview clone.
-- Preview deployment version: `d6378d28-e5d7-4a34-8b5f-e1424f5ff3c0`; preview deployment ID: `7196f472-6096-4180-8c55-be318a27dc16`.
+- Preview deployment version: `2db18538-802d-41da-b9d9-181b744286d7`; preview deployment ID: `f28a1487-9d6b-46a0-8a5a-36fc61bb5864`.
 - Production deployment remains `5d67bfcf-873b-4e03-b360-a4a23d4dbbf6`, with 100% traffic on version `6c7f8e65-e06e-45da-9984-3e742fcf855f`.
 - Browser verification of the preview URL, page rendering, robots response, and WebGL runtime remains pending.
 
@@ -113,3 +113,5 @@
 
 - Browser Run confirmed the preview's `.hero-visual.core-ready` state after load. In the current implementation this class is added only after Three.js creates the WebGL renderer and invokes the initial scene render.
 - Pixel-level visual review, pointer/touch response, context-loss recovery, and performance profiling remain outstanding.
+
+- Latest preview deployment after the copy correction: `f28a1487-9d6b-46a0-8a5a-36fc61bb5864`, version `2db18538-802d-41da-b9d9-181b744286d7` (100% preview Worker traffic).
