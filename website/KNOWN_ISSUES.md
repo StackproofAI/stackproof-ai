@@ -15,7 +15,7 @@ Status date: 2026-11-17
 8. Initial Three.js/WebGL scene initialization and render invocation are verified in preview; pointer/touch interaction, sustained rendering, and CDN failure behavior remain NOT TESTED.
 9. WebGL context-loss recovery needs an end-to-end test; a handler that only resumes the animation loop may not rebuild all GPU resources.
 10. Reduced-motion support is implemented in source but needs a real browser preference test.
-11. Mobile and tablet visual quality, including low-power device behavior, needs fresh validation.
+11. Desktop hero and mobile above-the-fold screenshots have been visually reviewed; full-page mobile, tablet, and low-power device behavior still need validation.
 
 ## Integrations
 12. Cal.com direct event route is verified at https://cal.com/sean-fields-qf4rle/20-min. The embedded frame previously showed loading placeholders. Full in-frame availability, test booking, and calendar synchronization remain unverified.
