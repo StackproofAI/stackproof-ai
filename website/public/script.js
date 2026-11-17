@@ -197,8 +197,8 @@
   const draw = now => {
     if (!visible || paused) return;
     const time = reduced ? 0 : (now - start) / 1000;
-    pointerX += (targetX - pointerX) * 0.045;
-    pointerY += (targetY - pointerY) * 0.045;
+    if (reduced) { pointerX = targetX; pointerY = targetY; }
+    else { pointerX += (targetX - pointerX) * 0.045; pointerY += (targetY - pointerY) * 0.045; }
     const drift = reduced ? 0 : time * 0.16;
     const model = multiply(translateZ(-3.15), multiply(rotateY(drift + pointerX * 0.48), rotateX(-0.16 + pointerY * 0.36)));
     const proj = perspective(0.78, width / Math.max(1,height), 0.1, 30);
