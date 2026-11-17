@@ -46,3 +46,14 @@ Before this refresh, the user confirmed desktop/mobile layout and YouTube playba
 - Reduced-motion, context-loss and CSS fallback: IMPLEMENTED; runtime NOT TESTED.
 - Cal.com/YouTube end-to-end: NOT TESTED.
 - Core Web Vitals / Lighthouse: NOT TESTED.
+
+
+## Production verification — complete visual redesign
+- Cloudflare upload/deployment: PASS — Worker `stackproof-ai-site`, version `6c7f8e65-e06e-45da-9984-3e742fcf855f`, 100% production traffic.
+- Production page DOM: PASS — Browser Rendering loaded the live homepage and found the hero canvas, all six service categories, video ID, Cal.com booking URL, testimonials, and legal footer.
+- Production script route: PASS — Browser Rendering fetched `/script.js` and confirmed pinned Three.js import, reduced-motion branch, WebGL context-loss handler, and DPR cap.
+- Mobile production DOM: NOT TESTED — browser call attempt was rate-limited / interrupted; responsive rules are present in source.
+- Actual WebGL scene render, pointer/touch interaction, context-loss recovery: NOT TESTED end-to-end.
+- YouTube playback and Cal.com appointment completion: NOT TESTED end-to-end.
+- Lighthouse / Core Web Vitals: NOT TESTED.
+- Visual image inspection: NOT TESTED.
