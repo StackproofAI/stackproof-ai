@@ -102,3 +102,9 @@ The preview retains the production canonical and Open Graph URLs. The preview mu
 - Hero canvas presence: PASS — `#operations-core` is present in the rendered DOM.
 - This verifies initial scene creation/render invocation, not pixel-level visual quality or sustained frame rate.
 - Pointer/touch response, context-loss restoration, reduced-motion behavior, and memory/performance profiling: NOT TESTED.
+
+
+## Visual screenshot review — 2026-11-17
+- Desktop 1440×1000 preview screenshot: PASS — reviewed rendered hero composition, navigation, typography, CTA hierarchy, geometric 3D mark, orbit lines, grid, and color contrast at the captured viewport. No obvious clipping or overlap observed in the captured first viewport.
+- Mobile 390×844 preview screenshot: PASS — reviewed compact header/menu control, readable headline, CTA sizing, paragraph wrapping, and vertical stacking. The 3D canvas begins below the initial copy as expected; full-page mobile and tablet review remain pending.
+- These are visual checks of the captured first viewport only, not a complete accessibility or responsive certification.
