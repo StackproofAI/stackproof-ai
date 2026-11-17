@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stackproof-ai-site.stackproofai.workers.dev/sitemap.xml
