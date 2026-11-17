@@ -1,6 +1,6 @@
 # STACKPROOF AI Website — Test Results
 
-## Candidate: Worker version 12
+## Candidate: Worker version 13
 Status recorded 2026-11-17. These results distinguish staging/API evidence from browser execution.
 
 | Test | Status | Evidence / notes |
@@ -9,7 +9,7 @@ Status recorded 2026-11-17. These results distinguish staging/API evidence from 
 | Production traffic unchanged during staging | PASS | Version created with `deploy:false`; no production deployment was requested in that operation. |
 | HTML/CSS/JS source presence | PASS | Candidate built from current GitHub source files. |
 | Desktop hero visual screenshot | PASS | Cloudflare Browser Rendering captured the 3D hero at 1100×760; the WebGL sphere and orbit scene rendered. |
-| Mobile accessibility tree | PASS | Cloudflare Browser Rendering returned HTTP 200 at 390×844; all primary sections, headings, booking/video iframes, phone, LinkedIn, Instagram, GitHub, and mobile navigation control were present. This confirms semantic structure, not visual layout. |\n| Mobile hero visual screenshot | PASS | Cloudflare Browser Rendering captured the hero at 390×844; headline, CTA, responsive scene, and labels remained visible. |
+| Mobile accessibility tree | PASS | Cloudflare Browser Rendering returned HTTP 200 at 390×844; all primary sections, headings, booking/video iframes, phone, LinkedIn, Instagram, GitHub, mobile navigation control, and direct fallback links for YouTube and Cal.com were present. This confirms semantic structure, not visual layout. |\n| Mobile hero visual screenshot | PASS | Cloudflare Browser Rendering captured the hero at 390×844; headline, CTA, responsive scene, and labels remained visible. |
 | WebGL rendering in a real browser | PASS | Browser Rendering confirmed WebGL context support; shader compilation/linking passed after fixing a uniform precision mismatch; candidate version 11 rendered the 3D sphere and orbit scene. |
 | Reduced-motion runtime behavior | NOT TESTED | Source-level implementation present; browser preference test pending. |
 | Keyboard navigation | NOT TESTED | Semantic links and mobile menu controls are present; interactive keyboard test pending. |
