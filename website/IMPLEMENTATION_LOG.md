@@ -90,3 +90,14 @@
 - Updated hero markup, complete stylesheet, and Three.js client interactions.
 - Retained Worker architecture and added CDN origin to CSP.
 - Release requires live browser, mobile, WebGL, provider, and performance QA.
+
+
+## 2026-11-17 — Isolated QUAE preview created
+- Created Git branch `quae/3d-preview-qa` from `main`.
+- Created separate Cloudflare Worker `stackproof-ai-preview` by cloning the current production Worker source; no production Worker upload was performed.
+- Enabled the preview Worker's workers.dev subdomain.
+- Added `noindex,nofollow` to the preview HTML and changed its robots response to disallow crawling.
+- Retained production canonical and Open Graph URLs in the preview clone.
+- Preview deployment version: `d6378d28-e5d7-4a34-8b5f-e1424f5ff3c0`; preview deployment ID: `7196f472-6096-4180-8c55-be318a27dc16`.
+- Production deployment remains `5d67bfcf-873b-4e03-b360-a4a23d4dbbf6`, with 100% traffic on version `6c7f8e65-e06e-45da-9984-3e742fcf855f`.
+- Browser verification of the preview URL, page rendering, robots response, and WebGL runtime remains pending.
