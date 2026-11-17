@@ -7,7 +7,7 @@ Status date: 2026-11-17
 2. A separate Cloudflare Worker named `stackproof-ai-preview` was uploaded from the current production Worker source.
 3. Intended preview URL: https://stackproof-ai-preview.stackproofai.workers.dev/
 4. Preview upload succeeded and its workers.dev subdomain was enabled. External HTTP response and rendered-page verification are still NOT TESTED; do not claim the URL is fully working until browser verification succeeds.
-5. Preview HTML has a `noindex,nofollow` meta directive. The preview `robots.txt` route must be independently checked; confirm it disallows crawling.
+5. Preview HTML has a `noindex,nofollow` meta directive, and Browser Run verified `/robots.txt` returns HTTP 200 with `User-agent: *` and `Disallow: /`.
 6. Preview source retains production canonical and Open Graph URLs. This is intentional for canonical attribution but does not replace noindex verification.
 
 ## 3D and runtime
