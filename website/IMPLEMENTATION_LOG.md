@@ -83,3 +83,10 @@
 - Added explicit notice that client feedback is being collected and no fabricated reviews or unverified ratings are published.
 - Updated the shared HTML/CSS source and deployed the matching embedded Worker content.
 - Production Browser Rendering confirmed the section, nav anchor, three cards, and integrity notice are present.
+
+
+## 2026-11-17 — Complete website design rebuild
+- Reworked presentation without removing existing public business content or changing video, booking, phone, social, or GitHub destinations.
+- Updated hero markup, complete stylesheet, and Three.js client interactions.
+- Retained Worker architecture and added CDN origin to CSP.
+- Release requires live browser, mobile, WebGL, provider, and performance QA.
