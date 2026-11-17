@@ -57,3 +57,23 @@ Before this refresh, the user confirmed desktop/mobile layout and YouTube playba
 - YouTube playback and Cal.com appointment completion: NOT TESTED end-to-end.
 - Lighthouse / Core Web Vitals: NOT TESTED.
 - Visual image inspection: NOT TESTED.
+
+
+## Isolated QUAE development preview — 2026-11-17
+
+| Check | Status | Evidence / notes |
+|---|---|---|
+| Git development branch | PASS | Created `quae/3d-preview-qa` from `main`. |
+| Separate Cloudflare Worker upload | PASS | Uploaded cloned source as `stackproof-ai-preview`; production Worker was not modified by the upload. |
+| Preview workers.dev subdomain | PASS | Cloudflare API reports subdomain enabled for `stackproof-ai-preview`. |
+| Preview-only noindex directive | PASS | Downloaded preview source contains `noindex,nofollow`. |
+| Preview robots.txt disallow rule | PASS (source) | Preview Worker source updated to return `User-agent: *\\nDisallow: /`. HTTP response has not been browser-verified. |
+| Preview page HTTP response | NOT TESTED | External browser request did not return a usable response in this session. |
+| Preview DOM / screenshot | NOT TESTED | No rendered browser capture available yet. |
+| Preview WebGL rendering and interaction | NOT TESTED | Requires browser runtime testing. |
+| Production isolation | PASS | No production Worker upload or production traffic change was made during preview setup. |
+| Production homepage and integrations after setup | NOT TESTED in this work session | No production deployment was changed; fresh smoke test still recommended. |
+
+Preview URL intended for browser QA: https://stackproof-ai-preview.stackproofai.workers.dev/
+
+The preview retains the production canonical and Open Graph URLs. The preview must remain noindexed; do not treat its URL as a public launch destination.
