@@ -95,3 +95,10 @@ The preview retains the production canonical and Open Graph URLs. The preview mu
 ## Preview crawler check — 2026-11-17
 - Preview `/robots.txt`: PASS — Browser Run fetched the route with HTTP 200 and returned `User-agent: *` followed by `Disallow: /`.
 - Preview HTML noindex: PASS — live rendered HTML contains `noindex,nofollow`.
+
+
+## Preview 3D runtime probe — 2026-11-17
+- Three.js scene initialization: PASS — Browser Run loaded the preview, waited 7 seconds, and returned rendered DOM with `.hero-visual.core-ready`; the production code adds this class only after WebGLRenderer creation and an initial `renderer.render(scene, camera)` call.
+- Hero canvas presence: PASS — `#operations-core` is present in the rendered DOM.
+- This verifies initial scene creation/render invocation, not pixel-level visual quality or sustained frame rate.
+- Pointer/touch response, context-loss restoration, reduced-motion behavior, and memory/performance profiling: NOT TESTED.
