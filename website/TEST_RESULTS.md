@@ -1,6 +1,6 @@
 # STACKPROOF AI Website — Test Results
 
-## Candidate: Worker version 10
+## Candidate: Worker version 11
 Status recorded 2026-11-17. These results distinguish staging/API evidence from browser execution.
 
 | Test | Status | Evidence / notes |
