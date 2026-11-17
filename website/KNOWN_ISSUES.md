@@ -12,7 +12,7 @@ Status date: 2026-11-17
 
 ## 3D and runtime
 7. The current Worker source imports Three.js 0.180.0 from a pinned jsDelivr ES module.
-8. Actual preview WebGL rendering, pointer/touch interaction, and CDN failure behavior remain NOT TESTED.
+8. Initial Three.js/WebGL scene initialization and render invocation are verified in preview; pointer/touch interaction, sustained rendering, and CDN failure behavior remain NOT TESTED.
 9. WebGL context-loss recovery needs an end-to-end test; a handler that only resumes the animation loop may not rebuild all GPU resources.
 10. Reduced-motion support is implemented in source but needs a real browser preference test.
 11. Mobile and tablet visual quality, including low-power device behavior, needs fresh validation.
