@@ -77,3 +77,16 @@ Before this refresh, the user confirmed desktop/mobile layout and YouTube playba
 Preview URL intended for browser QA: https://stackproof-ai-preview.stackproofai.workers.dev/
 
 The preview retains the production canonical and Open Graph URLs. The preview must remain noindexed; do not treat its URL as a public launch destination.
+
+
+## Preview browser verification — 2026-11-17
+- Desktop Browser Run snapshot: PASS — HTTP 200; correct title; HTML content returned; hero canvas, main content, six service labels, testimonials, video, and Cal.com booking destination detected.
+- Desktop accessibility tree: PASS — root web area and 159 children returned, including semantic navigation links, page headings, service descriptions, booking/video iframes, and footer links.
+- Mobile Browser Run snapshot at 390×844 with touch emulation: PASS — HTTP 200; correct title; hero canvas, all six services, and main content detected.
+- Mobile accessibility tree: PASS — root web area and 150 children returned.
+- Booking CTA copy regression found and corrected on the development branch and preview Worker: PASS — removed duplicated wording "complimentary, no-obligation complimentary introduction".
+- Screenshot capture: PASS — Browser Run returned screenshot payloads for desktop and mobile; pixel-level visual inspection remains NOT TESTED because the returned image payload could not be rendered in this review environment.
+- Preview noindex meta: PASS — live rendered HTML contains `<meta name="robots" content="noindex,nofollow">`.
+- Preview robots.txt HTTP response: NOT TESTED — source contains the disallow rule; the route response still needs a direct content check.
+- Three.js module execution, WebGL context, and pointer/touch interaction: NOT TESTED — page DOM/canvas presence does not prove the WebGL scene rendered or responded to input.
+- Lighthouse / Core Web Vitals: NOT TESTED.
