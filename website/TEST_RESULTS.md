@@ -28,3 +28,9 @@ Previous production version 8 (`c75579c6-7473-4a13-a2f3-e974b7d4cbda`) remains a
 
 ## Prior production baseline
 Before this refresh, the user confirmed desktop/mobile layout and YouTube playback passed on the previous production design. Those user-confirmed tests are not treated as independent tests of the new release.
+
+
+## Testimonials section update
+- Source markup and navigation link: PASS — `#testimonials` section and navigation anchor added.
+- Review integrity: PASS — no fabricated client quotes, identities, ratings, or outcome metrics; section explains permission and evidence standards.
+- Desktop/mobile production visual check: NOT TESTED — pending live browser verification after deployment.
