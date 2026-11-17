@@ -25,3 +25,11 @@
 - Redesigned navigation, service cards, process, demo, testimonial, assessment, FAQ, About, booking, contact and footer styling while preserving content and links.
 - Added pinned Three.js module, parallax, orbit rings, geometry layers, capped DPR, reduced-motion behavior, offscreen pause, and CSS fallback.
 - Preserved Cloudflare Worker hosting; no framework migration.
+
+
+## 2026-11-17 — QUAE isolated preview
+- Added development branch `quae/3d-preview-qa`.
+- Created separate Cloudflare Worker `stackproof-ai-preview`; production deployment and traffic were left unchanged.
+- Added preview-specific noindex and crawler-disallow directives.
+- Corrected duplicated complimentary-introduction wording in the preview source and preview Worker only.
+- Captured desktop and mobile Browser Run snapshots; both page loads returned HTTP 200. Runtime WebGL, visual screenshot inspection, and performance measurement remain pending.
