@@ -39,7 +39,7 @@ Public B2B website for STACKPROOF AI, an AI automation and business operations c
 - Preview Worker: `stackproof-ai-preview`.
 - Intended preview URL: https://stackproof-ai-preview.stackproofai.workers.dev/
 - Preview Worker is a separate script cloned from production source; it has a `noindex,nofollow` meta directive and a robots.txt disallow rule in source.
-- Preview deployment version: `d6378d28-e5d7-4a34-8b5f-e1424f5ff3c0`.
+- Preview deployment version: `2db18538-802d-41da-b9d9-181b744286d7`.
 - Preview browser response and rendered experience remain NOT TESTED. Do not treat the preview as verified or production-ready.
 
 ## Operating rules
