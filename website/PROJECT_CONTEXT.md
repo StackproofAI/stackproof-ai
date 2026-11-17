@@ -33,7 +33,7 @@ Owners, operators, and decision-makers at growing businesses. Public positioning
 - Phone: +1 (424) 434-8474.
 
 ## Current design work
-A premium, restrained 3D refresh is staged as Worker version 10. It introduces a custom WebGL operations core, responsive layouts, reduced-motion handling, a no-WebGL fallback, refined service cards, process storytelling, and a more deliberate contact/booking hierarchy.
+A premium, restrained 3D refresh is staged as Worker version 11. It introduces a custom WebGL operations core, responsive layouts, reduced-motion handling, a no-WebGL fallback, refined service cards, process storytelling, and a more deliberate contact/booking hierarchy.
 
 ## Release status
-The 3D refresh is staged and has not yet been promoted to production. Do not describe it as live until the Worker deployment API confirms 100% production traffic and runtime/browser tests pass.
+The 3D refresh is staged as Worker version 11 and has not yet been promoted to production. Do not describe it as live until the Worker deployment API confirms 100% production traffic and runtime/browser tests pass.
