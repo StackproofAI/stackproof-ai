@@ -74,3 +74,12 @@
 - Production `/health` returned HTTP 200 and the expected online message.
 - Production security headers were verified in the response.
 - Preview URLs disabled after deployment; previous production version 8 retained as rollback target.
+
+
+## 2026-11-17 — Client testimonials section
+- Added `#testimonials` after the How We Work section and before the assessment CTA.
+- Added a navigation anchor for direct access.
+- Added three trust-standard cards: permission, context, and evidence.
+- Added explicit notice that client feedback is being collected and no fabricated reviews or unverified ratings are published.
+- Updated the shared HTML/CSS source and deployed the matching embedded Worker content.
+- Production Browser Rendering confirmed the section, nav anchor, three cards, and integrity notice are present.
