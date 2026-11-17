@@ -62,3 +62,15 @@
 - Preview URL: https://417648c2-stackproof-ai-site.stackproofai.workers.dev
 - Mobile accessibility tree returned HTTP 200 and includes the two fallback links, booking/video iframes, primary headings, and navigation control.
 - Production promotion remains pending.
+
+
+## 2026-11-17 — Production deployment
+- Deployed Worker version 13 to `stackproof-ai-site`.
+- Deployment ID: `730e02d3-737a-4ff8-a769-29978a190575`.
+- Version ID: `417648c2-e34a-48fe-af0b-53b4c741e2ba`.
+- Cloudflare confirms 100% of production traffic routes to version 13.
+- Production Browser Rendering accessibility tree returned HTTP 200; primary content, six services, navigation control, booking/video iframes, and direct fallback links were present.
+- Production desktop screenshot confirmed the WebGL hero renders.
+- Production `/health` returned HTTP 200 and the expected online message.
+- Production security headers were verified in the response.
+- Preview URLs disabled after deployment; previous production version 8 retained as rollback target.
