@@ -90,3 +90,8 @@ The preview retains the production canonical and Open Graph URLs. The preview mu
 - Preview robots.txt HTTP response: NOT TESTED — source contains the disallow rule; the route response still needs a direct content check.
 - Three.js module execution, WebGL context, and pointer/touch interaction: NOT TESTED — page DOM/canvas presence does not prove the WebGL scene rendered or responded to input.
 - Lighthouse / Core Web Vitals: NOT TESTED.
+
+
+## Preview crawler check — 2026-11-17
+- Preview `/robots.txt`: PASS — Browser Run fetched the route with HTTP 200 and returned `User-agent: *` followed by `Disallow: /`.
+- Preview HTML noindex: PASS — live rendered HTML contains `noindex,nofollow`.
