@@ -23,6 +23,9 @@ function heroArt(t: Locale): string {
     regMark(40, 40) + regMark(600, 40) + regMark(40, 600) + regMark(600, 600) +
     hexNode(78, 470, 26, { tone: 'steel', cls: 'hero-hex' }) +
     hexNode(566, 150, 18, { tone: 'steel', rings: 0, cls: 'hero-hex' }) +
+    `<defs><radialGradient id="hero-glow-g"><stop offset="0" stop-color="#CEF949" stop-opacity=".22"/><stop offset="1" stop-color="#CEF949" stop-opacity="0"/></radialGradient></defs>` +
+    `<circle class="hero-glow" cx="${C}" cy="${C}" r="200" fill="url(#hero-glow-g)"/>` +
+    `<circle class="g-line g-lime g-thick hero-proof" cx="${C}" cy="${C}" r="178" transform="rotate(-90 ${C} ${C})"/>` +
     `<g transform="translate(176 205) scale(0.37)">${layeredMark()}</g>`;
   return `<figure class="hero-art" data-hero-art>
   ${svg('0 0 640 640', inner, 'hero-svg', t.hero.markLabel)}
@@ -77,7 +80,7 @@ function problemDiagram(t: Locale): string {
     v += `<path class="g-line g-lime g-draw flow-seg" d="M${X} ${ys[i] + 34}V${ys[i + 1] - 34}"/>` + terminal(X, ys[i + 1] - 38, 'diamond', 2.6);
   }
   v += `<path class="g-dots g-steel flow-ghost" stroke-dasharray="0.01 6" d="M${X - 34} ${ys[1]}C${X - 100} ${ys[1]} ${X - 100} ${ys[2]} ${X - 34} ${ys[2]}"/>`;
-  v += `<text class="g-text g-steel flow-ghost" x="${X + 24}" y="${(ys[1] + ys[2]) / 2 + 5}">${d.gap}</text><path class="g-line g-steel flow-ghost" d="M${X + 20} ${(ys[1] + ys[2]) / 2}H${X + 128}"/>`;
+  v += `<text class="g-text g-steel flow-ghost" x="${X + 44}" y="${(ys[1] + ys[2]) / 2 + 5}">${d.gap}</text><path class="g-line g-steel flow-ghost" d="M${X + 40} ${(ys[1] + ys[2]) / 2}H${X + 148}"/>`;
   ys.forEach((y2, i) => {
     v += hexNode(X, y2, 30, { tone: i === 3 ? 'lime' : 'steel', rings: 1, crosshair: i !== 3 });
     v += `<text class="g-text g-ink" x="${X + 52}" y="${y2 + 5}">${d.nodes[i]}</text>`;
@@ -125,9 +128,9 @@ function offer(t: Locale): string {
       <div class="offer-side">
         <div class="card"><h3 class="h3">${o.termsTitle}</h3><p>${o.terms}</p></div>
         <div class="card"><h3 class="h3">${o.nextTitle}</h3><p>${o.next}</p></div>
-        <a class="btn btn-primary" href="#assessment">${t.cta.primary}</a>
       </div>
     </div>
+    <div class="offer-cta"><a class="btn btn-primary btn-lg" href="#assessment">${t.cta.primary}</a></div>
   </div>
 </section>`;
 }
@@ -155,7 +158,8 @@ function systems(t: Locale): string {
     g += `<g class="sys-node ${it.live ? 'is-live' : ''}" data-node="${it.id}">` +
       hexNode(x, y, r, { tone: it.live ? 'lime' : 'steel', rings: it.live ? 2 : 1, crosshair: false }) +
       `<path class="sys-hit" d="${hexPath(x, y, r)}"/>` +
-      `<text class="g-text ${it.live ? 'g-lime' : 'g-ink'} sys-id" x="${x}" y="${y + 5}" text-anchor="middle">${it.id}</text></g>`;
+      `<text class="g-text ${it.live ? 'g-lime' : 'g-ink'} sys-id" x="${x}" y="${y + 5}" text-anchor="middle">${it.id}</text>` +
+      `<text class="g-text g-steel sys-name-label" x="${x}" y="${y + r + 18}" text-anchor="middle">${esc(it.name)}</text></g>`;
   }
   g += regMark(16, 16) + regMark(784, 16) + regMark(16, 484) + regMark(784, 484);
 
@@ -385,7 +389,7 @@ function faq(t: Locale): string {
     <div class="faq-list">
       ${t.faq.items
         .map(
-          (x, i) => `<details class="faq-item"${i === 0 ? '' : ''}><summary><span class="faq-n mono" aria-hidden="true">${pad2(i + 1)}</span><span class="faq-q">${x.q}</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>${x.a}</p></div></details>`,
+          (x, i) => `<details class="faq-item"${/cost/i.test(x.q) ? ' open' : ''}><summary><span class="faq-n mono" aria-hidden="true">${pad2(i + 1)}</span><span class="faq-q">${x.q}</span><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-a"><p>${x.a}</p></div></details>`,
         )
         .join('')}
     </div>

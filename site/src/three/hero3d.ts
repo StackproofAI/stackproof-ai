@@ -16,7 +16,6 @@ import { heroState } from '../motion/heroState';
 
 const LIME = new Color('#CEF949');
 const STEEL = new Color('#75879A');
-const UNLIT = new Color('#3A4250');
 const VOID = new Color('#040508');
 
 export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
@@ -64,7 +63,7 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
   // SVG space: y down, 780×656, centred → flip Y.
   mark.scale.set(1, -1, 1);
   mark.position.set(-390, 328, 0);
-  const topMat = mat(UNLIT.clone());
+  const topMat = mat(LIME.clone());
   const layers = {
     bottom: new Mesh(extrude('layer-bottom', 36), mat(LIME.clone())),
     middle: new Mesh(extrude('layer-middle', 36), mat(STEEL.clone(), 0.55)),
@@ -103,8 +102,7 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
     // In SVG space y is down: top layer moves up (−y), bottom down (+y); depth separation in z.
     layers.top.position.set(0, -SPREAD * (1 - ease), 40 * (1 - ease));
     layers.bottom.position.set(0, SPREAD * (1 - ease), -40 * (1 - ease));
-    topMat.color.copy(UNLIT).lerp(LIME, Math.min(1, Math.max(0, (p - 0.45) / 0.45)));
-    topMat.emissive.copy(LIME).multiplyScalar(0.12 * Math.max(0, (p - 0.8) / 0.2));
+    topMat.emissive.copy(LIME).multiplyScalar(0.18 * Math.max(0, (p - 0.7) / 0.3));
     // slow idle rotation that settles as the stack is proven
     const sway = 1 - 0.7 * ease;
     pivot.rotation.y = Math.sin(t * 0.35) * 0.32 * sway;
@@ -139,7 +137,6 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
     geoms.forEach((g) => g.dispose());
     mats.forEach((m) => m.dispose());
     renderer.dispose();
-    renderer.forceContextLoss();
     canvas.remove();
   }
   return teardown;

@@ -192,9 +192,25 @@
   .hero-orbit { transform-box: view-box; transform-origin: 50% 50%; animation: orbit 160s linear infinite reverse; }
 }
 @keyframes orbit { to { transform: rotate(360deg); } }
-.mk { transition: opacity .8s var(--ease); }
+.mk { transition: opacity .3s var(--ease); }
 .hero-art.is-3d .mk { opacity: 0; }
-.hero-canvas canvas { display: block; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity .8s var(--ease); }
+.hero-canvas canvas { display: block; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity .3s var(--ease); }
 .hero-art.is-3d .hero-canvas canvas { opacity: 1; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+.sys-id, .sys-name-label { paint-order: stroke; stroke: var(--sp-void); stroke-width: 5px; stroke-linejoin: round; }
+.sys-name-label { font-size: 11px; letter-spacing: .02em; }
+.sys-node.is-live .sys-name-label { fill: var(--sp-lime); }
+@media (max-width: 40rem) { .sys-name-label { display: none; } }
+/* Phones: roadmap systems collapse to a compact line each; live systems keep full detail */
+@media (max-width: 61.99rem) {
+  .sys-item:not(.is-live) { display: flex; gap: var(--s-3); align-items: baseline; padding: var(--s-3) 0; }
+  .sys-item:not(.is-live) .sys-meta { flex: none; }
+  .sys-item:not(.is-live) .status, .sys-item:not(.is-live) .sys-purpose { display: none; }
+  .sys-item:not(.is-live) .sys-name { margin: 0; font-weight: 500; font-size: 1rem; }
+}
+/* Small print: larger and higher contrast */
+.verify-note, .video-note, .hero-facts { font-size: .8125rem; color: var(--sp-muted); }
+.offer-cta { margin-top: var(--s-5); }
+@media (max-width: 30rem) { .offer-cta .btn { width: 100%; } }

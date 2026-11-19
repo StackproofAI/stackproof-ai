@@ -81,7 +81,6 @@ function hero(): void {
   const art = document.querySelector('[data-hero-art]');
   if (!art) return;
   const layers = Object.fromEntries(q<SVGGElement>('[data-layer]', art).map((g) => [g.dataset.layer, g]));
-  const topFill = art.querySelector('.mk-top-fill');
   const SPREAD = 46; // SVG units in mark space (mark is scaled 0.37 in the hero)
 
   // Intro (does not touch the H1/copy: LCP text is never hidden).
@@ -96,18 +95,22 @@ function hero(): void {
   const apart = { top: -SPREAD, bottom: SPREAD };
   gsap.set(layers.top, { y: apart.top });
   gsap.set(layers.bottom, { y: apart.bottom });
-  if (topFill) gsap.set(topFill, { attr: { fill: '#3A4250' } });
+  const ring = art.querySelector('.hero-proof');
+  const glow = art.querySelector('.hero-glow');
+  gsap.set(ring, { drawSVG: '0%' });
+  gsap.set(glow, { opacity: 0 });
   heroState.press = 0;
 
   const press = gsap.timeline({
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 35%', scrub: 0.6 },
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=45%', scrub: 0.6 },
     defaults: { ease: 'none' },
     onUpdate() { heroState.press = this.progress(); },
   });
   press
     .to(layers.top, { y: 0, ease: 'power2.inOut' }, 0)
     .to(layers.bottom, { y: 0, ease: 'power2.inOut' }, 0)
-    .to(topFill, { attr: { fill: '#CEF949' }, ease: 'power1.in' }, 0.55);
+    .to(ring, { drawSVG: '100%', ease: 'power1.inOut' }, 0.35)
+    .to(glow, { opacity: 1, ease: 'power1.in' }, 0.55);
   // If the visitor never scrolls, reveal the proven state anyway after a beat, so the mark is never left "unverified".
   // Once revealed this way the scroll link is released, so a later scroll can't snap the layers apart again.
   gsap.delayedCall(6, () => {
@@ -144,7 +147,7 @@ function problem(): void {
     const tl = gsap.timeline({ scrollTrigger: { trigger: svg, start: 'top 75%', end: 'bottom 55%', scrub: 0.5 } });
     // Broken first (the manual detour is prominent), then each link draws in, the detour fades, the result is verified.
     tl.from(q('.flow-seg', svg), { drawSVG: '0%', duration: 1, stagger: 0.8, ease: 'none' }, 0)
-      .fromTo(q('.flow-ghost', svg), { opacity: 1 }, { opacity: 0.3, duration: 0.8, ease: 'none' }, 1.2)
+      .fromTo(q('.flow-ghost', svg), { opacity: 1 }, { opacity: 0.6, duration: 0.8, ease: 'none' }, 1.2)
       .from(q('.flow-check', svg), { opacity: 0, scale: 0.6, transformOrigin: '50% 50%', duration: 0.5 }, 2.4);
   }
 }
