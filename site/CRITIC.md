@@ -37,3 +37,36 @@ The critic is a separate agent with a fresh context. It sees only screenshots (1
 1. Gmail contact address (K-1).
 2. No founder photo or bio and no measured result. The testimonials praise intentions (K-2, K-3, K-5).
 3. Generic owner-supplied copy in section 05 and Title Case headings (K-6, K-7). Objections (FAQ) sit after the form. **Proposal:** move the FAQ above the final CTA (brief §4 allows a reasoned reorder). This needs George's OK.
+
+## Checkpoint 3 (motion + 3D)
+
+The critic received frame sequences, which stand in for screen recordings because it can only view stills: hero (3D, phone SVG), problem diagram, system map, spiral, and reduced motion.
+
+| Item | Round 1 |
+|---|---|
+| Design | 7.0 |
+| Usability | 7.5 |
+| Creativity | 6.0 |
+| Content | 6.5 |
+| **Weighted** | **6.9** |
+| B1 5-second test / B2 Trust / B3 Friction / B4 Objections | 8 / 4 / 6.5 / 7 |
+
+**Round 1, top issue:** the desktop 3D hero read "backwards". The top layer was dark at rest while the header logo was lit, and the payoff finished only after the mark had scrolled under the header. Load also showed a ghosted double exposure.
+
+**Fixed:**
+- The hero keeps the exact brand colours. "Proven" is now a lime verification ring closing plus a glow.
+- The press completes within the first 45% of the hero's height of scrolling.
+- The 2D→3D crossfade shortened to 0.3 s.
+- Section padding cut by about 30%.
+- System names on the map, with a halo behind labels ("S10" no longer reads as "$10").
+- Roadmap systems collapse to one line each on phone.
+- The cost FAQ is open by default.
+- The offer CTA spans both columns.
+- The sticky phone CTA hides while another CTA is visible.
+- Larger, higher-contrast small print.
+- The "manual step" label no longer collides on phone and is more visible on desktop.
+
+**Declined (brief or owner decision):**
+- Replace the spiral (it's in the brief).
+- Drop the book or trim the 14 FAQs (George kept them).
+- Real video poster (needs George's screenshot).
