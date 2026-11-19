@@ -17,7 +17,7 @@ function heroArt(t: Locale): string {
     orbit(C, C, 268, 268, { tone: 'steel', cls: 'hero-orbit' }) +
     orbit(C, C, 214, 214, { tone: 'lime', gap: 11, cls: 'hero-orbit2' }) +
     `<circle class="g-line g-steel g-faint" cx="${C}" cy="${C}" r="300"/>` +
-    targets.map(([x, y]) => { const a = Math.atan2(y - C, x - C); return rays(C + 150 * Math.cos(a), C + 150 * Math.sin(a), [[x, y]], { tone: 'lime' }); }).join('') +
+    targets.map(([x, y]) => { const a = Math.atan2(y - C, x - C); return rays(C + 150 * Math.cos(a), C + 150 * Math.sin(a), [[x, y]], { tone: 'lime', cls: 'hero-ray' }); }).join('') +
     axis(C, 0, 36, 0) +
     axis(C, 604, 640, 0) +
     regMark(40, 40) + regMark(600, 40) + regMark(40, 600) + regMark(600, 600) +
@@ -55,7 +55,7 @@ function problemDiagram(t: Locale): string {
   let s = '';
   // fixed path (final state)
   for (let i = 0; i < 3; i++) {
-    s += `<path class="g-line g-lime g-draw flow-seg" data-seg="${i}" pathLength="1" d="M${xs[i] + 36} ${y}H${xs[i + 1] - 36}"/>`;
+    s += `<path class="g-line g-lime g-draw flow-seg" data-seg="${i}" d="M${xs[i] + 36} ${y}H${xs[i + 1] - 36}"/>`;
     s += terminal(xs[i + 1] - 40, y, 'diamond', 2.6);
   }
   // the old manual detour (ghost, crossed out)
@@ -67,14 +67,14 @@ function problemDiagram(t: Locale): string {
     s += `<text class="g-text g-ink" x="${x}" y="${y - 50}" text-anchor="middle">${d.nodes[i]}</text>`;
   });
   // check at the end: verified
-  s += `<path class="g-line g-lime g-thick" d="M${xs[3] - 12} ${y}l8 8 16-16"/>`;
-  s += `<text class="g-text g-lime" x="${xs[3]}" y="${y + 58}" text-anchor="middle">${d.check}</text>`;
+  s += `<path class="g-line g-lime g-thick flow-check" d="M${xs[3] - 12} ${y}l8 8 16-16"/>`;
+  s += `<text class="g-text g-lime flow-check" x="${xs[3]}" y="${y + 58}" text-anchor="middle">${d.check}</text>`;
   s += regMark(14, 14) + regMark(706, 14);
   // Vertical variant for narrow screens (same meaning, readable at phone width).
   const ys = [40, 150, 260, 370], X = 110;
   let v = '';
   for (let i = 0; i < 3; i++) {
-    v += `<path class="g-line g-lime g-draw flow-seg" pathLength="1" d="M${X} ${ys[i] + 34}V${ys[i + 1] - 34}"/>` + terminal(X, ys[i + 1] - 38, 'diamond', 2.6);
+    v += `<path class="g-line g-lime g-draw flow-seg" d="M${X} ${ys[i] + 34}V${ys[i + 1] - 34}"/>` + terminal(X, ys[i + 1] - 38, 'diamond', 2.6);
   }
   v += `<path class="g-dots g-steel flow-ghost" stroke-dasharray="0.01 6" d="M${X - 34} ${ys[1]}C${X - 100} ${ys[1]} ${X - 100} ${ys[2]} ${X - 34} ${ys[2]}"/>`;
   v += `<text class="g-text g-steel flow-ghost" x="${X + 24}" y="${(ys[1] + ys[2]) / 2 + 5}">${d.gap}</text><path class="g-line g-steel flow-ghost" d="M${X + 20} ${(ys[1] + ys[2]) / 2}H${X + 128}"/>`;
@@ -82,7 +82,7 @@ function problemDiagram(t: Locale): string {
     v += hexNode(X, y2, 30, { tone: i === 3 ? 'lime' : 'steel', rings: 1, crosshair: i !== 3 });
     v += `<text class="g-text g-ink" x="${X + 52}" y="${y2 + 5}">${d.nodes[i]}</text>`;
   });
-  v += `<path class="g-line g-lime g-thick" d="M${X - 11} ${ys[3]}l7 7 15-15"/><text class="g-text g-lime" x="${X + 52}" y="${ys[3] + 26}">${d.check}</text>`;
+  v += `<path class="g-line g-lime g-thick flow-check" d="M${X - 11} ${ys[3]}l7 7 15-15"/><text class="g-text g-lime flow-check" x="${X + 52}" y="${ys[3] + 26}">${d.check}</text>`;
   return `<figure class="diagram problem-diagram">
   ${svg('0 0 720 210', s, 'flow-svg flow-h')}
   ${svg('0 0 320 410', v, 'flow-svg flow-v')}
@@ -145,7 +145,7 @@ function systems(t: Locale): string {
   g += orbit(400, 250, 250, 140, { tone: 'steel', gap: 12 });
   // core flow
   g += `<path class="g-line g-steel sys-flow-road" stroke-dasharray="6 6" d="M${core.slice(1).map((k) => NODE_POS[k].join(' ')).join('L')}"/>`;
-  g += `<path class="g-line g-lime g-thick g-draw sys-flow" pathLength="1" d="M${NODE_POS.S1.join(' ')}L${NODE_POS.S2.join(' ')}"/>`;
+  g += `<path class="g-line g-lime g-thick g-draw sys-flow" d="M${NODE_POS.S1.join(' ')}L${NODE_POS.S2.join(' ')}"/>`;
   // supporting links (dot runs to the nearest core node)
   const link: Record<string, string> = { S6: 'S1', S7: 'S2', S8: 'S3', S9: 'S5', S10: 'S3' };
   for (const [a, b] of Object.entries(link)) g += dotRun(...NODE_POS[a], ...NODE_POS[b], 'steel', 7);

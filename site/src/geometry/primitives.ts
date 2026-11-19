@@ -71,7 +71,7 @@ export function rays(
     `<g class="${cls}">` +
     targets
       .map(([x, y], i) => {
-        const line = `<path class="g-line g-${tone} g-draw" pathLength="1" d="M${f(fx)} ${f(fy)}L${f(x)} ${f(y)}"/>`;
+        const line = `<path class="g-line g-${tone} g-draw" d="M${f(fx)} ${f(fy)}L${f(x)} ${f(y)}"/>`;
         return term === 'none' ? line : line + terminal(x, y, i % 2 ? 'diamond' : 'dot', 2.5, tone);
       })
       .join('') +
@@ -117,7 +117,7 @@ export function goldenSpiral(x: number, y: number, size: number, steps = 7): str
     out.push(
       `<g data-step="${i}" class="g-step">` +
         `<rect class="g-line g-steel g-faint" x="${f(sx)}" y="${f(sy)}" width="${f(ss)}" height="${f(ss)}"/>` +
-        `<path class="g-line g-lime g-draw" pathLength="1" d="${arc}"/>` +
+        `<path class="g-line g-lime g-draw" d="${arc}"/>` +
         regMark(sx, sy, 4) +
         `</g>`,
     );

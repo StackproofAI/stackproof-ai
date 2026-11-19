@@ -31,6 +31,6 @@ export function layeredMark(): string {
   return `<g class="mk" data-mark>
 <g class="mk-layer" data-layer="bottom"><path fill="#CEF949" d="${MARK.bottom}"/></g>
 <g class="mk-layer" data-layer="middle"><path fill="#75879A" d="${MARK.middle}"/></g>
-<g class="mk-layer" data-layer="top"><path fill="#CEF949" d="${MARK.top}"/><path class="mk-check" fill="#040508" d="${MARK.check}"/></g>
+<g class="mk-layer" data-layer="top"><path class="mk-top-fill" fill="#CEF949" d="${MARK.top}"/><path class="mk-check" fill="#040508" d="${MARK.check}"/></g>
 </g>`;
 }

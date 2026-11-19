@@ -182,3 +182,18 @@
   background: var(--sp-void); border-top: 1px solid var(--sp-hair); }
 .sticky-cta .btn { width: 100%; }
 @media (min-width: 52.01rem) { .sticky-cta { display: none !important; } }
+
+/* ─── Motion-related states ─── */
+.stage { transition: opacity .4s var(--ease); }
+.stage.is-active .stage-name { color: var(--sp-lime); }
+.stage.is-active .stage-n { color: var(--sp-text); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-orbit2 { transform-box: view-box; transform-origin: 50% 50%; animation: orbit 90s linear infinite; }
+  .hero-orbit { transform-box: view-box; transform-origin: 50% 50%; animation: orbit 160s linear infinite reverse; }
+}
+@keyframes orbit { to { transform: rotate(360deg); } }
+.hero-art.is-3d .mk { visibility: hidden; }
+.hero-canvas canvas { display: block; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity .8s var(--ease); }
+.hero-art.is-3d .hero-canvas canvas { opacity: 1; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
