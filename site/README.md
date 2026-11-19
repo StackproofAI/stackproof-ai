@@ -40,6 +40,17 @@ Assets only: no Worker script, database or secrets. The main CTA opens Cal.com. 
 
 ## Deploy
 
-`npm run deploy:preview` builds and deploys Worker `stackproof-ai-site-v2` (assets only) to workers.dev. It needs `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit, Account Settings: Read). The live site `stackproof-ai-site` is a separate Worker and isn't touched.
+**Preview (live now):** https://stackproof-ai-site-v2.stackproofai.workers.dev
+
+From the cloud sandbox (packs the files into the Worker script, see D-24):
+```bash
+npm run build && node scripts/build-embedded-worker.mjs
+CLOUDFLARE_API_TOKEN=<token> npx wrangler deploy -c wrangler.embedded.jsonc
+```
+From your own machine or CI (standard Workers Static Assets):
+```bash
+npm run build && CLOUDFLARE_API_TOKEN=<token> npx wrangler deploy
+```
+The token needs Account → Workers Scripts: Edit and Account Settings: Read. The current live site (`stackproof-ai-site`) is a separate Worker and isn't touched by either command.
 
 Regenerate icons and the OG image after changing the mark or headline: `node scripts/make-images.mjs`.

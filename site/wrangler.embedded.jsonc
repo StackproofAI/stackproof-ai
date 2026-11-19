@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Preview deploy from the cloud sandbox: site files are packed into the Worker script (D-24).
+  "name": "stackproof-ai-site-v2",
+  "main": "./dist-embedded/worker.js",
+  "compatibility_date": "2026-11-19",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true }
+}
