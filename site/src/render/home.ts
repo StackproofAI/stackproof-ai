@@ -205,7 +205,7 @@ function systems(t: Locale): string {
 /* ───────────────────────── How we work (spiral) ───────────────────────── */
 function how(t: Locale): string {
   const h = t.how;
-  const steps = goldenSpiral(12, 12, 616, h.stages.length);
+  const steps = goldenSpiral(12, 12, 616, h.stages.length, true);
   // The spiral's eye (where construction converges) carries the 'proven' check.
   const eye: [number, number] = [457.74, 287.48]; // limit point of the construction (computed)
   const inner = steps.join('') + regMark(12, 12, 6, 'lime') +
@@ -340,7 +340,7 @@ function form(t: Locale): string {
     <input type="hidden" name="consent_text_version" value="${SITE.consentTextVersion}">
     <p class="field-error" id="f-consent-err" data-error-for="consent" hidden></p>
   </div>
-  <div class="turnstile-slot" data-turnstile></div>
+  <div class="turnstile-slot" data-turnstile data-sitekey="${SITE.turnstileSiteKey}"></div>
   <div class="form-actions">
     <button class="btn btn-primary btn-lg" type="submit" data-submit>${F.submit}</button>
     <p class="verify-note mono">${F.verifyNote}</p>

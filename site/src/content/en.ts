@@ -22,6 +22,8 @@ export const SITE = {
   // Set once a custom domain exists; used for canonical/OG/sitemap.
   origin: 'https://stackproof-ai-site-v2.stackproofai.workers.dev',
   consentTextVersion: '2026-11-19.v1',
+  // Public Turnstile site key. Default = Cloudflare's always-pass TEST key; production builds set TURNSTILE_SITEKEY.
+  turnstileSiteKey: process.env.TURNSTILE_SITEKEY || '1x00000000000000000000AA',
 } as const;
 
 export const en = {

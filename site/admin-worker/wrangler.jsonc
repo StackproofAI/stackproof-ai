@@ -1,0 +1,17 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "stackproof-leads-admin",
+  "main": "./index.ts",
+  "compatibility_date": "2026-11-19",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  // Same database as the public site's preview environment (filled in at deploy time).
+  "d1_databases": [{ "binding": "DB", "database_name": "stackproof-leads-preview", "database_id": "00000000-0000-0000-0000-000000000000" }],
+  "vars": {
+    // Set after enabling Cloudflare Access on this Worker (Settings → Domains & Routes → Enable Cloudflare Access).
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": "",
+    "ADMIN_EMAIL": ""
+  }
+}

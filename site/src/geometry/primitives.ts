@@ -84,7 +84,7 @@ export function rays(
  * Returns `steps` construction squares + quarter arcs (one per stage), in drawing order.
  * Each step is a separate <g data-step="i"> so motion can reveal one per stage.
  */
-export function goldenSpiral(x: number, y: number, size: number, steps = 7): string[] {
+export function goldenSpiral(x: number, y: number, size: number, steps = 7, markers = false): string[] {
   // Start with a golden rectangle of width `size`, height size/PHI, and recursively cut squares.
   let rx = x, ry = y, w = size, h = size / PHI;
   const out: string[] = [];
@@ -114,11 +114,19 @@ export function goldenSpiral(x: number, y: number, size: number, steps = 7): str
       h -= s;
     }
     const [sx, sy, ss] = sq;
+    // Numbered stage marker where this step's arc begins (ties each construction step to its stage).
+    const [mx, my] = arc.slice(1).split('A')[0].split(' ').map(Number);
+    const mr = Math.max(8, Math.min(13, ss * 0.1));
+    const marker = markers
+      ? `<g class="g-marker"><circle class="g-line g-lime g-marker-ring" cx="${f(mx)}" cy="${f(my)}" r="${f(mr)}" fill="var(--sp-void)"/>` +
+        `<text class="g-text g-lime g-marker-n" x="${f(mx)}" y="${f(my + mr * 0.38)}" text-anchor="middle" style="font-size:${f(mr * 1.05)}px">${i + 1}</text></g>`
+      : '';
     out.push(
       `<g data-step="${i}" class="g-step">` +
         `<rect class="g-line g-steel g-faint" x="${f(sx)}" y="${f(sy)}" width="${f(ss)}" height="${f(ss)}"/>` +
         `<path class="g-line g-lime g-draw" d="${arc}"/>` +
         regMark(sx, sy, 4) +
+        marker +
         `</g>`,
     );
   }

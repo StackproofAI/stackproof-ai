@@ -1,4 +1,5 @@
 import { i18n } from '../ui/i18n';
+import { initTurnstile, resetTurnstile } from './turnstile';
 
 type Errors = Partial<Record<string, string>>;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -39,6 +40,7 @@ export function initForm(): void {
   const success = document.querySelector<HTMLElement>('[data-form-success]');
   const otherBox = form.querySelector<HTMLInputElement>('[data-tools-other]');
   const otherWrap = form.querySelector<HTMLElement>('[data-tools-other-wrap]');
+  initTurnstile(form);
   otherBox?.addEventListener('change', () => { if (otherWrap) otherWrap.hidden = !otherBox.checked; });
 
   // Re-validate a field once it has been flagged, so errors clear as the visitor fixes them.
@@ -105,6 +107,7 @@ export function initForm(): void {
       alert.append(a, '.');
       alert.hidden = false;
     } finally {
+      resetTurnstile(); // tokens are single-use
       busy = false;
       submit.removeAttribute('aria-disabled');
       submit.textContent = t.submit;

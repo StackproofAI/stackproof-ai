@@ -102,7 +102,7 @@ function hero(): void {
   heroState.press = 0;
 
   const press = gsap.timeline({
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=45%', scrub: 0.6 },
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=28%', scrub: 0.6 },
     defaults: { ease: 'none' },
     onUpdate() { heroState.press = this.progress(); },
   });
@@ -132,7 +132,7 @@ function headings(): void {
         onSplit(self) {
           return gsap.from(self.lines, {
             yPercent: 105, duration: 0.9, stagger: 0.08,
-            scrollTrigger: { trigger: h, start: 'top 85%', once: true },
+            scrollTrigger: { trigger: h, start: 'top 96%', once: true },
           });
         },
       });
@@ -156,7 +156,7 @@ function problem(): void {
 function systems(): void {
   const svg = document.querySelector('.const-svg');
   if (!svg) return;
-  const tl = gsap.timeline({ scrollTrigger: { trigger: svg, start: 'top 75%', once: true } });
+  const tl = gsap.timeline({ scrollTrigger: { trigger: svg, start: 'top 92%', once: true } });
   tl.from(q('.sys-orbit, .const-svg > ellipse', svg), { opacity: 0, duration: 1 }, 0)
     .from(q('.sys-node', svg), { opacity: 0, scale: 0.6, transformOrigin: '50% 50%', duration: 0.6, stagger: 0.06 }, 0.1)
     .from(q('.sys-flow-road', svg), { opacity: 0, duration: 0.6 }, 0.6)
@@ -173,18 +173,21 @@ function how(wide: boolean): void {
   gsap.set(steps.map((s) => s.querySelector('rect')), { opacity: 0 });
   gsap.set(steps.map((s) => s.querySelector('path.g-lime')), { drawSVG: '0%' });
   gsap.set(eye, { opacity: 0, scale: 0.5, transformOrigin: '50% 50%' });
+  gsap.set(steps.map((s) => s.querySelector('.g-marker')), { opacity: 0 });
 
   const draw = (i: number) => {
     const s = steps[i];
     if (!s) return;
     gsap.to(s.querySelector('rect'), { opacity: 0.45, duration: 0.5 });
     gsap.to(s.querySelector('path.g-lime'), { drawSVG: '100%', duration: 0.9 });
+    gsap.to(s.querySelector('.g-marker'), { opacity: 1, duration: 0.4 });
   };
   const undraw = (i: number) => {
     const s = steps[i];
     if (!s) return;
     gsap.to(s.querySelector('rect'), { opacity: 0, duration: 0.4 });
     gsap.to(s.querySelector('path.g-lime'), { drawSVG: '0%', duration: 0.5 });
+    gsap.to(s.querySelector('.g-marker'), { opacity: 0, duration: 0.3 });
   };
   stages.forEach((st, i) => {
     ScrollTrigger.create({
@@ -198,11 +201,11 @@ function how(wide: boolean): void {
 
 /* ───────── Proof: spec rows stack in; quotes follow ───────── */
 function proof(): void {
-  gsap.from(q('.spec-row'), { opacity: 0, y: 16, duration: 0.6, stagger: 0.08, scrollTrigger: { trigger: '.spec', start: 'top 80%', once: true } });
-  gsap.from(q('.quote'), { opacity: 0, y: 24, duration: 0.7, stagger: 0.12, scrollTrigger: { trigger: '.quote-grid', start: 'top 85%', once: true } });
+  gsap.from(q('.spec-row'), { opacity: 0, y: 16, duration: 0.6, stagger: 0.08, scrollTrigger: { trigger: '.spec', start: 'top 96%', once: true } });
+  gsap.from(q('.quote'), { opacity: 0, y: 24, duration: 0.7, stagger: 0.12, scrollTrigger: { trigger: '.quote-grid', start: 'top 96%', once: true } });
 }
 
 /* ───────── Final CTA: the four steps light in sequence ───────── */
 function finalSteps(): void {
-  gsap.from(q('.steps li'), { opacity: 0, x: -12, duration: 0.5, stagger: 0.12, scrollTrigger: { trigger: '.steps', start: 'top 85%', once: true } });
+  gsap.from(q('.steps li'), { opacity: 0, x: -12, duration: 0.5, stagger: 0.12, scrollTrigger: { trigger: '.steps', start: 'top 96%', once: true } });
 }

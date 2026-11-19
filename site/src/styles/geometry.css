@@ -13,3 +13,4 @@
 .g-text.g-lime { fill: var(--sp-lime); }
 .g-text.g-steel { fill: var(--sp-steel); }
 .g-text.g-ink { fill: var(--sp-text); }
+.g-line.g-marker-ring { fill: var(--sp-void); }

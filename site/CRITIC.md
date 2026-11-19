@@ -42,14 +42,14 @@ The critic is a separate agent with a fresh context. It sees only screenshots (1
 
 The critic received frame sequences, which stand in for screen recordings because it can only view stills: hero (3D, phone SVG), problem diagram, system map, spiral, and reduced motion.
 
-| Item | Round 1 |
-|---|---|
-| Design | 7.0 |
-| Usability | 7.5 |
-| Creativity | 6.0 |
-| Content | 6.5 |
-| **Weighted** | **6.9** |
-| B1 5-second test / B2 Trust / B3 Friction / B4 Objections | 8 / 4 / 6.5 / 7 |
+| Item | Round 1 | Round 2 | Round 3 |
+|---|---|---|---|
+| Design | 7.0 | 7.4 | 8.0 |
+| Usability | 7.5 | 7.5 | 7.5 |
+| Creativity | 6.0 | 7.5 | 7.5 |
+| Content | 6.5 | 6.5 | 7.0 |
+| **Weighted** | **6.9** | **7.4** | **7.65** |
+| B1 5-second / B2 Trust / B3 Friction / B4 Objections | 8 / 4 / 6.5 / 7 | 8 / 4.5 / 7 / 7 | 8 / 5 / 7 / 7 |
 
 **Round 1, top issue:** the desktop 3D hero read "backwards". The top layer was dark at rest while the header logo was lit, and the payoff finished only after the mark had scrolled under the header. Load also showed a ghosted double exposure.
 
@@ -70,3 +70,20 @@ The critic received frame sequences, which stand in for screen recordings becaus
 - Replace the spiral (it's in the brief).
 - Drop the book or trim the 14 FAQs (George kept them).
 - Real video poster (needs George's screenshot).
+
+**After round 2:**
+- The 3D mark is scaled to sit inside the proof ring.
+- The section is now named "Approach" (it holds principles, not proof).
+- Roadmap nodes are dimmed, labels are larger and have a halo.
+- The sticky spiral is centred.
+- The video title has a backing.
+
+**After round 3 (last round allowed):**
+- Numbered stage markers along the spiral light up in step with the stage list.
+- Reveals start earlier, so no blank areas are left after scrolling.
+- The hero press completes within 28% of the hero's height.
+
+**Stopped at 3 rounds (rule 2). What still blocks 8.5** (all need owner input or are decisions George already made):
+- Trust (5): Gmail address, no founder photo, no measured S1/S2 result, no turnaround, placeholder video poster.
+- Critic: the systems map "shows mostly roadmap". It is honest by brief; the option is to collapse the roadmap to one line on desktop too (George to decide).
+- Critic: "no obligation" is repeated about six times (supplied copy, plus my offer copy). We can trim it if George agrees.
