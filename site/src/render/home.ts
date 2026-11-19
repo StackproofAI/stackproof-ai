@@ -286,10 +286,6 @@ function proof(t: Locale): string {
       </ul>
     </div>
 
-    <div class="plan">
-      <div><h3 class="h3">${p.plan.title}</h3><p>${p.plan.text}</p></div>
-      <a class="btn btn-primary" href="#assessment">${t.cta.primary}</a>
-    </div>
   </div>
 </section>`;
 }
@@ -438,6 +434,6 @@ function jsonLd(t: Locale): object[] {
 export function renderHome(t: Locale): string {
   const h = head(t, { title: t.meta.title, description: t.meta.description, path: '/', jsonLd: jsonLd(t) });
   const sticky = `<div class="sticky-cta" data-sticky-cta hidden><a class="btn btn-primary" href="#assessment">${t.cta.primary}</a></div>`;
-  const body = [hero(t), problem(t), offer(t), systems(t), how(t), proof(t), finalCta(t), faq(t), book(t), sticky].join('\n');
+  const body = [hero(t), problem(t), offer(t), systems(t), how(t), proof(t), faq(t), finalCta(t), book(t), sticky].join('\n');
   return page(t, h, body, { onHome: true, bodyClass: 'home' });
 }

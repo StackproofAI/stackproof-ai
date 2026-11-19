@@ -45,3 +45,7 @@ These are the critic's trust and content findings that I can't fix without you. 
 | K-7 | The principles table and "Start With a Clear Plan" repeat the offer in general language. | Keep the five principles but shorten each to one line; drop "Start With a Clear Plan" (the CTA right after covers it). | Approve |
 | K-8 | "Jaqueline PerezCarranza": the critic read it as a typo. | Confirm the exact spelling of her name. | Confirm |
 | K-9 | The "Prompt or Perish" book reads as AI hype to a skeptical buyer. | Keep it but move it to a footer link, or drop it from this page. | Decide |
+
+## Status (George, 2026-11-19): applied
+George approved "add your suggested edits". Applied: C-1…C-5, A-1, A-2, K-6 (sentence case), K-7 (shorter principles, "Start With a Clear Plan" removed), FAQ moved above the form, K-8 (name: **Jaqueline Perez Carranza**). Kept: the book block (now after the form) and the click-to-load demo video.
+**Still to confirm as true for client work:** C-4 (least-privilege access, credential protection, logging, human approval) and A-2 (logging + failure alerts). They are published claims, so they must hold for every client build. A-1 says Cal.com shows the visitor's local time; I'll check this in a real browser at checkpoint 5.

@@ -141,23 +141,19 @@ export const en = {
   },
   proof: {
     label: '05 / Approach & proof',
-    title: 'Built on Practical Automation. Focused on Your Business.', // supplied
+    title: 'Practical automation, built around your business.', // supplied, edited (C-1, approved)
     intro: [
-      'Stackproof AI helps businesses identify opportunities to simplify repetitive work, improve lead management, streamline follow-up, and connect their existing systems through practical AI automation.', // supplied
+      'We find the repetitive work in your business, then automate it with the tools you already use: lead handling, follow-up and the copying between systems.', // supplied, edited (C-2, approved)
       'We believe effective automation starts with understanding how your business operates—not adding unnecessary technology.', // supplied
     ],
     specTitle: 'Operating principles',
     principles: [
-      { title: 'Business-Focused Solutions', text: 'We focus on real operational challenges, including repetitive administration, lead management, inquiry response, follow-up, and workflow coordination.' },
-      { title: 'Workflow-First Approach', text: 'We evaluate your existing processes and systems before recommending automation. Our goal is to improve what already works while identifying opportunities to eliminate unnecessary manual steps.' },
-      { title: 'Tailored Automation', text: 'Every business is different. Our recommendations are based on your workflows, operational priorities, existing tools, and specific business needs.' },
-      { title: 'Human Oversight', text: 'Automation should support your team, not replace critical human judgment. We prioritize practical workflows with appropriate review, control, and accountability.' },
-      { title: 'Transparent Recommendations', text: 'We identify potential opportunities, explain how they could work, and outline the practical considerations before recommending implementation.' },
-    ], // supplied
-    plan: {
-      title: 'Start With a Clear Plan', // supplied
-      text: 'Our complimentary Automation Opportunity Assessment provides an initial look at your business processes and identifies potential opportunities to improve operational efficiency.', // supplied
-    },
+      { title: 'Business-focused', text: 'We work on real operational problems: admin, lead handling, inquiry response, follow-up and coordination.' },
+      { title: 'Workflow-first', text: 'We study your current processes and tools before recommending anything, and keep what already works.' },
+      { title: 'Tailored', text: 'Recommendations follow your workflows, priorities and existing tools, not a template.' },
+      { title: 'Human oversight', text: 'Automation supports your team; people stay in control of consequential decisions.' },
+      { title: 'Transparent', text: 'We explain how each opportunity would work and what it takes before we recommend building it.' },
+    ], // supplied, shortened (K-7, approved)
     real: {
       label: 'Running in production',
       title: 'We run it on our own business first.', // draft – needs George's approval
@@ -170,16 +166,16 @@ export const en = {
     quotesNote: 'Shared with permission.',
     quotes: [
       { text: 'Effective business operations require clear processes, organization, and the ability to identify opportunities for improvement. I appreciate the focus Stackproof AI brings to understanding business challenges and exploring how intelligent automation can make operations more efficient.', name: 'Ross Gerber', role: 'CEO & Founder, Gerber Kawasaki Wealth & Investment Management', sector: 'Wealth management' },
-      { text: 'In real estate, timely communication, organized leads, and consistent follow-up are essential. Improving these processes through intelligent automation can help agents spend less time managing administrative tasks and more time building relationships with clients.', name: 'Jaqueline PerezCarranza', role: 'Real Estate Agent', sector: 'Real estate' },
+      { text: 'In real estate, timely communication, organized leads, and consistent follow-up are essential. Improving these processes through intelligent automation can help agents spend less time managing administrative tasks and more time building relationships with clients.', name: 'Jaqueline Perez Carranza', role: 'Real Estate Agent', sector: 'Real estate' },
       { text: 'As businesses grow, managing processes and staying organized becomes increasingly important. Stackproof AI is focused on finding practical ways to simplify workflows and use automation to make day-to-day operations more efficient.', name: 'Cisco Adler', role: 'CEO & Founder, Synqabl', sector: 'Business operations' },
     ],
   },
   final: {
-    label: '06 / Start here',
-    title: 'Discover What Your Business Could Automate.', // supplied
+    label: '07 / Start here',
+    title: 'Discover what your business could automate.', // supplied (sentence case, K-6 approved)
     text: [
       'Every business has workflows that consume valuable time. Let’s identify which ones could be simplified, connected, or improved.', // supplied
-      'Start with a complimentary Automation Opportunity Assessment—no obligation, no pressure, just practical insights into where automation may help your business.', // supplied
+      'Start with a complimentary Automation Opportunity Assessment—no obligation, no pressure: a written summary of where automation would help your business.', // supplied, edited (C-5, approved)
     ],
     stepsTitle: 'How the assessment works',
     steps: [
@@ -243,8 +239,8 @@ export const en = {
     },
   },
   faq: {
-    label: '07 / FAQ',
-    title: 'Frequently Asked Questions', // supplied
+    label: '06 / FAQ',
+    title: 'Frequently asked questions', // supplied (sentence case)
     items: [
       { q: 'What exactly does Stackproof AI do?', a: 'Stackproof AI helps businesses identify, design, and implement practical AI automation workflows that reduce repetitive administrative tasks, improve lead management, streamline follow-up, and connect existing business systems.' },
       { q: 'Do I need to understand AI or automation?', a: 'No. Our process starts with understanding your business and how you currently operate. We identify potential opportunities and explain our recommendations in straightforward business terms.' },
@@ -253,8 +249,10 @@ export const en = {
       { q: 'How much does an Automation Opportunity Assessment cost?', a: 'The initial Automation Opportunity Assessment is complimentary and carries no obligation to purchase implementation services.' },
       { q: 'What happens during the assessment?', a: 'We review your business workflows, identify repetitive processes, evaluate potential automation opportunities, and outline recommendations based on your operational priorities.' },
       { q: 'How long does automation implementation take?', a: 'Implementation timelines depend on the complexity of the workflow, existing systems, integration requirements, and project scope. We establish timelines after evaluating the specific opportunity.' },
-      { q: 'Can automation work with my existing CRM and business tools?', a: 'Potentially. Compatibility depends on the software, available integrations, APIs, permissions, and workflow requirements. We evaluate these factors before recommending a solution.' },
-      { q: 'Is my business data secure?', a: 'Data handling and security requirements are evaluated as part of the proposed workflow. We discuss the tools, access permissions, information involved, and appropriate safeguards before implementation. Security measures depend on the specific systems and project requirements.' },
+      { q: 'Can automation work with my existing CRM and business tools?', a: 'Usually, yes. Most modern CRMs and business tools offer integrations or APIs. We check yours during the assessment, before recommending anything.' }, // C-3 approved
+      { q: 'Is my business data secure?', a: 'Security is designed in, not added later: each workflow gets least-privilege access, protected credentials, logging, and human approval before anything consequential happens. We agree the details with you before we build.' }, // C-4 approved
+      { q: 'You’re in a different time zone. How do we work together?', a: 'The assessment is written-first, so you can request it whenever suits you and read the result in your own time. If you’d like to talk, you can book a 20-minute call at a time shown in your local time zone. Ongoing work runs through shared written updates, with calls scheduled when they’re useful.' }, // A-1 approved
+      { q: 'What happens if an automation breaks?', a: 'Every workflow we build logs what it does and alerts us when something fails. Anything consequential waits for human approval, so a failure stops safely instead of acting on bad data. We fix issues as part of the monthly management option; response terms are agreed in your proposal.' }, // A-2 approved
       { q: 'Am I obligated to purchase anything after the assessment?', a: 'No. The assessment is designed to provide useful insight into potential opportunities. You can review the recommendations and decide whether you want to pursue implementation.' },
       { q: 'What industries does Stackproof AI work with?', a: 'Stackproof AI initially focuses on businesses with repetitive operational workflows, including real estate businesses, professional services, and other organizations looking to improve administrative efficiency.' },
       { q: 'What makes Stackproof AI different?', a: 'We focus on practical business operations rather than AI hype. Our approach begins with your existing workflows, identifies meaningful opportunities, and prioritizes solutions that are understandable, useful, and aligned with your business objectives.' },

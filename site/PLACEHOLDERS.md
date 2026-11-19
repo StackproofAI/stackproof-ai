@@ -12,7 +12,7 @@ Nothing in this list may go live until it's marked ✅.
 - [ ] Owner name and photo: George will add a picture later. Built with a name slot + geometric placeholder; confirm the name "George Fields" may show
 - [x] Testimonials: all three real, with written permission (George, 2026-11-19)
 - [ ] Wording of the real-proof block (S1 + S2 in Stackproof's own operation)
-- [ ] Up to 2 extra FAQs (time zones / what if an automation breaks): approve or reject once drafted
+- [x] 2 extra FAQs added (A-1 time zones, A-2 what if it breaks), approved 2026-11-19. Confirm the A-2 monitoring/alerting claim holds for client builds
 
 ## Contact, legal, links
 - [x] Public contact email: soulectiv3@gmail.com (George, 2026-11-19)
@@ -22,7 +22,7 @@ Nothing in this list may go live until it's marked ✅.
 - [ ] Privacy policy (GDPR + California): **draft only, lawyer review required**
 - [x] Cal.com link is George's calendar. **George to rename the Cal.com profile to "George Fields"** (Cal.com → Settings → Profile). If the username/URL changes, send me the new link
 - [x] Phone number: dropped (not selected)
-- [x] Prompt or Perish book: keep, demoted below the FAQ
+- [x] Prompt or Perish book: keep (now after the assessment form). Demo video kept (click-to-load)
 
 ## Assets
 - [x] Master logo PNG received (`brand/stackproof-mark-source.png`; measured lime #CEFA48 ≈ #CEF949, steel #748599 ≈ #75879A)

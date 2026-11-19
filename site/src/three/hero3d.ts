@@ -48,7 +48,7 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
   const extrude = (id: string, depth: number) => {
     const p = byId.get(id);
     if (!p) throw new Error(`hero3d: missing ${id}`);
-    const g = new ExtrudeGeometry(p.toShapes(true), {
+    const g = new ExtrudeGeometry(p.toShapes(), {
       depth, bevelEnabled: true, bevelThickness: 6, bevelSize: 4, bevelSegments: 3, curveSegments: 18,
     });
     geoms.push(g);
