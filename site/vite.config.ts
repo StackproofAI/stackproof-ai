@@ -38,7 +38,7 @@ export default defineConfig({
             index: 'index.html',
             privacy: 'privacy/index.html',
             notfound: '404.html',
-            styleguide: '_styleguide/index.html',
+            ...(process.env.SITE_ENV === 'production' ? {} : { styleguide: '_styleguide/index.html' }),
           },
         },
       },

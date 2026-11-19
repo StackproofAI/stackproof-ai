@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /_styleguide/
 
-Sitemap: https://stackproof-ai-site-v2.stackproofai.workers.dev/sitemap.xml
+Sitemap: https://stackproof-ai-site.stackproofai.workers.dev/sitemap.xml

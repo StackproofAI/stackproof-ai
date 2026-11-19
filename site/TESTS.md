@@ -21,3 +21,4 @@ Status codes: **PASS** = run and observed; **UNTESTED** = not yet run (reason gi
 | GSAP licence | PASS | Standard "No Charge" licence; commercial use on a free site is allowed | — |
 | Live preview deployed | PASS | https://stackproof-ai-site-v2.stackproofai.workers.dev: 200; security headers present; 404 page; no console errors; no requests to other hosts; 3D on desktop, SVG on phone | — |
 | Current live site untouched | PASS | Cloudflare API: `stackproof-ai-site` last modified 2026-11-19T12:17Z (before this work) | — |
+| GO-LIVE | PASS | Worker `stackproof-ai-site` → version 3984ef91 (2026-11-19). `/` 200, `/privacy/` 200, `/_styleguide/` 404 (excluded from production), 404 page OK, CSP present, canonical points to the live URL. Live Lighthouse mobile 100/100/100/100, LCP 1.2 s, CLS 0 | Rollback target 24ec29d1 recorded; old code in `website/live-backup/` |

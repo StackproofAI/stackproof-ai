@@ -20,7 +20,7 @@ export const SITE = {
     github: 'https://github.com/StackproofAI/stackproof-ai',
   },
   // Set once a custom domain exists; used for canonical/OG/sitemap.
-  origin: 'https://stackproof-ai-site-v2.stackproofai.workers.dev',
+  origin: process.env.SITE_ORIGIN || 'https://stackproof-ai-site.stackproofai.workers.dev',
 } as const;
 
 export const en = {

@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // LIVE site. Same Worker name as the original site; rollback target = version 24ec29d1-c651-4a0c-a0a5-1eeb5f9f12a2.
+  "name": "stackproof-ai-site",
+  "main": "./dist-embedded/worker.js",
+  "compatibility_date": "2026-11-19",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true }
+}

@@ -2,7 +2,7 @@
 
 Static-first marketing site on **Cloudflare Workers with Static Assets**, built with Vite + TypeScript and the Cloudflare Vite plugin. The old site (`../website/`, Worker `stackproof-ai-site`) is untouched.
 
-Status: **static site complete (no lead form, by owner decision); preview deploy pending a working Cloudflare API token.**
+Status: **LIVE** on stackproof-ai-site.stackproofai.workers.dev (2026-11-19).
 
 ## Develop
 
@@ -40,7 +40,21 @@ Assets only: no Worker script, database or secrets. The main CTA opens Cal.com. 
 
 ## Deploy
 
-**Preview (live now):** https://stackproof-ai-site-v2.stackproofai.workers.dev
+**LIVE since 2026-11-19:** https://stackproof-ai-site.stackproofai.workers.dev (Worker `stackproof-ai-site`, version `3984ef91-fc1d-4272-9455-89cc26bfb007`)
+Preview/staging: https://stackproof-ai-site-v2.stackproofai.workers.dev
+
+Deploy to LIVE (from the sandbox):
+```bash
+SITE_ENV=production npm run build && node scripts/build-embedded-worker.mjs
+CLOUDFLARE_API_TOKEN=<token> npx wrangler deploy -c wrangler.live.jsonc
+```
+
+**Roll back to the old site** (version `24ec29d1-c651-4a0c-a0a5-1eeb5f9f12a2`; its code is also saved in `website/live-backup/`):
+```bash
+CLOUDFLARE_API_TOKEN=<token> npx wrangler rollback 24ec29d1-c651-4a0c-a0a5-1eeb5f9f12a2 --name stackproof-ai-site
+```
+Or in the dashboard: Workers & Pages → stackproof-ai-site → Deployments → pick the version from 2026-11-19 12:17 UTC → Rollback.
+
 
 From the cloud sandbox (packs the files into the Worker script, see D-24):
 ```bash
