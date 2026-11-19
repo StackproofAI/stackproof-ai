@@ -29,3 +29,19 @@ Your supplied copy (brief §11) is used **as written** on the site. Below are li
 Hero subline · Problem section (title, body, 3 pain points) · Offer section (lead, "What it costs", "What happens next") · Systems title, intro and one-line purposes · How-we-work intro and 7 stage lines · "We run it on our own business first" proof block · "Every assessment is reviewed by George Fields" · form labels and messages.
 
 Spelling: US spelling throughout, as briefed. System names keep your spelling ("CRM Command Centre", "Personalised Outreach") because they're product names. Say if you want them Americanised. The stage "Optimise" is shown as "Optimize".
+
+## From the independent critic (round 1). Your decision needed
+
+These are the critic's trust and content findings that I can't fix without you. Each one lowers the business-buyer score, and part B outranks award points.
+
+| # | Finding | Suggested fix | Needs from you |
+|---|---|---|---|
+| K-1 | **Gmail contact address** (`soulectiv3@gmail.com`) is the biggest credibility hit for a buyer handing over workflow details. | Use an address on a company domain, e.g. `george@<domain>`. Needs a domain, which would also unlock lead emails. | Decide whether to get a domain now |
+| K-2 | Testimonials praise intentions, not results. | Ask each person for one line on what changed, *only if real*. Otherwise keep as is. | Optional |
+| K-3 | No founder presence beyond one line. | Founder block: photo, 2-line background, location (UTC+8 is fine; written-first explains it). | Photo + 2 lines |
+| K-4 | No turnaround next to the submit button. | "Written summary within N business days." | The number N |
+| K-5 | One mini case of S1/S2 in your own operation, with before/after numbers. | e.g. "Lead research per prospect: X min → Y min". | Real numbers only |
+| K-6 | Mixed heading case (your Title Case headings vs. sentence case elsewhere). | Sentence case for all: "Built on practical automation…", "Start with a clear plan", "Discover what your business could automate." | Approve case change |
+| K-7 | The principles table and "Start With a Clear Plan" repeat the offer in general language. | Keep the five principles but shorten each to one line; drop "Start With a Clear Plan" (the CTA right after covers it). | Approve |
+| K-8 | "Jaqueline PerezCarranza": the critic read it as a typo. | Confirm the exact spelling of her name. | Confirm |
+| K-9 | The "Prompt or Perish" book reads as AI hype to a skeptical buyer. | Keep it but move it to a footer link, or drop it from this page. | Decide |
