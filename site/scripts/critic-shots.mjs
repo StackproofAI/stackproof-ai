@@ -14,7 +14,7 @@ for (const [w, h, name] of widths) {
   const total = await p.evaluate(() => document.documentElement.scrollHeight);
   for (let y = 0; y < total; y += h - 80) {
     await p.evaluate((yy) => window.scrollTo(0, yy), y);
-    await p.waitForTimeout(80);
+    await p.waitForTimeout(+(process.env.WAIT ?? 80));
     await p.screenshot({ path: `${out}/${name}-${String(++i).padStart(2, '0')}.png` });
   }
   await p.close();
