@@ -70,8 +70,22 @@ function problemDiagram(t: Locale): string {
   s += `<path class="g-line g-lime g-thick" d="M${xs[3] - 12} ${y}l8 8 16-16"/>`;
   s += `<text class="g-text g-lime" x="${xs[3]}" y="${y + 58}" text-anchor="middle">${d.check}</text>`;
   s += regMark(14, 14) + regMark(706, 14);
+  // Vertical variant for narrow screens (same meaning, readable at phone width).
+  const ys = [40, 150, 260, 370], X = 110;
+  let v = '';
+  for (let i = 0; i < 3; i++) {
+    v += `<path class="g-line g-lime g-draw flow-seg" pathLength="1" d="M${X} ${ys[i] + 34}V${ys[i + 1] - 34}"/>` + terminal(X, ys[i + 1] - 38, 'diamond', 2.6);
+  }
+  v += `<path class="g-dots g-steel flow-ghost" stroke-dasharray="0.01 6" d="M${X - 34} ${ys[1]}C${X - 100} ${ys[1]} ${X - 100} ${ys[2]} ${X - 34} ${ys[2]}"/>`;
+  v += `<text class="g-text g-steel flow-ghost" x="${X + 24}" y="${(ys[1] + ys[2]) / 2 + 5}">${d.gap}</text><path class="g-line g-steel flow-ghost" d="M${X + 20} ${(ys[1] + ys[2]) / 2}H${X + 128}"/>`;
+  ys.forEach((y2, i) => {
+    v += hexNode(X, y2, 30, { tone: i === 3 ? 'lime' : 'steel', rings: 1, crosshair: i !== 3 });
+    v += `<text class="g-text g-ink" x="${X + 52}" y="${y2 + 5}">${d.nodes[i]}</text>`;
+  });
+  v += `<path class="g-line g-lime g-thick" d="M${X - 11} ${ys[3]}l7 7 15-15"/><text class="g-text g-lime" x="${X + 52}" y="${ys[3] + 26}">${d.check}</text>`;
   return `<figure class="diagram problem-diagram">
-  ${svg('0 0 720 210', s, 'flow-svg')}
+  ${svg('0 0 720 210', s, 'flow-svg flow-h')}
+  ${svg('0 0 320 410', v, 'flow-svg flow-v')}
   <figcaption class="sr-only">${d.broken}. ${d.fixed}.</figcaption>
 </figure>`;
 }
@@ -130,7 +144,8 @@ function systems(t: Locale): string {
   let g = orbit(400, 250, 330, 196, { tone: 'steel', cls: 'sys-orbit' });
   g += orbit(400, 250, 250, 140, { tone: 'steel', gap: 12 });
   // core flow
-  g += `<path class="g-line g-lime g-draw sys-flow" pathLength="1" d="M${core.map((k) => NODE_POS[k].join(' ')).join('L')}"/>`;
+  g += `<path class="g-line g-steel sys-flow-road" stroke-dasharray="6 6" d="M${core.slice(1).map((k) => NODE_POS[k].join(' ')).join('L')}"/>`;
+  g += `<path class="g-line g-lime g-thick g-draw sys-flow" pathLength="1" d="M${NODE_POS.S1.join(' ')}L${NODE_POS.S2.join(' ')}"/>`;
   // supporting links (dot runs to the nearest core node)
   const link: Record<string, string> = { S6: 'S1', S7: 'S2', S8: 'S3', S9: 'S5', S10: 'S3' };
   for (const [a, b] of Object.entries(link)) g += dotRun(...NODE_POS[a], ...NODE_POS[b], 'steel', 7);
@@ -187,7 +202,10 @@ function systems(t: Locale): string {
 function how(t: Locale): string {
   const h = t.how;
   const steps = goldenSpiral(12, 12, 616, h.stages.length);
-  const inner = steps.join('') + regMark(12, 12, 6, 'lime');
+  // The spiral's eye (where construction converges) carries the 'proven' check.
+  const eye: [number, number] = [457.74, 287.48]; // limit point of the construction (computed)
+  const inner = steps.join('') + regMark(12, 12, 6, 'lime') +
+    `<g class="spiral-eye">${hexNode(eye[0], eye[1], 22, { tone: 'lime', rings: 0, crosshair: false })}<path class="g-line g-lime g-thick" d="M${eye[0] - 9} ${eye[1]}l6 6 12-12"/></g>`;
   return `<section class="section how" id="how" aria-labelledby="how-title">
   <div class="wrap">
     <p class="label mono">${h.label}</p>
@@ -417,6 +435,7 @@ function jsonLd(t: Locale): object[] {
 
 export function renderHome(t: Locale): string {
   const h = head(t, { title: t.meta.title, description: t.meta.description, path: '/', jsonLd: jsonLd(t) });
-  const body = [hero(t), problem(t), offer(t), systems(t), how(t), proof(t), finalCta(t), faq(t), book(t)].join('\n');
+  const sticky = `<div class="sticky-cta" data-sticky-cta hidden><a class="btn btn-primary" href="#assessment">${t.cta.primary}</a></div>`;
+  const body = [hero(t), problem(t), offer(t), systems(t), how(t), proof(t), finalCta(t), faq(t), book(t), sticky].join('\n');
   return page(t, h, body, { onHome: true, bodyClass: 'home' });
 }

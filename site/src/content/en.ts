@@ -60,7 +60,7 @@ export const en = {
     talkFirst: 'Prefer to talk first? Book a 20-minute call',
   },
   hero: {
-    eyebrow: 'AI automation for small and mid-sized businesses',
+    eyebrow: 'AI automation for small and mid‑sized businesses',
     title: 'Find the work your business should stop doing by hand.',
     sub: 'A free, written Automation Opportunity Assessment for small and mid-sized businesses in the US and Europe. Tell us how your team works today; we send back your top automation opportunities and a practical first step. No call required, no obligation.',
     facts: ['Written-first', 'Works in any time zone', 'No obligation'],
