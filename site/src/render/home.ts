@@ -358,10 +358,12 @@ function finalCta(t: Locale): string {
   const f = t.final;
   return `<section class="section final" id="assessment" aria-labelledby="final-title">
   <div class="wrap final-grid">
-    <div class="final-copy">
+    <div class="final-intro">
       <p class="label mono">${f.label}</p>
       <h2 id="final-title" class="h2">${f.title}</h2>
       ${f.text.map((x) => `<p class="lead">${x}</p>`).join('')}
+    </div>
+    <div class="final-details">
       <h3 class="h4 mono steps-title">${f.stepsTitle}</h3>
       <ol class="steps" role="list">${f.steps.map((s, i) => `<li><span class="step-n mono" aria-hidden="true">${pad2(i + 1)}</span><div><p class="step-name">${s.name}</p><p>${s.text}</p></div></li>`).join('')}</ol>
       <p class="no-ob mono">${f.noObligation}</p>

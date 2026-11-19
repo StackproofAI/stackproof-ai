@@ -183,7 +183,7 @@ export const en = {
     ],
     stepsTitle: 'How the assessment works',
     steps: [
-      { name: 'Request', text: 'Send the short form below. It works in any time zone.' },
+      { name: 'Request', text: 'Send the short form. It works in any time zone.' },
       { name: 'Review', text: 'We review your workflows and the tools you use.' },
       { name: 'Written summary', text: 'You receive your top automation opportunities and a suggested first step, in writing.' },
       { name: 'Optional call', text: 'If you like, book a 20-minute call to walk through it.' },

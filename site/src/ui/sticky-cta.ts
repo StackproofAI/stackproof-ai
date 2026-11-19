@@ -7,5 +7,5 @@ export function initStickyCta(): void {
   let heroVisible = true, formVisible = false;
   const update = () => { bar.hidden = heroVisible || formVisible; };
   new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting || e.boundingClientRect.top > 0; update(); }).observe(hero);
-  new IntersectionObserver(([e]) => { formVisible = e.isIntersecting; update(); }, { rootMargin: '0px 0px -20% 0px' }).observe(form);
+  new IntersectionObserver(([e]) => { formVisible = e.isIntersecting || e.boundingClientRect.top < 0; update(); }, { rootMargin: '0px 0px -20% 0px' }).observe(form);
 }
