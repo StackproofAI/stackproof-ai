@@ -75,7 +75,7 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
   mark.add(layers.bottom, layers.middle, layers.top);
   const pivot = new Group();
   pivot.add(mark);
-  pivot.scale.setScalar(0.92);
+  pivot.scale.setScalar(0.6); // sits inside the verification ring (same footprint as the SVG mark)
   scene.add(pivot);
 
   // ── Size ──

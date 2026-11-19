@@ -49,7 +49,7 @@ export const en = {
     items: [
       { href: '#how', label: 'How it works' },
       { href: '#systems', label: 'Systems' },
-      { href: '#proof', label: 'Proof' },
+      { href: '#proof', label: 'Approach' },
       { href: '#faq', label: 'FAQ' },
     ],
     cta: 'Free assessment',
@@ -140,7 +140,7 @@ export const en = {
     skip: 'Skip to the assessment',
   },
   proof: {
-    label: '05 / Approach & proof',
+    label: '05 / Approach',
     title: 'Practical automation, built around your business.', // supplied, edited (C-1, approved)
     intro: [
       'We find the repetitive work in your business, then automate it with the tools you already use: lead handling, follow-up and the copying between systems.', // supplied, edited (C-2, approved)

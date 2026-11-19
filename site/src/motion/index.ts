@@ -147,7 +147,7 @@ function problem(): void {
     const tl = gsap.timeline({ scrollTrigger: { trigger: svg, start: 'top 75%', end: 'bottom 55%', scrub: 0.5 } });
     // Broken first (the manual detour is prominent), then each link draws in, the detour fades, the result is verified.
     tl.from(q('.flow-seg', svg), { drawSVG: '0%', duration: 1, stagger: 0.8, ease: 'none' }, 0)
-      .fromTo(q('.flow-ghost', svg), { opacity: 1 }, { opacity: 0.6, duration: 0.8, ease: 'none' }, 1.2)
+      .fromTo(q('.flow-ghost', svg), { opacity: 1 }, { opacity: 0.45, duration: 0.8, ease: 'none' }, 1.2)
       .from(q('.flow-check', svg), { opacity: 0, scale: 0.6, transformOrigin: '50% 50%', duration: 0.5 }, 2.4);
   }
 }
