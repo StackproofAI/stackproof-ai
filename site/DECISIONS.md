@@ -14,3 +14,7 @@ One line per decision: choice · alternative considered · why. Status: **P** = 
 | D-08 | Turnstile script loads only when the form approaches the viewport. | Load on page load | Keeps third-party JS (even Cloudflare's) out of the LCP and initial-JS budget. | P |
 | D-09 | Email notification is best effort, after the D1 insert, only for new rows. | Email before insert / fail the request | The brief says a lead is never lost to an email failure, and duplicates send no second email. | A (from brief) |
 | D-10 | `preview_urls: false` on the v2 Worker; the preview is the v2 workers.dev URL itself. | Version preview URLs | Fewer public URLs to protect. | P |
+| D-11 | Positioning A: "Find the work your business should stop doing by hand." | B, C | Approved by George 2026-11-19. | A |
+| D-12 | Logo: rebuilt SVG `brand/stackproof-mark.svg` fitted to the supplied PNG (4 filled paths, ≈1 px mean edge deviation at 1536 px). | Auto-trace (potrace) | Clean geometric paths are needed for the separate 3D layer extrusion; approved by George. | A |
+| D-13 | No custom domain → no lead email at launch; the admin Worker is required. | — | Cloudflare email sending needs a domain on Cloudflare DNS. | A |
+| D-14 | Owner block shows the name "George Fields" with a geometric monogram until the photo arrives. | Company-only | The live site already shows the name; a photo is promised later. Can be removed with one flag. | P |
