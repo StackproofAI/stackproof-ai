@@ -1,0 +1,15 @@
+/* Hairline geometry: strokes never scale, so lines stay 1–1.5px at every size/DPR. */
+.geo { overflow: visible; }
+.g-line { fill: none; stroke-width: 1.25; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.g-thick { stroke-width: 2.5; }
+.g-dots { fill: none; stroke-width: 2.2; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+.g-lime { stroke: var(--sp-line-strong); }
+.g-steel { stroke: var(--sp-steel); }
+.g-faint { opacity: .45; }
+.g-fill { stroke: none; }
+.g-fill.g-lime { fill: var(--sp-lime); }
+.g-fill.g-steel { fill: var(--sp-steel); }
+.g-text { font: 500 13px/1 var(--font-mono); letter-spacing: .06em; stroke: none; }
+.g-text.g-lime { fill: var(--sp-lime); }
+.g-text.g-steel { fill: var(--sp-steel); }
+.g-text.g-ink { fill: var(--sp-text); }

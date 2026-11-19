@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_styleguide/
+
+Sitemap: https://stackproof-ai-site-v2.stackproofai.workers.dev/sitemap.xml

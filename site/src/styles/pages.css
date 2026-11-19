@@ -1,0 +1,29 @@
+/* Legal */
+.legal-wrap { max-width: 46rem; }
+.legal-wrap .h3 { margin-top: var(--s-7); margin-bottom: var(--s-3); }
+.legal-wrap p { color: var(--sp-muted); margin-top: var(--s-3); }
+.legal-wrap a { color: var(--sp-lime); }
+.legal-wrap mark { background: rgb(206 249 73 / .14); color: var(--sp-lime); padding: 0 .2em; font-family: var(--font-mono); font-size: .875em; }
+.draft-banner { margin-top: var(--s-5); padding: var(--s-4); border: 1px dashed var(--sp-lime); border-radius: var(--radius); color: var(--sp-lime); font-size: var(--fs-sm); }
+.legal-updated { font-size: var(--fs-xs); color: var(--sp-steel); }
+/* 404 */
+.nf-grid { display: grid; gap: var(--s-7); grid-template-columns: 1fr; align-items: center; min-height: 60vh; }
+@media (min-width: 52rem) { .nf-grid { grid-template-columns: 1.2fr 1fr; } }
+.nf-grid .lead { margin-block: var(--s-4) var(--s-6); }
+.nf-art { width: 100%; max-width: 22rem; margin-inline: auto; }
+/* Styleguide */
+.sg-h { margin: var(--s-8) 0 var(--s-4); }
+.sg-marks { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.sg-mark { display: grid; place-items: center; min-height: 14rem; }
+.sg-mark-lg { width: 12rem; } .sg-mark-sm { width: 3rem; } .sg-mark-xs { width: 1.5rem; }
+.sg-mark-row { display: flex; gap: var(--s-5); align-items: center; justify-content: center; }
+.sw-list { display: grid; gap: var(--s-3); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.sw { display: grid; grid-template-columns: 3rem 1fr; gap: 0 var(--s-3); align-items: center; padding: var(--s-3); border: 1px solid var(--sp-hair); border-radius: var(--radius); }
+.sw-chip { grid-row: span 3; width: 3rem; height: 3rem; border-radius: 8px; border: 1px solid var(--sp-hair-strong); }
+.sw .mono { font-size: var(--fs-xs); } .sw-v { color: var(--sp-muted); } .sw-n { font-size: var(--fs-sm); color: var(--sp-muted); }
+.sg-type { display: grid; gap: var(--s-4); }
+.sg-btns { display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: center; }
+.prim-grid { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+.prim { display: grid; gap: var(--s-4); }
+.prim-svg { width: 100%; height: auto; aspect-ratio: 1; }
+.prim figcaption { display: grid; gap: var(--s-1); } .prim figcaption span { color: var(--sp-muted); font-size: var(--fs-sm); }

@@ -1,0 +1,43 @@
+:root {
+  /* Brand (sampled from the logo; never adjusted) */
+  --sp-lime: #CEF949;
+  --sp-steel: #75879A;
+  /* Derived */
+  --sp-void: #040508;
+  --sp-ink-1: #0B0D12;
+  --sp-ink-2: #12151C;
+  --sp-text: #E8ECEF;
+  --sp-muted: #9AA8B6;            /* 8.4:1 on void */
+  --sp-line: rgb(206 249 73 / .45);
+  --sp-line-strong: rgb(206 249 73 / .6);
+  --sp-hair: rgb(117 135 154 / .28);   /* steel hairline borders */
+  --sp-hair-strong: rgb(117 135 154 / .5);
+  --sp-error: #FF8A7A;            /* 8.9:1 on void */
+
+  --font-sans: 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
+
+  /* Type scale */
+  --fs-xs: .75rem;
+  --fs-sm: .875rem;
+  --fs-base: 1.0625rem;
+  --fs-lead: clamp(1.125rem, 1.05rem + .3vw, 1.3125rem);
+  --fs-h3: clamp(1.25rem, 1.15rem + .4vw, 1.5rem);
+  --fs-h2: clamp(2rem, 1.35rem + 2.6vw, 3.375rem);
+  --fs-h1: clamp(2.5rem, 1.55rem + 4vw, 5rem);
+
+  /* Space (8pt) */
+  --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.5rem; --s-6: 2rem;
+  --s-7: 3rem; --s-8: 4rem; --s-9: 6rem; --s-10: 8rem;
+  --section-y: clamp(5rem, 3.5rem + 7vw, 10rem);
+  --gutter: clamp(1rem, .5rem + 2.5vw, 2.5rem);
+  --wrap: 78rem;
+
+  --radius: 12px;
+  --radius-lg: 20px;
+  --hairline: 1px;
+
+  /* Motion (house curve; used from checkpoint 3) */
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  --dur-1: .4s; --dur-2: .8s; --dur-3: 1.2s;
+}

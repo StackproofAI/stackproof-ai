@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "stackproof-ai-site-v2",
+  "main": "./worker/index.ts",
+  // Set on the day of each deploy (brief §6).
+  "compatibility_date": "2026-11-19",
+  "assets": {
+    // directory is filled in by the Cloudflare Vite plugin from the client build output.
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true }
+  // D1, rate limiting and Turnstile secret are added at checkpoint 4 (lead form).
+}
