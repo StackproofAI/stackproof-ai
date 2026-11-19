@@ -11,7 +11,7 @@ export function initConstellation(): void {
 
   const show = (id: string) => {
     active = id;
-    for (const b of btns) b.setAttribute('aria-expanded', String(b.dataset.sys === id));
+    for (const b of btns) { b.setAttribute('aria-expanded', String(b.dataset.sys === id)); b.tabIndex = b.dataset.sys === id ? 0 : -1; }
     for (const n of nodes) n.classList.toggle('is-active', n.dataset.node === id);
     for (const it of items) it.hidden = wide.matches && it.dataset.sysItem !== id;
   };
@@ -28,9 +28,10 @@ export function initConstellation(): void {
     const i = btns.findIndex((b) => b === document.activeElement);
     if (i < 0) return;
     const d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
-    if (!d) return;
+    const j = e.key === 'Home' ? 0 : e.key === 'End' ? btns.length - 1 : d ? (i + d + btns.length) % btns.length : -1;
+    if (j < 0) return;
     e.preventDefault();
-    btns[(i + d + btns.length) % btns.length].focus();
+    btns[j].focus(); // focus handler shows it and moves the roving tabindex
   });
   wide.addEventListener('change', () => show(active));
   show(active);

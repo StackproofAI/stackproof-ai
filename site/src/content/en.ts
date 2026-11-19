@@ -110,7 +110,7 @@ export const en = {
     statusRoadmap: 'Roadmap',
     legendLive: 'Live',
     legendRoadmap: 'Roadmap',
-    hint: 'Select a system to read its purpose.',
+    hint: 'Select a system to read its purpose. Use the arrow keys to move between systems.',
     items: [
       { id: 'S1', name: 'Lead Intelligence', purpose: 'Finds, researches, validates and scores prospective leads.', live: true },
       { id: 'S2', name: 'CRM Command Centre', purpose: 'Keeps contacts, lifecycle stages and follow-ups in sync in your CRM.', live: true },
