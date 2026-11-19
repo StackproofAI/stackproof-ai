@@ -26,5 +26,6 @@ Status codes: **PASS** = run and observed; **UNTESTED** = not yet run (reason gi
 | D1 forced failure → honest error | PASS | 503 → "your request was not saved… email us at …" | — |
 | Email failure → lead saved | N/A | No email at launch (no Cloudflare domain, D-13) | — |
 | No secrets in build | PASS | grep of `dist/client` finds no secret; `.dev.vars` git-ignored | — |
-| Thank-you → Cal.com link | PASS | Link `cal.com/sean-fields-qf4rle/20-min` | Visitor local-time display: UNTESTED (host blocked here) |
+| Thank-you → Cal.com link | PASS | Link `cal.com/sean-fields-qf4rle/20-min` opens the 20 min event; visited with time zone Europe/Berlin, the page showed "Europe/Berlin" and local slot times | Page still titled "Sean Fields": George to rename in Cal.com |
 | `/admin` unreachable without Access | Code: fail-closed + JWT check | Returns 403 until Access is configured | Deploy + enable Access: pending |
+| GSAP licence | PASS | gsap.com/standard-license: free for commercial sites as long as end users aren't charged for access (this site is free) | — |

@@ -32,4 +32,4 @@ Nothing in this list may go live until it's marked ✅.
 ## Infrastructure
 - [x] No custom domain yet → launch on workers.dev, leads stored in D1 only, no email; the admin Worker is **required**
 - [ ] Turnstile widget created (production site key + secret)
-- [ ] GSAP license page re-checked (blocked from this environment)
+- [x] GSAP licence re-checked 2026-11-19: Standard "No Charge" licence, commercial use OK
