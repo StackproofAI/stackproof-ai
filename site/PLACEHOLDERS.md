@@ -25,7 +25,8 @@ Nothing in this list may go live until it's marked ✅.
 - [ ] Prompt or Perish book block: keep (demoted) or drop
 
 ## Assets
-- [ ] Master logo file (SVG preferred). Stand-in for now: `docs/assets/live-site-logo-reference.svg`, extracted from the live site, colours #c8ff3d / #8795a8, which don't match the brief's #CEF949 / #75879A
+- [x] Master logo PNG received (`brand/stackproof-mark-source.png`; measured lime #CEFA48 ≈ #CEF949, steel #748599 ≈ #75879A)
+- [ ] **Approve the rebuilt SVG** `brand/stackproof-mark.svg` (side-by-side at 400%: `docs/assets/logo-comparison-400.png`)
 - [ ] Two line-art reference images (style direction only)
 
 ## Infrastructure
