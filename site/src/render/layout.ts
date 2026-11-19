@@ -60,7 +60,7 @@ export function header(t: Locale, onHome = true): string {
       </button>
       <ul class="nav-list" id="nav-list">
         ${t.nav.items.map((i) => `<li><a href="${base}${i.href}">${i.label}</a></li>`).join('')}
-        <li class="nav-cta-item"><a class="btn btn-sm btn-primary" href="${base}#assessment">${t.nav.cta}</a></li>
+        <li class="nav-cta-item"><a class="btn btn-sm btn-primary" href="${SITE.calUrl}" target="_blank" rel="noopener noreferrer" data-cta="book">${t.nav.cta}<span class="sr-only"> ${t.a11y.newTab}</span></a></li>
       </ul>
     </nav>
   </div>
@@ -103,7 +103,7 @@ ${header(t, opts.onHome ?? true)}
 ${body}
 </main>
 ${footer(t)}
-${opts.script === false ? '' : `<script type="application/json" id="i18n">${JSON.stringify({ menu: t.a11y.menu, closeMenu: t.a11y.closeMenu, form: { ...t.form.errors, sending: t.form.sending, submit: t.form.submit }, contactEmail: SITE.contactEmail }).replace(/</g, '\\u003c')}</script>\n<script type="module" src="/src/main.ts"></script>`}
+${opts.script === false ? '' : `<script type="application/json" id="i18n">${JSON.stringify({ menu: t.a11y.menu, closeMenu: t.a11y.closeMenu, contactEmail: SITE.contactEmail }).replace(/</g, '\\u003c')}</script>\n<script type="module" src="/src/main.ts"></script>`}
 </body>
 </html>`;
 }

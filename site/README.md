@@ -2,7 +2,7 @@
 
 Static-first marketing site on **Cloudflare Workers with Static Assets**, built with Vite + TypeScript and the Cloudflare Vite plugin. The old site (`../website/`, Worker `stackproof-ai-site`) is untouched.
 
-Status: **checkpoint 4 (lead form built and tested locally; not deployed yet).**
+Status: **static site complete (no lead form, by owner decision); preview deploy pending a working Cloudflare API token.**
 
 ## Develop
 
@@ -31,35 +31,15 @@ npm run preview      # serve the production build locally in workerd
 | `src/geometry/primitives.ts` | "Proof geometry" SVG primitives (hexNode, rays, goldenSpiral, orbit, regMark, axis, dotRun) |
 | `src/styles/` | Tokens, base, layout, sections, form |
 | `src/ui/`, `src/form/` | Small client scripts (nav, constellation, click-to-load video, form validation) |
-| `worker/index.ts` | Worker: only `/api/*` runs here (`run_worker_first`) |
 | `public/_headers` | CSP + security headers, cache rules |
 | `brand/` | Approved master mark (`stackproof-mark.svg`), source PNG, fitting scripts |
 | `scripts/` | Image generation (favicons, OG) and screenshot tools |
 
-## Lead form
-
-- Endpoint: `POST /api/lead` (`worker/lead.ts`). Order: rate limit → honeypot → validation → Turnstile (server-side) → D1 insert. Duplicates are prevented by a unique index on (`email_normalised`, `submit_date`).
-- Schema: `migrations/0001_leads.sql`.
-- Local testing: `.dev.vars` uses Turnstile's always-pass **test** secret. The sandbox can't reach Cloudflare, so run `node scripts/mock-siteverify.mjs` too.
-
-```bash
-npx wrangler d1 migrations apply stackproof-leads-preview --local
-node scripts/mock-siteverify.mjs &   # local only
-npm run build && npm run preview
-```
-
-### Read and export leads
-- Private page: Worker `stackproof-leads-admin` (`admin-worker/`), protected by Cloudflare Access, with a CSV link.
-- CLI: `npx wrangler d1 execute stackproof-leads-preview --remote --command "SELECT created_at,name,email,company,status FROM leads ORDER BY created_at DESC"`
-
-### Retention (24 months)
-`npx wrangler d1 execute stackproof-leads --remote --command "DELETE FROM leads WHERE created_at < datetime('now','-24 months')"`
-
-### Secrets (never in the repo)
-`npx wrangler secret put TURNSTILE_SECRET` (preview: Turnstile test secret; production: the real secret).
+## No forms, no backend
+Assets only: no Worker script, database or secrets. The main CTA opens Cal.com. Bookings and contact details live in your Cal.com dashboard.
 
 ## Deploy
 
-Not deployed yet. Planned for checkpoint 5: `npm run deploy:preview` deploys Worker `stackproof-ai-site-v2` to workers.dev. Secrets, D1 and Turnstile setup will be documented at checkpoint 4.
+`npm run deploy:preview` builds and deploys Worker `stackproof-ai-site-v2` (assets only) to workers.dev. It needs `CLOUDFLARE_API_TOKEN` (Workers Scripts: Edit, Account Settings: Read). The live site `stackproof-ai-site` is a separate Worker and isn't touched.
 
 Regenerate icons and the OG image after changing the mark or headline: `node scripts/make-images.mjs`.

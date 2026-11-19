@@ -41,7 +41,7 @@ function hero(t: Locale): string {
       <h1 id="hero-title" class="hero-title">${t.hero.title}</h1>
       <p class="hero-sub">${t.hero.sub}</p>
       <div class="cta-row">
-        <a class="btn btn-primary btn-lg" href="#assessment">${t.cta.primary}</a>
+        ${calBtn(t)}
         <a class="btn btn-ghost btn-lg" href="#how">${t.cta.secondary}</a>
       </div>
       <ul class="hero-facts mono" role="list">${t.hero.facts.map((f) => `<li>${f}</li>`).join('')}</ul>
@@ -130,7 +130,7 @@ function offer(t: Locale): string {
         <div class="card"><h3 class="h3">${o.nextTitle}</h3><p>${o.next}</p></div>
       </div>
     </div>
-    <div class="offer-cta"><a class="btn btn-primary btn-lg" href="#assessment">${t.cta.primary}</a></div>
+    <div class="offer-cta">${calBtn(t)}</div>
   </div>
 </section>`;
 }
@@ -294,64 +294,10 @@ function proof(t: Locale): string {
 </section>`;
 }
 
-/* ───────────────────────── Final CTA + form ───────────────────────── */
-function field(id: string, label: string, control: string, opts: { required?: boolean; hint?: string; t: Locale }): string {
-  const req = opts.required
-    ? `<span class="req" aria-hidden="true">*</span>`
-    : `<span class="opt mono">(${opts.t.form.optional})</span>`;
-  return `<div class="field" data-field="${id}">
-  <label for="f-${id}">${label} ${req}</label>
-  ${opts.hint ? `<p class="hint" id="f-${id}-hint">${opts.hint}</p>` : ''}
-  ${control}
-  <p class="field-error" id="f-${id}-err" data-error-for="${id}" hidden></p>
-</div>`;
-}
-
-function form(t: Locale): string {
-  const F = t.form;
-  const desc = (id: string, hint = false) => `aria-describedby="${hint ? `f-${id}-hint ` : ''}f-${id}-err"`;
-  const sel = (id: string, opts: readonly string[]) =>
-    `<select id="f-${id}" name="${id}" required ${desc(id)}><option value="">${F.placeholders.select}</option>${opts.map((o) => `<option>${o}</option>`).join('')}</select>`;
-  return `<form class="lead-form" id="lead-form" action="/api/lead" method="post" novalidate data-lead-form>
-  <h3 class="h3">${F.title}</h3>
-  <p class="form-req mono"><span class="req" aria-hidden="true">*</span> ${F.required}</p>
-  <div class="form-alert" role="alert" data-form-alert hidden></div>
-  <div class="form-grid">
-    ${field('name', F.fields.name, `<input id="f-name" name="name" type="text" autocomplete="name" required maxlength="120" ${desc('name')}>`, { required: true, t })}
-    ${field('email', F.fields.email, `<input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="200" ${desc('email')}>`, { required: true, t })}
-    ${field('company', F.fields.company, `<input id="f-company" name="company" type="text" autocomplete="organization" required maxlength="160" ${desc('company')}>`, { required: true, t })}
-    ${field('website', F.fields.website, `<input id="f-website" name="website" type="text" inputmode="url" autocomplete="url" maxlength="200" placeholder="${F.placeholders.website}" ${desc('website')}>`, { t })}
-    ${field('country', F.fields.country, sel('country', F.countries), { required: true, t })}
-    ${field('team_size', F.fields.teamSize, sel('team_size', F.teamSizes), { required: true, t })}
-  </div>
-  <fieldset class="field tools" data-field="tools" aria-describedby="f-tools-err">
-    <legend>${F.fields.tools} <span class="opt mono">(${F.optional})</span></legend>
-    <div class="chips">${F.tools.map((x, i) => `<label class="chip"><input type="checkbox" name="tools" value="${x}" ${x === 'Other' ? 'data-tools-other' : ''}><span>${x}</span></label>`).join('')}</div>
-    <div class="tools-other" data-tools-other-wrap hidden>
-      <label for="f-tools_other" class="sr-only">${F.fields.toolsOther}</label>
-      <input id="f-tools_other" name="tools_other" type="text" maxlength="200" placeholder="${F.fields.toolsOther}">
-    </div>
-    <p class="field-error" id="f-tools-err" data-error-for="tools" hidden></p>
-  </fieldset>
-  ${field('process', F.fields.process, `<textarea id="f-process" name="process" rows="5" required maxlength="3000" placeholder="${F.placeholders.process}" ${desc('process', true)}></textarea>`, { required: true, hint: F.fields.processHint, t })}
-  <div class="hp" aria-hidden="true"><label for="f-company_fax">${F.honeypot}</label><input id="f-company_fax" name="company_fax" type="text" tabindex="-1" autocomplete="off"></div>
-  <div class="field consent" data-field="consent">
-    <label class="check"><input id="f-consent" name="consent" type="checkbox" required aria-describedby="f-consent-err"><span>${F.consent} <a href="/privacy/">${F.consentLink}</a>.</span></label>
-    <input type="hidden" name="consent_text_version" value="${SITE.consentTextVersion}">
-    <p class="field-error" id="f-consent-err" data-error-for="consent" hidden></p>
-  </div>
-  <div class="turnstile-slot" data-turnstile data-sitekey="${SITE.turnstileSiteKey}"></div>
-  <div class="form-actions">
-    <button class="btn btn-primary btn-lg" type="submit" data-submit>${F.submit}</button>
-    <p class="verify-note mono">${F.verifyNote}</p>
-  </div>
-</form>
-<div class="form-success" data-form-success hidden tabindex="-1">
-  ${svg('0 0 120 120', hexNode(60, 60, 50, { tone: 'lime', rings: 1, crosshair: false }) + `<path class="g-line g-lime g-thick" d="M40 60l14 14 28-28"/>`, 'success-mark')}
-  <h3 class="h3">${F.success.title}</h3>
-  <p>${F.success.text}</p>
-  <p class="success-call"><strong>${F.success.callTitle}</strong> ${ext(t, SITE.calUrl, F.success.call, 'text-link')}</p>
-</div>`;
+/* ───────────────────────── Final CTA: book the assessment call ───────────────────────── */
+/** Primary CTA: opens the Cal.com 20-minute booking (new tab, announced to screen readers). */
+export function calBtn(t: Locale, cls = 'btn btn-primary btn-lg', label: string = t.cta.primary): string {
+  return `<a class="${cls}" href="${SITE.calUrl}" target="_blank" rel="noopener noreferrer" data-cta="book">${label}<span class="sr-only"> ${t.a11y.newTab}</span><span class="ext" aria-hidden="true">↗</span></a>`;
 }
 
 function finalCta(t: Locale): string {
@@ -368,7 +314,6 @@ function finalCta(t: Locale): string {
       <ol class="steps" role="list">${f.steps.map((s, i) => `<li><span class="step-n mono" aria-hidden="true">${pad2(i + 1)}</span><div><p class="step-name">${s.name}</p><p>${s.text}</p></div></li>`).join('')}</ol>
       <p class="no-ob mono">${f.noObligation}</p>
       <p class="owner">${f.owner}</p>
-      <p class="talk">${ext(t, SITE.calUrl, t.cta.talkFirst, 'text-link')}</p>
       <div class="contact">
         <p class="contact-title">${f.contactTitle}</p>
         <p class="mono contact-name">${f.contactName}</p>
@@ -376,7 +321,13 @@ function finalCta(t: Locale): string {
         <p><a class="text-link" href="mailto:${SITE.contactEmail}">${SITE.contactEmail}</a></p>
       </div>
     </div>
-    <div class="final-form card">${form(t)}</div>
+    <div class="final-book card">
+      ${svg('0 0 120 120', hexNode(60, 60, 50, { tone: 'lime', rings: 1, crosshair: false }) + `<path class="g-line g-lime g-thick" d="M40 60l14 14 28-28"/>`, 'success-mark')}
+      <h3 class="h3">${f.book.title}</h3>
+      <ul class="book-facts-list mono" role="list">${f.book.facts.map((x) => `<li>${x}</li>`).join('')}</ul>
+      ${calBtn(t)}
+      <p class="book-note mono">${f.book.note}</p>
+    </div>
   </div>
 </section>`;
 }
@@ -437,7 +388,7 @@ function jsonLd(t: Locale): object[] {
 
 export function renderHome(t: Locale): string {
   const h = head(t, { title: t.meta.title, description: t.meta.description, path: '/', jsonLd: jsonLd(t) });
-  const sticky = `<div class="sticky-cta" data-sticky-cta hidden><a class="btn btn-primary" href="#assessment">${t.cta.primary}</a></div>`;
+  const sticky = `<div class="sticky-cta" data-sticky-cta hidden>${calBtn(t, 'btn btn-primary')}</div>`;
   const body = [hero(t), problem(t), offer(t), systems(t), how(t), proof(t), faq(t), finalCta(t), book(t), sticky].join('\n');
   return page(t, h, body, { onHome: true, bodyClass: 'home' });
 }

@@ -32,7 +32,7 @@ const og = `<div style="position:relative;width:1200px;height:630px;overflow:hid
 <div style="position:absolute;left:80px;top:96px;width:640px">
  <div style="font-family:M;font-size:20px;letter-spacing:.14em;color:#CEF949;text-transform:uppercase">Stackproof AI</div>
  <div style="font-size:62px;font-weight:600;line-height:1.04;letter-spacing:-.035em;margin-top:28px">Find the work your business should stop doing by hand.</div>
- <div style="font-family:M;font-size:20px;color:#9AA8B6;margin-top:36px;letter-spacing:.04em">Free written Automation Opportunity Assessment</div>
+ <div style="font-family:M;font-size:20px;color:#9AA8B6;margin-top:36px;letter-spacing:.04em">Free Automation Opportunity Assessment</div>
 </div></div>`;
 await shot(1200, 630, og, 'og.png');
 await b.close();

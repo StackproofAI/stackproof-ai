@@ -216,3 +216,12 @@ html.lenis, html.lenis body { height: auto; }
 .verify-note, .video-note, .hero-facts { font-size: .8125rem; color: var(--sp-muted); }
 .offer-cta { margin-top: var(--s-5); }
 @media (max-width: 30rem) { .offer-cta .btn { width: 100%; } }
+
+/* ─── Final CTA booking card ─── */
+.final-book { grid-area: form; display: grid; gap: var(--s-4); justify-items: start; align-self: start; }
+@media (min-width: 62rem) { .final-book { position: sticky; top: 6rem; } }
+.final-book .btn { width: 100%; }
+.book-facts-list { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); font-size: .8125rem; color: var(--sp-muted); letter-spacing: .06em; text-transform: uppercase; }
+.book-facts-list li::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: .5em; transform: rotate(45deg); border: 1px solid var(--sp-lime); vertical-align: 1px; }
+.book-note { font-size: .8125rem; color: var(--sp-muted); }
+.success-mark { width: 64px; height: 64px; }

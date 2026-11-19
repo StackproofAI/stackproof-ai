@@ -15,17 +15,7 @@ Status codes: **PASS** = run and observed; **UNTESTED** = not yet run (reason gi
 | Keyboard walkthrough | PASS | Logical order; constellation = 1 tab stop + arrow keys; focus ring visible; skip link moves focus | Screen reader: UNTESTED |
 | No external request on page load | PASS | Only same-origin requests; Turnstile loads near the form; YouTube only after click | — |
 | i18n: no hard-coded copy | PASS | All strings in `src/content/en.ts`; client strings via an i18n JSON block | — |
-| Form: valid submit → 1 row | PASS (local D1) | 200 `saved`, row present | On deployed preview: pending |
-| Same email, same day → 1 row, thank-you | PASS | 200 `duplicate`, still 1 row | — |
-| Double-click → 1 row | PASS | Client sends 1 request; 2 parallel server requests → `saved` + `duplicate`, 1 row | — |
-| Bad Turnstile token rejected | PASS (local mock*) | 403 `verify_failed` | Real siteverify: pending deploy (*sandbox can't reach challenges.cloudflare.com) |
-| Honeypot dropped | PASS | 200 `saved`, no row | — |
-| Consent unticked blocked | PASS | Client blocks + server 400 `consent` | — |
-| Cross-origin POST blocked | PASS | 403 | — |
-| Rate limit triggers | PASS (local) | 429 after 5/min per IP | On Cloudflare: pending |
-| D1 forced failure → honest error | PASS | 503 → "your request was not saved… email us at …" | — |
-| Email failure → lead saved | N/A | No email at launch (no Cloudflare domain, D-13) | — |
-| No secrets in build | PASS | grep of `dist/client` finds no secret; `.dev.vars` git-ignored | — |
-| Thank-you → Cal.com link | PASS | Link `cal.com/sean-fields-qf4rle/20-min` opens the 20 min event; visited with time zone Europe/Berlin, the page showed "Europe/Berlin" and local slot times | Page still titled "Sean Fields": George to rename in Cal.com |
-| `/admin` unreachable without Access | Code: fail-closed + JWT check | Returns 403 until Access is configured | Deploy + enable Access: pending |
-| GSAP licence | PASS | gsap.com/standard-license: free for commercial sites as long as end users aren't charged for access (this site is free) | — |
+| Lead form tests | N/A | Form removed by owner decision (D-21); the backend tests passed before removal (see git history, commit 8298f8c) | — |
+| Primary CTA → Cal.com | PASS | All primary buttons open `cal.com/sean-fields-qf4rle/20-min` in a new tab; with time zone Europe/Berlin the page showed local times | Page still titled "Sean Fields": George to rename |
+| No secrets in build | PASS | There are no secrets (assets-only deploy) | — |
+| GSAP licence | PASS | Standard "No Charge" licence; commercial use on a free site is allowed | — |

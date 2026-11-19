@@ -16,7 +16,7 @@ Nothing in this list may go live until it's marked ✅.
 
 ## Contact, legal, links
 - [x] Public contact email: soulectiv3@gmail.com (George, 2026-11-19)
-- [ ] Lead-notification email (must be verified in Cloudflare Email Routing)
+- [x] Lead-notification email: not needed (no form, D-21)
 - [ ] Legal entity and address: George did not tick "show Soulectiv3 LLC, Malibu CA". A privacy policy still needs the data controller's legal name and an address; **needs confirmation**
 - [ ] Impressum required? (lawyer)
 - [ ] Privacy policy (GDPR + California): **draft only, lawyer review required**
@@ -30,6 +30,10 @@ Nothing in this list may go live until it's marked ✅.
 - [ ] Two line-art reference images (style direction only)
 
 ## Infrastructure
-- [x] No custom domain yet → launch on workers.dev, leads stored in D1 only, no email; the admin Worker is **required**
-- [ ] Turnstile widget created (production site key + secret)
+- [x] No custom domain yet → launch on workers.dev. No form, so no D1, email or admin page (D-21)
+- [x] Turnstile: not needed (no form, D-21)
 - [x] GSAP licence re-checked 2026-11-19: Standard "No Charge" licence, commercial use OK
+
+## Changed 2026-11-19: no lead form
+- [ ] **Approve the call-first copy** (hero subline, offer list, the 4 steps, the booking card, FAQ "different time zone"), which replaces the written-first wording
+- [ ] Cal.com profile renamed to "George Fields" (still shows "Sean Fields" as of 2026-11-19)

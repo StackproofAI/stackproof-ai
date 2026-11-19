@@ -21,9 +21,6 @@ export const SITE = {
   },
   // Set once a custom domain exists; used for canonical/OG/sitemap.
   origin: 'https://stackproof-ai-site-v2.stackproofai.workers.dev',
-  consentTextVersion: '2026-11-19.v1',
-  // Public Turnstile site key. Default = Cloudflare's always-pass TEST key; production builds set TURNSTILE_SITEKEY.
-  turnstileSiteKey: process.env.TURNSTILE_SITEKEY || '1x00000000000000000000AA',
 } as const;
 
 export const en = {
@@ -32,7 +29,7 @@ export const en = {
   meta: {
     title: 'Stackproof AI | Free Automation Opportunity Assessment',
     description:
-      'Stackproof AI helps small and mid-sized businesses in the US and Europe find and automate repetitive work. Start with a free, written Automation Opportunity Assessment.',
+      'Stackproof AI helps small and mid-sized businesses in the US and Europe find and automate repetitive work. Book a free 20-minute Automation Opportunity Assessment and get a written summary of your top opportunities.',
     privacyTitle: 'Privacy Policy | Stackproof AI',
     privacyDescription: 'How Stackproof AI collects, uses and stores information submitted through this website.',
     notFoundTitle: 'Page not found | Stackproof AI',
@@ -59,13 +56,12 @@ export const en = {
   cta: {
     primary: 'Get Your Free Automation Assessment', // supplied
     secondary: 'See how it works',
-    talkFirst: 'Prefer to talk first? Book a 20-minute call',
   },
   hero: {
     eyebrow: 'AI automation for small and mid‑sized businesses',
     title: 'Find the work your business should stop doing by hand.',
-    sub: 'A free, written Automation Opportunity Assessment for small and mid-sized businesses in the US and Europe. Tell us how your team works today; we send back your top automation opportunities and a practical first step. No call required, no obligation.',
-    facts: ['Written-first', 'Works in any time zone', 'No obligation'],
+    sub: 'A free Automation Opportunity Assessment for small and mid-sized businesses in the US and Europe. Book a 20-minute call, walk us through how your team works today, and get a written summary of your top automation opportunities and a practical first step.', // revised for call-first (2026-11-19)
+    facts: ['20-minute call', 'Written summary after', 'No obligation'],
     markLabel: 'Stackproof AI mark: three stacked layers with a checkmark',
   },
   problem: {
@@ -88,13 +84,13 @@ export const en = {
   offer: {
     label: '02 / The offer',
     title: 'The Automation Opportunity Assessment',
-    lead: 'Free, written, and built around how your business actually runs.', // draft
+    lead: 'Free, practical, and built around how your business actually runs.', // draft
     getTitle: 'What you get',
     get: [
-      'A review of the workflows and tools you describe',
+      'A 20-minute call about your workflows and the tools you use',
       'A written summary of your top automation opportunities',
       'A suggested first step, explained in plain business terms',
-      'An optional 20-minute call to walk through it',
+      'Booked in your own time zone',
     ],
     termsTitle: 'What it costs',
     terms: 'Nothing. There are no prices to decode and no obligation to buy anything afterwards.', // draft
@@ -181,64 +177,21 @@ export const en = {
     ],
     stepsTitle: 'How the assessment works',
     steps: [
-      { name: 'Request', text: 'Send the short form. It works in any time zone.' },
-      { name: 'Review', text: 'We review your workflows and the tools you use.' },
+      { name: 'Book', text: 'Pick a 20-minute slot. Times are shown in your own time zone.' },
+      { name: 'Talk', text: 'Walk us through your workflows and the tools you use today.' },
       { name: 'Written summary', text: 'You receive your top automation opportunities and a suggested first step, in writing.' },
-      { name: 'Optional call', text: 'If you like, book a 20-minute call to walk through it.' },
+      { name: 'Decide', text: 'Review it in your own time and decide whether to go ahead.' },
     ],
     noObligation: 'No obligation.',
-    owner: 'Every assessment is reviewed by George Fields, founder of Stackproof AI.', // draft
+    owner: 'Every assessment call is with George Fields, founder of Stackproof AI.', // draft
+    book: {
+      title: 'Book your assessment call',
+      facts: ['20 minutes', 'Free', 'Your time zone', 'Video call'],
+      note: 'Booking opens Cal.com in a new tab.',
+    },
     contactTitle: 'Or contact us directly:', // supplied
     contactName: 'STACKPROOF AI',
     contactTagline: 'AI Automation & Business Operations Consulting',
-  },
-  form: {
-    title: 'Request your assessment',
-    required: 'Required',
-    optional: 'optional',
-    fields: {
-      name: 'Your name',
-      email: 'Work email',
-      company: 'Company',
-      website: 'Company website',
-      country: 'Country',
-      teamSize: 'Team size',
-      tools: 'Tools you use today',
-      toolsOther: 'Other tools',
-      process: 'Which repetitive process would you most like to get rid of?',
-      processHint: 'A few sentences is plenty: what happens, who does it, how often.',
-    },
-    placeholders: {
-      website: 'example.com',
-      process: 'e.g. Every new inquiry gets copied from email into our CRM by hand, and follow-ups are tracked in a spreadsheet…',
-      select: 'Select…',
-    },
-    countries: ['United States', 'Canada', 'United Kingdom', 'Ireland', 'Germany', 'Austria', 'Switzerland', 'Netherlands', 'Belgium', 'France', 'Spain', 'Italy', 'Sweden', 'Denmark', 'Norway', 'Other – Europe', 'Other'],
-    teamSizes: ['1–9', '10–49', '50–99', '100–250', 'More than 250'],
-    tools: ['HubSpot', 'Salesforce', 'Pipedrive', 'Zoho', 'Follow Up Boss', 'Google Workspace', 'Microsoft 365', 'Slack', 'Spreadsheets', 'Other'],
-    consent:
-      'I agree that Stackproof AI may store the details above and use them to prepare my assessment and contact me about it, as described in the',
-    consentLink: 'Privacy Policy',
-    honeypot: 'Leave this field empty',
-    submit: 'Get Your Free Automation Assessment', // supplied
-    sending: 'Sending…',
-    verifyNote: 'Protected by Cloudflare Turnstile.',
-    errors: {
-      required: 'Please fill in this field.',
-      email: 'Please enter a valid email address, like name@company.com.',
-      url: 'Please enter a valid website, like example.com.',
-      consent: 'Please tick the box so we can store your request.',
-      summary: 'Please check the highlighted fields.',
-      server: 'Something went wrong on our side and your request was not saved. Please try again, or email us at',
-      rate: 'Too many attempts in a short time. Please wait a minute and try again.',
-      verify: 'We could not verify the request. Please reload the page and try again.',
-    },
-    success: {
-      title: 'Thank you. Your request is in.',
-      text: 'We will review your workflows and tools and send your written summary to the email address you gave us.',
-      callTitle: 'Want to talk it through?',
-      call: 'Book a 20-minute call',
-    },
   },
   faq: {
     label: '06 / FAQ',
@@ -253,7 +206,7 @@ export const en = {
       { q: 'How long does automation implementation take?', a: 'Implementation timelines depend on the complexity of the workflow, existing systems, integration requirements, and project scope. We establish timelines after evaluating the specific opportunity.' },
       { q: 'Can automation work with my existing CRM and business tools?', a: 'Usually, yes. Most modern CRMs and business tools offer integrations or APIs. We check yours during the assessment, before recommending anything.' }, // C-3 approved
       { q: 'Is my business data secure?', a: 'Security is designed in, not added later: each workflow gets least-privilege access, protected credentials, logging, and human approval before anything consequential happens. We agree the details with you before we build.' }, // C-4 approved
-      { q: 'You’re in a different time zone. How do we work together?', a: 'The assessment is written-first, so you can request it whenever suits you and read the result in your own time. If you’d like to talk, you can book a 20-minute call at a time shown in your local time zone. Ongoing work runs through shared written updates, with calls scheduled when they’re useful.' }, // A-1 approved
+      { q: 'You’re in a different time zone. How do we work together?', a: 'You book the 20-minute assessment call at a time shown in your own time zone, and the summary comes in writing so you can review it whenever suits you. Ongoing work runs through shared written updates, with calls scheduled when they’re useful.' }, // A-1 approved, revised for call-first
       { q: 'What happens if an automation breaks?', a: 'Every workflow we build logs what it does and alerts us when something fails. Anything consequential waits for human approval, so a failure stops safely instead of acting on bad data. We fix issues as part of the monthly management option; response terms are agreed in your proposal.' }, // A-2 approved
       { q: 'Am I obligated to purchase anything after the assessment?', a: 'No. The assessment is designed to provide useful insight into potential opportunities. You can review the recommendations and decide whether you want to pursue implementation.' },
       { q: 'What industries does Stackproof AI work with?', a: 'Stackproof AI initially focuses on businesses with repetitive operational workflows, including real estate businesses, professional services, and other organizations looking to improve administrative efficiency.' },
