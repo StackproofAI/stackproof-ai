@@ -1,18 +1,18 @@
 :root {
-  /* Brand (sampled from the logo; never adjusted) */
-  --sp-lime: #CEF949;
-  --sp-steel: #75879A;
+  /* Brand (2026-11 identity: navy #0B1220, lime #C6FF00, white). Never adjusted. */
+  --sp-lime: #C6FF00;
+  --sp-steel: #8291A8;            /* derived slate for lines and metadata: 5.9:1 on navy */
   /* Derived */
-  --sp-void: #040508;
-  --sp-ink-1: #0B0D12;
-  --sp-ink-2: #12151C;
+  --sp-void: #0B1220;
+  --sp-ink-1: #131C2E;
+  --sp-ink-2: #19243A;
   --sp-text: #E8ECEF;
-  --sp-muted: #9AA8B6;            /* 8.4:1 on void */
-  --sp-line: rgb(206 249 73 / .45);
-  --sp-line-strong: rgb(206 249 73 / .6);
-  --sp-hair: rgb(117 135 154 / .28);   /* steel hairline borders */
-  --sp-hair-strong: rgb(117 135 154 / .5);
-  --sp-error: #FF8A7A;            /* 8.9:1 on void */
+  --sp-muted: #9AA8B6;            /* 7.7:1 on navy */
+  --sp-line: rgb(198 255 0 / .45);
+  --sp-line-strong: rgb(198 255 0 / .6);
+  --sp-hair: rgb(130 145 168 / .28);   /* steel hairline borders */
+  --sp-hair-strong: rgb(130 145 168 / .5);
+  --sp-error: #FF8A7A;            /* 8.2:1 on navy */
 
   --font-sans: 'Geist', 'Geist Fallback', system-ui, sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;

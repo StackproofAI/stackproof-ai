@@ -23,10 +23,10 @@ function heroArt(t: Locale): string {
     regMark(40, 40) + regMark(600, 40) + regMark(40, 600) + regMark(600, 600) +
     hexNode(78, 470, 26, { tone: 'steel', cls: 'hero-hex' }) +
     hexNode(566, 150, 18, { tone: 'steel', rings: 0, cls: 'hero-hex' }) +
-    `<defs><radialGradient id="hero-glow-g"><stop offset="0" stop-color="#CEF949" stop-opacity=".22"/><stop offset="1" stop-color="#CEF949" stop-opacity="0"/></radialGradient></defs>` +
+    `<defs><radialGradient id="hero-glow-g"><stop offset="0" stop-color="#C6FF00" stop-opacity=".22"/><stop offset="1" stop-color="#C6FF00" stop-opacity="0"/></radialGradient></defs>` +
     `<circle class="hero-glow" cx="${C}" cy="${C}" r="200" fill="url(#hero-glow-g)"/>` +
     `<circle class="g-line g-lime g-thick hero-proof" cx="${C}" cy="${C}" r="178" transform="rotate(-90 ${C} ${C})"/>` +
-    `<g transform="translate(176 205) scale(0.37)">${layeredMark()}</g>`;
+    `<g transform="translate(212 212) scale(1.08)">${layeredMark()}</g>`;
   return `<figure class="hero-art" data-hero-art>
   ${svg('0 0 640 640', inner, 'hero-svg', t.hero.markLabel)}
   <div class="hero-canvas" data-hero-canvas aria-hidden="true"></div>

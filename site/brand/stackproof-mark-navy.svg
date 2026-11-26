@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Stackproof AI">
+  <g fill="#0B1220">
+  <path id="block-left" d="M0 0H40V120H0Z"/>
+  <path id="block-top" d="M50 0H180L200 20V40H50Z"/>
+  <path id="block-right" d="M160 80H200V200H160Z"/>
+  <path id="block-bottom" d="M0 160H150V200H20L0 180Z"/>
+  </g>
+  <path id="block-middle" d="M50 80H150V120H50Z" fill="#0B1220"/>
+</svg>

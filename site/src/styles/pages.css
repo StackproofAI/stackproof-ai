@@ -3,7 +3,7 @@
 .legal-wrap .h3 { margin-top: var(--s-7); margin-bottom: var(--s-3); }
 .legal-wrap p { color: var(--sp-muted); margin-top: var(--s-3); }
 .legal-wrap a { color: var(--sp-lime); }
-.legal-wrap mark { background: rgb(206 249 73 / .14); color: var(--sp-lime); padding: 0 .2em; font-family: var(--font-mono); font-size: .875em; }
+.legal-wrap mark { background: rgb(198 255 0 / .14); color: var(--sp-lime); padding: 0 .2em; font-family: var(--font-mono); font-size: .875em; }
 .draft-banner { margin-top: var(--s-5); padding: var(--s-4); border: 1px dashed var(--sp-lime); border-radius: var(--radius); color: var(--sp-lime); font-size: var(--fs-sm); }
 .legal-updated { font-size: var(--fs-xs); color: var(--sp-steel); }
 /* 404 */

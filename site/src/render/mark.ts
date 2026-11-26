@@ -1,36 +1,32 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-/** The approved master mark (brand/stackproof-mark.svg), parsed once at build time. */
+/** The master mark (brand/stackproof-mark.svg, 2026-11 identity), parsed once at build time. */
 const raw = readFileSync(fileURLToPath(new URL('../../brand/stackproof-mark.svg', import.meta.url)), 'utf8');
 const path = (id: string) => {
   const m = raw.match(new RegExp(`id="${id}"[^>]*d="([^"]+)"`));
   if (!m) throw new Error(`mark: path ${id} missing`);
   return m[1];
 };
+/** Five blocks on a 200-unit grid (40-unit blocks, 10-unit gaps, 20-unit chamfers). The middle block is the lime accent. */
+export const BLOCKS = ['left', 'top', 'right', 'bottom', 'middle'] as const;
 export const MARK = {
-  viewBox: '0 0 780 656',
-  bottom: path('layer-bottom'),
-  middle: path('layer-middle'),
-  top: path('layer-top'),
-  check: path('check'),
+  viewBox: '0 0 200 200',
+  ...Object.fromEntries(BLOCKS.map((b) => [b, path(`block-${b}`)])) as Record<(typeof BLOCKS)[number], string>,
 };
+const WHITE = '#FFFFFF';
+const LIME = '#C6FF00';
 
-/** Flat mark (header, footer, favicon-sized). Colors via tokens; never restyled. */
+/** Flat mark (header, footer, favicon-sized). Brand colours, never restyled. */
 export function markSvg(cls = 'mark', label?: string): string {
   const a11y = label ? `role="img" aria-label="${label}"` : 'aria-hidden="true" focusable="false"';
-  return `<svg class="${cls}" viewBox="${MARK.viewBox}" ${a11y} xmlns="http://www.w3.org/2000/svg">
-<path fill="#CEF949" d="${MARK.bottom}"/><path fill="#75879A" d="${MARK.middle}"/><path fill="#CEF949" d="${MARK.top}"/><path fill="#040508" d="${MARK.check}"/></svg>`;
+  return `<svg class="${cls}" viewBox="${MARK.viewBox}" ${a11y} xmlns="http://www.w3.org/2000/svg"><g fill="${WHITE}"><path d="${MARK.left}"/><path d="${MARK.top}"/><path d="${MARK.right}"/><path d="${MARK.bottom}"/></g><path fill="${LIME}" d="${MARK.middle}"/></svg>`;
 }
 
 /**
- * Layered mark for the hero / static fallback. Each layer is its own group so motion
- * can separate and press them together ("stacked → proven").
+ * Block-by-block mark for the hero / static fallback. Each block is its own group so motion
+ * can spread them apart and assemble them ("stacked → proven"). Default markup = assembled (final state).
  */
 export function layeredMark(): string {
-  return `<g class="mk" data-mark>
-<g class="mk-layer" data-layer="bottom"><path fill="#CEF949" d="${MARK.bottom}"/></g>
-<g class="mk-layer" data-layer="middle"><path fill="#75879A" d="${MARK.middle}"/></g>
-<g class="mk-layer" data-layer="top"><path class="mk-top-fill" fill="#CEF949" d="${MARK.top}"/><path class="mk-check" fill="#040508" d="${MARK.check}"/></g>
-</g>`;
+  return `<g class="mk" data-mark>${BLOCKS.map((b) => `<g class="mk-block" data-block="${b}"><path fill="${b === 'middle' ? LIME : WHITE}" d="${MARK[b]}"/></g>`).join('')}</g>`;
 }

@@ -62,7 +62,7 @@ export const en = {
     title: 'Find the work your business should stop doing by hand.',
     sub: 'A free Automation Opportunity Assessment for small and mid-sized businesses in the US and Europe. Book a 20-minute call, walk us through how your team works today, and get a written summary of your top automation opportunities and a practical first step.', // revised for call-first (2026-11-19)
     facts: ['20-minute call', 'Written summary after', 'No obligation'],
-    markLabel: 'Stackproof AI mark: three stacked layers with a checkmark',
+    markLabel: 'Stackproof AI mark: five interlocking blocks forming an S, the centre block in lime',
   },
   problem: {
     label: '01 / The problem',

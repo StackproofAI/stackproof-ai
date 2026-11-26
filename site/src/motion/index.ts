@@ -80,8 +80,9 @@ function initLenis(): Lenis | null {
 function hero(): void {
   const art = document.querySelector('[data-hero-art]');
   if (!art) return;
-  const layers = Object.fromEntries(q<SVGGElement>('[data-layer]', art).map((g) => [g.dataset.layer, g]));
-  const SPREAD = 46; // SVG units in mark space (mark is scaled 0.37 in the hero)
+  const blocks: Record<string, SVGGElement> = Object.fromEntries(q<SVGGElement>('[data-block]', art).map((g) => [g.dataset.block ?? '', g]));
+  const SPREAD = 22; // mark units (200-unit grid): each block starts this far out along its own direction
+  const DIRS: Record<string, [number, number]> = { left: [-1, 0], top: [0, -1], right: [1, 0], bottom: [0, 1], middle: [0, 0] };
 
   // Intro (does not touch the H1/copy: LCP text is never hidden).
   const intro = gsap.timeline({ defaults: { ease: EASE } });
@@ -91,10 +92,8 @@ function hero(): void {
     .from(q('.hero-orbit, .hero-orbit2', art), { opacity: 0, duration: 1.2 }, 0)
     .from(q('.hero-hex', art), { opacity: 0, duration: 0.8, stagger: 0.15 }, 0.4);
 
-  // Stacked (apart, unverified) → proven (pressed, lit), scrubbed by scrolling out of the hero.
-  const apart = { top: -SPREAD, bottom: SPREAD };
-  gsap.set(layers.top, { y: apart.top });
-  gsap.set(layers.bottom, { y: apart.bottom });
+  // Blocks apart → assembled and verified (ring closes), scrubbed by scrolling out of the hero.
+  for (const [k, g] of Object.entries(blocks)) { const [dx, dy] = DIRS[k] ?? [0, 0]; gsap.set(g, { x: dx * SPREAD, y: dy * SPREAD }); }
   const ring = art.querySelector('.hero-proof');
   const glow = art.querySelector('.hero-glow');
   gsap.set(ring, { drawSVG: '0%' });
@@ -107,12 +106,11 @@ function hero(): void {
     onUpdate() { heroState.press = this.progress(); },
   });
   press
-    .to(layers.top, { y: 0, ease: 'power2.inOut' }, 0)
-    .to(layers.bottom, { y: 0, ease: 'power2.inOut' }, 0)
+    .to(Object.values(blocks), { x: 0, y: 0, ease: 'power2.inOut' }, 0)
     .to(ring, { drawSVG: '100%', ease: 'power1.inOut' }, 0.35)
     .to(glow, { opacity: 1, ease: 'power1.in' }, 0.55);
   // If the visitor never scrolls, reveal the proven state anyway after a beat, so the mark is never left "unverified".
-  // Once revealed this way the scroll link is released, so a later scroll can't snap the layers apart again.
+  // Once revealed this way the scroll link is released, so a later scroll can't snap the blocks apart again.
   gsap.delayedCall(6, () => {
     if (press.progress() < 0.02 && window.scrollY < 10) {
       press.scrollTrigger?.kill();

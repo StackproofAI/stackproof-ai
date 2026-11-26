@@ -1,7 +1,7 @@
 import { SITE, type Locale } from '../content/en.ts';
 import { axis, dotRun, goldenSpiral, hexNode, orbit, rays, regMark, svg, terminal } from '../geometry/primitives.ts';
 import { esc, head, page } from './layout.ts';
-import { markSvg } from './mark.ts';
+import { markSvg, MARK } from './mark.ts';
 
 /* ───────────── Privacy (DRAFT — lawyer review required) ───────────── */
 /** Privacy copy is legal text and stays here as one block so a lawyer can review it in one place.
@@ -35,12 +35,11 @@ export function renderPrivacy(t: Locale): string {
 /* ───────────── 404 ───────────── */
 export function renderNotFound(t: Locale): string {
   const h = head(t, { title: t.meta.notFoundTitle, description: t.notFound.text, path: '/404', noindex: true });
-  // A stack that never got its check: three hairline layers, offset, unverified.
+  // The mark with its lime centre block missing: a page that isn't part of the stack.
+  const blocks = (['left', 'top', 'right', 'bottom'] as const).map((b) => `<path class="g-line g-steel" d="${MARK[b]}"/>`).join('');
   const art =
     orbit(200, 200, 170, 170, { tone: 'steel' }) +
-    hexNode(200, 200, 120, { tone: 'steel', rings: 2 }) +
-    `<path class="g-line g-steel" d="M110 120l90-40 90 40-90 40z"/><path class="g-line g-steel g-faint" d="M110 168l90 40 90-40"/><path class="g-line g-steel g-faint" d="M110 206l90 40 90-40"/>` +
-    `<path class="g-line g-lime" d="M176 112l18 14 30-26" stroke-dasharray="4 6"/>` +
+    `<g transform="translate(110 110) scale(.9)">${blocks}<path class="g-line g-lime" stroke-dasharray="4 6" d="${MARK.middle}"/></g>` +
     regMark(30, 30) + regMark(370, 30) + regMark(30, 370) + regMark(370, 370) + axis(200, 0, 26) + axis(200, 374, 400);
   const body = `<section class="section notfound" aria-labelledby="nf-title">
   <div class="wrap nf-grid">
@@ -76,13 +75,13 @@ export function renderStyleguide(t: Locale): string {
 
     <h2 class="h3 sg-h">Colour tokens (WCAG contrast on --sp-void)</h2>
     <ul class="sw-list" role="list">
-      ${sw('--sp-lime', '#CEF949', 'Accent, CTAs, active lines · 16.8:1')}
-      ${sw('--sp-steel', '#75879A', 'Secondary, metadata · 5.5:1 (AA)')}
-      ${sw('--sp-void', '#040508', 'Base background')}
-      ${sw('--sp-ink-1', '#0B0D12', 'Raised surfaces')}
-      ${sw('--sp-ink-2', '#12151C', 'Raised surfaces, hover')}
-      ${sw('--sp-text', '#E8ECEF', 'Body text · 17.2:1')}
-      ${sw('--sp-muted', '#9AA8B6', 'Secondary text · 8.4:1')}
+      ${sw('--sp-lime', '#C6FF00', 'Accent, CTAs, active lines · 15.8:1')}
+      ${sw('--sp-steel', '#8291A8', 'Lines, metadata · 5.9:1')}
+      ${sw('--sp-void', '#0B1220', 'Brand navy · background')}
+      ${sw('--sp-ink-1', '#131C2E', 'Raised surfaces')}
+      ${sw('--sp-ink-2', '#19243A', 'Raised surfaces, hover')}
+      ${sw('--sp-text', '#E8ECEF', 'Body text · 15.8:1')}
+      ${sw('--sp-muted', '#9AA8B6', 'Secondary text · 7.7:1')}
       ${sw('--sp-line', 'lime 45%', 'Hairline geometry')}
     </ul>
 

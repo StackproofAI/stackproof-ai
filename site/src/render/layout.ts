@@ -28,7 +28,7 @@ export function head(t: Locale, o: HeadOpts): string {
 <meta name="description" content="${esc(o.description)}">
 <link rel="canonical" href="${url}">
 ${o.noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
-<meta name="theme-color" content="#040508">
+<meta name="theme-color" content="#0B1220">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -42,7 +42,7 @@ ${o.noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
 <meta property="og:image" content="${SITE.origin}/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Stackproof AI mark: three stacked layers with a checkmark">
+<meta property="og:image:alt" content="Stackproof AI: five interlocking blocks forming an S, with a lime centre block">
 <meta name="twitter:card" content="summary_large_image">
 ${o.preloadFonts === false ? '' : '<link rel="preload" href="/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>'}
 ${ld}`;

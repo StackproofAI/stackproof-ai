@@ -1,8 +1,8 @@
 /**
  * Lazy 3D hero (desktop + capable GPU only; see motion/capability.ts).
- * The three layers are extruded separately from the approved SVG paths so they can
- * separate and press together. Scroll progress (heroState.press) drives:
- *   0 → layers apart, top layer unlit (steel)      1 → pressed together, top layer lime ("proven")
+ * The five blocks of the mark are extruded separately from the master SVG so they can
+ * spread apart and assemble. Scroll progress (heroState.press) drives:
+ *   0 → blocks apart, staggered in depth      1 → assembled, lime middle block glowing ("proven")
  * Hygiene: DPR ≤ 2, renders only while visible (IntersectionObserver + page visibility),
  * frame-time probe falls back to the SVG hero, full dispose on teardown / context loss.
  */
@@ -14,9 +14,8 @@ import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js';
 import markSvg from '../../brand/stackproof-mark.svg?raw';
 import { heroState } from '../motion/heroState';
 
-const LIME = new Color('#CEF949');
-const STEEL = new Color('#75879A');
-const VOID = new Color('#040508');
+const LIME = new Color('#C6FF00');
+const WHITE = new Color('#F4F7FA');
 
 export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
   const renderer = new WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
@@ -38,7 +37,7 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
   rim.position.set(600, -300, -400);
   scene.add(rim);
 
-  // ── Build layers from the master SVG ──
+  // ── Build the five blocks from the master SVG ──
   const data = new SVGLoader().parse(markSvg);
   const byId = new Map<string, ReturnType<SVGLoader['parse']>['paths'][number]>();
   for (const p of data.paths) byId.set((p.userData?.node as Element | undefined)?.id ?? '', p);
@@ -48,7 +47,7 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
     const p = byId.get(id);
     if (!p) throw new Error(`hero3d: missing ${id}`);
     const g = new ExtrudeGeometry(p.toShapes(), {
-      depth, bevelEnabled: true, bevelThickness: 6, bevelSize: 4, bevelSegments: 3, curveSegments: 18,
+      depth, bevelEnabled: true, bevelThickness: 2, bevelSize: 1.5, bevelSegments: 3, curveSegments: 18,
     });
     geoms.push(g);
     return g;
@@ -60,22 +59,19 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
   };
 
   const mark = new Group();
-  // SVG space: y down, 780×656, centred → flip Y.
+  // SVG space: y down, 200×200, centred → flip Y.
   mark.scale.set(1, -1, 1);
-  mark.position.set(-390, 328, 0);
-  const topMat = mat(LIME.clone());
-  const layers = {
-    bottom: new Mesh(extrude('layer-bottom', 36), mat(LIME.clone())),
-    middle: new Mesh(extrude('layer-middle', 36), mat(STEEL.clone(), 0.55)),
-    top: new Mesh(extrude('layer-top', 36), topMat),
-  };
-  const check = new Mesh(extrude('check', 10), mat(VOID.clone(), 0.7));
-  check.position.z = 38; // sits on the top face
-  layers.top.add(check);
-  mark.add(layers.bottom, layers.middle, layers.top);
+  mark.position.set(-100, 100, 0);
+  const middleMat = mat(LIME.clone(), 0.38);
+  const DIRS: Record<string, [number, number, number]> = { left: [-1, 0, 0.6], top: [0, -1, -0.6], right: [1, 0, -0.6], bottom: [0, 1, 0.6], middle: [0, 0, 1.4] };
+  const blocks = (['left', 'top', 'right', 'bottom', 'middle'] as const).map((id) => {
+    const m = new Mesh(extrude(`block-${id}`, 18), id === 'middle' ? middleMat : mat(WHITE.clone(), 0.5));
+    mark.add(m);
+    return { m, dir: DIRS[id] };
+  });
   const pivot = new Group();
   pivot.add(mark);
-  pivot.scale.setScalar(0.6); // sits inside the verification ring (same footprint as the SVG mark)
+  pivot.scale.setScalar(2.3); // sits inside the verification ring (same footprint as the SVG mark)
   scene.add(pivot);
 
   // ── Size ──
@@ -93,16 +89,16 @@ export function mountHero3D(host: HTMLElement, art: HTMLElement): () => void {
   // ── Loop (only while visible) ──
   let raf = 0, visible = true, running = false, t0 = performance.now();
   let probeFrames = 0, probeStart = 0, failed = false;
-  const SPREAD = 70;
+  const SPREAD = 26;
   const frame = (now: number) => {
     raf = requestAnimationFrame(frame);
     const t = (now - t0) / 1000;
     const p = heroState.press;
     const ease = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
-    // In SVG space y is down: top layer moves up (−y), bottom down (+y); depth separation in z.
-    layers.top.position.set(0, -SPREAD * (1 - ease), 40 * (1 - ease));
-    layers.bottom.position.set(0, SPREAD * (1 - ease), -40 * (1 - ease));
-    topMat.emissive.copy(LIME).multiplyScalar(0.18 * Math.max(0, (p - 0.7) / 0.3));
+    // In SVG space y is down; blocks start out along their own direction (and in depth), then assemble.
+    const k = 1 - ease;
+    for (const b of blocks) b.m.position.set(b.dir[0] * SPREAD * k, b.dir[1] * SPREAD * k, b.dir[2] * 30 * k);
+    middleMat.emissive.copy(LIME).multiplyScalar(0.22 * Math.max(0, (p - 0.7) / 0.3));
     // slow idle rotation that settles as the stack is proven
     const sway = 1 - 0.7 * ease;
     pivot.rotation.y = Math.sin(t * 0.35) * 0.32 * sway;
