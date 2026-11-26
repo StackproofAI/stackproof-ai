@@ -40,7 +40,7 @@ Assets only: no Worker script, database or secrets. The main CTA opens Cal.com. 
 
 ## Deploy
 
-**LIVE since 2026-11-19:** https://stackproof-ai-site.stackproofai.workers.dev (Worker `stackproof-ai-site`, version `3984ef91-fc1d-4272-9455-89cc26bfb007`)
+**LIVE since 2026-11-19:** https://stackproof-ai-site.stackproofai.workers.dev (Worker `stackproof-ai-site`; rebrand live as version `26d411c9-927a-44d3-a593-899eb3692a4c` on 2026-11-26; previous new-site version `3984ef91-fc1d-4272-9455-89cc26bfb007`)
 Preview/staging: https://stackproof-ai-site-v2.stackproofai.workers.dev
 
 Deploy to LIVE (from the sandbox):
