@@ -13,7 +13,7 @@ export const SITE = {
   contactEmail: 'soulectiv3@gmail.com',
   calUrl: 'https://cal.com/sean-fields-qf4rle/20-min',
   bookUrl: 'https://soulectiv3.gumroad.com/l/Prompttoperish',
-  youtubeId: 'Ia0wtpAQp3E',
+  youtubeId: 'e7BzXK1OA7E',
   social: {
     linkedin: 'https://www.linkedin.com/in/georgefields416',
     instagram: 'https://www.instagram.com/stackproofai/',
@@ -156,9 +156,9 @@ export const en = {
       label: 'Running in production',
       title: 'We run it on our own business first.', // draft – needs George's approval
       text: 'S1 Lead Intelligence and S2 CRM Command Centre run in production in Stackproof’s own operation. We use them on our own leads before we recommend them for yours.', // draft – needs George's approval
-      video: 'Watch the S1 + S2 demo',
+      video: 'Watch the demo',
       videoNote: 'Plays from YouTube (privacy-enhanced mode) only after you click.',
-      videoTitle: 'Stackproof AI: S1 Lead Intelligence and S2 CRM Command Centre demo',
+      videoTitle: 'Stackproof AI demo video',
     },
     quotesTitle: 'What business owners say',
     quotesNote: 'Shared with permission.',
