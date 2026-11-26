@@ -136,31 +136,55 @@ function offer(t: Locale): string {
 }
 
 /* ───────────────────────── Systems constellation ───────────────────────── */
+/** Map layout, read left to right in number order:
+ *  supporting systems S6–S9 in a row on top · core flow S1→S5 across the middle · S10 (executive view) below. */
 const NODE_POS: Record<string, [number, number]> = {
-  S1: [110, 330], S2: [255, 250], S3: [400, 300], S4: [545, 220], S5: [690, 290],
-  S6: [120, 110], S7: [300, 72], S8: [500, 72], S9: [690, 118], S10: [400, 432],
+  S6: [168, 100], S7: [323, 100], S8: [478, 100], S9: [633, 100],
+  S1: [90, 275], S2: [245, 275], S3: [400, 275], S4: [555, 275], S5: [710, 275],
+  S10: [400, 430],
 };
+const CORE = ['S1', 'S2', 'S3', 'S4', 'S5'];
+/** Split a system name over two balanced lines so labels never run into their neighbours. */
+function labelLines(name: string): string[] {
+  const w = name.split(' ');
+  if (w.length < 2 || name.length <= 12) return [name];
+  let best = 1, diff = Infinity;
+  for (let i = 1; i < w.length; i++) { const d = Math.abs(w.slice(0, i).join(' ').length - w.slice(i).join(' ').length); if (d < diff) { diff = d; best = i; } }
+  return [w.slice(0, best).join(' '), w.slice(best).join(' ')];
+}
+const SUPPORT = ['S6', 'S7', 'S8', 'S9'];
 
 function systems(t: Locale): string {
   const s = t.systems;
-  const core = ['S1', 'S2', 'S3', 'S4', 'S5'];
-  let g = orbit(400, 250, 330, 196, { tone: 'steel', cls: 'sys-orbit' });
-  g += orbit(400, 250, 250, 140, { tone: 'steel', gap: 12 });
-  // core flow
-  g += `<path class="g-line g-steel sys-flow-road" stroke-dasharray="6 6" d="M${core.slice(2).map((k) => NODE_POS[k].join(' ')).join('L')}"/>`;
-  g += `<path class="g-line g-lime g-thick g-draw sys-flow" d="M${['S1', 'S2', 'S3'].map((k) => NODE_POS[k].join(' ')).join('L')}"/>`;
-  // supporting links (dot runs to the nearest core node)
-  const link: Record<string, string> = { S6: 'S1', S7: 'S2', S8: 'S3', S9: 'S5', S10: 'S3' };
-  for (const [a, b] of Object.entries(link)) g += dotRun(...NODE_POS[a], ...NODE_POS[b], 'steel', 7);
+  const P = (k: string) => NODE_POS[k].join(' ');
+  const liveCore = CORE.filter((k) => s.items.find((i) => i.id === k)?.live);
+  const lastLive = liveCore[liveCore.length - 1] ?? 'S1';
+  // Background: one dotted orbit (automations running in the background); dots drift when motion is on.
+  let g = orbit(400, 262, 372, 218, { tone: 'steel', cls: 'sys-orbit' });
+  // Supporting row: a dotted bus joining S6→S9, each one plugging down into the core flow.
+  for (let i = 0; i < SUPPORT.length - 1; i++) g += dotRun(NODE_POS[SUPPORT[i]][0] + 28, 100, NODE_POS[SUPPORT[i + 1]][0] - 28, 100, 'steel', 7);
+  for (const k of SUPPORT) g += `<path class="g-dots g-steel sys-drop" stroke-dasharray="0.01 7" d="M${NODE_POS[k][0]} 128V275"/>`;
+  // S10 consolidates: dotted links from the first, middle and last core systems.
+  for (const k of ['S1', 'S3', 'S5']) g += `<path class="g-dots g-steel sys-drop" stroke-dasharray="0.01 7" d="M${P(k)}L${P('S10')}"/>`;
+  // Core flow: live part in lime (data pulses travel along it), roadmap part dashed.
+  g += `<path class="g-line g-steel sys-flow-road" stroke-dasharray="6 6" d="M${CORE.slice(CORE.indexOf(lastLive)).map(P).join('L')}"/>`;
+  g += `<path id="sys-live-path" class="g-line g-lime g-thick g-draw sys-flow" d="M${liveCore.map(P).join('L')}"/>`;
   for (const it of s.items) {
     const [x, y] = NODE_POS[it.id];
-    const r = core.includes(it.id) ? 36 : 28;
+    const r = CORE.includes(it.id) ? 34 : 26;
+    const lines = labelLines(it.name);
+    const above = SUPPORT.includes(it.id);
+    const labelY = above ? y - r - 12 - (lines.length - 1) * 14 : y + r + 20;
+    const label = lines.map((l, i) => `<tspan x="${x}" dy="${i ? 14 : 0}">${esc(l)}</tspan>`).join('');
     g += `<g class="sys-node ${it.live ? 'is-live' : ''}" data-node="${it.id}">` +
+      (it.live ? `<circle class="g-line g-lime sys-live-ring" cx="${x}" cy="${y}" r="${r}" opacity="0"/>` : '') +
       hexNode(x, y, r, { tone: it.live ? 'lime' : 'steel', rings: it.live ? 2 : 1, crosshair: false }) +
       `<path class="sys-hit" d="${hexPath(x, y, r)}"/>` +
       `<text class="g-text ${it.live ? 'g-lime' : 'g-ink'} sys-id" x="${x}" y="${y + 5}" text-anchor="middle">${it.id}</text>` +
-      `<text class="g-text g-steel sys-name-label" x="${x}" y="${y + r + 18}" text-anchor="middle">${esc(it.name)}</text></g>`;
+      `<text class="g-text g-steel sys-name-label" x="${x}" y="${labelY}" text-anchor="middle">${label}</text></g>`;
   }
+  // Data pulses (hidden until motion starts them).
+  g += [0, 1, 2].map(() => `<circle class="g-fill g-lime sys-pulse" r="4.5" cx="${NODE_POS.S1[0]}" cy="${NODE_POS.S1[1]}" opacity="0"/>`).join('');
   g += regMark(16, 16) + regMark(784, 16) + regMark(16, 484) + regMark(784, 484);
 
   const buttons = s.items

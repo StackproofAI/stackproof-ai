@@ -9,10 +9,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { SplitText } from 'gsap/SplitText';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import Lenis from 'lenis';
 import { heroState } from './heroState';
 
-gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, SplitText);
+gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, SplitText, MotionPathPlugin);
 
 let lenisTick: ((t: number) => void) | null = null;
 const EASE = 'power3.out'; // house curve (matches --ease)
@@ -150,15 +151,53 @@ function problem(): void {
   }
 }
 
-/* ───────── Systems: nodes assemble, the live S1→S2 link draws ───────── */
+/* ───────── Systems: nodes assemble in number order, then the live flow carries data ───────── */
 function systems(): void {
-  const svg = document.querySelector('.const-svg');
+  const svg = document.querySelector<SVGSVGElement>('.const-svg');
   if (!svg) return;
-  const tl = gsap.timeline({ scrollTrigger: { trigger: svg, start: 'top 92%', once: true } });
-  tl.from(q('.sys-orbit, .const-svg > ellipse', svg), { opacity: 0, duration: 1 }, 0)
-    .from(q('.sys-node', svg), { opacity: 0, scale: 0.6, transformOrigin: '50% 50%', duration: 0.6, stagger: 0.06 }, 0.1)
-    .from(q('.sys-flow-road', svg), { opacity: 0, duration: 0.6 }, 0.6)
-    .from(q('.sys-flow', svg), { drawSVG: '0%', duration: 0.8 }, 0.9);
+  const num = (el: Element) => Number((el as SVGGElement).dataset.node?.slice(1) ?? 0);
+  const nodes = q<SVGGElement>('.sys-node', svg).sort((a, b) => num(a) - num(b));
+  const livePath = svg.querySelector<SVGPathElement>('#sys-live-path');
+
+  // 1 · Assembly (once): orbit, then S1…S10 in order, then links, then the live flow draws.
+  const build = gsap.timeline({ paused: true });
+  build
+    .from(q('.sys-orbit', svg), { opacity: 0, duration: 0.8 }, 0)
+    .from(nodes, { opacity: 0, scale: 0.4, transformOrigin: '50% 50%', duration: 0.5, stagger: 0.09, ease: 'back.out(1.4)' }, 0.1)
+    .from(q('.g-dots:not(.sys-orbit)', svg), { opacity: 0, duration: 0.6 }, 0.7)
+    .from(q('.sys-flow-road', svg), { opacity: 0, duration: 0.5 }, 0.9)
+    .from(q('.sys-flow', svg), { drawSVG: '0%', duration: 0.9, ease: 'power2.inOut' }, 1.0);
+
+  // 2 · Ambient loops (only while the map is on screen).
+  const loops: gsap.core.Animation[] = [];
+  if (livePath) {
+    q<SVGCircleElement>('.sys-pulse', svg).forEach((dot, i) => {
+      const tl = gsap.timeline({ repeat: -1, delay: i * 0.9, paused: true });
+      tl.set(dot, { opacity: 0 })
+        .to(dot, { opacity: 1, duration: 0.25 }, 0)
+        .to(dot, { motionPath: { path: livePath, align: livePath, alignOrigin: [0.5, 0.5] }, duration: 2.6, ease: 'none' }, 0)
+        .to(dot, { opacity: 0, duration: 0.3 }, 2.3);
+      loops.push(tl);
+    });
+  }
+  q<SVGCircleElement>('.sys-live-ring', svg).forEach((ring, i) => {
+    const c = [Number(ring.getAttribute('cx')), Number(ring.getAttribute('cy'))];
+    loops.push(gsap.fromTo(ring, { opacity: 0.55, scale: 1, svgOrigin: `${c[0]} ${c[1]}` },
+      { opacity: 0, scale: 1.75, svgOrigin: `${c[0]} ${c[1]}`, duration: 2.2, ease: 'power1.out', repeat: -1, delay: i * 0.7, paused: true }));
+  });
+  loops.push(gsap.to(q('.sys-orbit', svg), { strokeDashoffset: -140, duration: 14, ease: 'none', repeat: -1, paused: true }));
+  loops.push(gsap.to(q('.sys-flow-road', svg), { strokeDashoffset: -24, duration: 2.4, ease: 'none', repeat: -1, paused: true }));
+
+  let built = false;
+  ScrollTrigger.create({
+    trigger: svg,
+    start: 'top 92%',
+    end: 'bottom 8%',
+    onToggle: (self) => {
+      if (self.isActive && !built) { built = true; build.play().then(() => loops.forEach((l) => l.play())); return; }
+      if (built && build.progress() === 1) loops.forEach((l) => (self.isActive ? l.play() : l.pause()));
+    },
+  });
 }
 
 /* ───────── How we work: each stage draws one construction step of the spiral ───────── */
