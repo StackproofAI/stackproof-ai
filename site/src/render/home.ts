@@ -147,8 +147,8 @@ function systems(t: Locale): string {
   let g = orbit(400, 250, 330, 196, { tone: 'steel', cls: 'sys-orbit' });
   g += orbit(400, 250, 250, 140, { tone: 'steel', gap: 12 });
   // core flow
-  g += `<path class="g-line g-steel sys-flow-road" stroke-dasharray="6 6" d="M${core.slice(1).map((k) => NODE_POS[k].join(' ')).join('L')}"/>`;
-  g += `<path class="g-line g-lime g-thick g-draw sys-flow" d="M${NODE_POS.S1.join(' ')}L${NODE_POS.S2.join(' ')}"/>`;
+  g += `<path class="g-line g-steel sys-flow-road" stroke-dasharray="6 6" d="M${core.slice(2).map((k) => NODE_POS[k].join(' ')).join('L')}"/>`;
+  g += `<path class="g-line g-lime g-thick g-draw sys-flow" d="M${['S1', 'S2', 'S3'].map((k) => NODE_POS[k].join(' ')).join('L')}"/>`;
   // supporting links (dot runs to the nearest core node)
   const link: Record<string, string> = { S6: 'S1', S7: 'S2', S8: 'S3', S9: 'S5', S10: 'S3' };
   for (const [a, b] of Object.entries(link)) g += dotRun(...NODE_POS[a], ...NODE_POS[b], 'steel', 7);

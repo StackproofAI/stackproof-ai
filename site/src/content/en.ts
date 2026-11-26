@@ -99,12 +99,12 @@ export const en = {
   },
   systems: {
     label: '03 / The system',
-    title: 'Ten connected systems. Two already running.', // draft
+    title: 'Ten connected systems. Three already running.', // draft
     intro:
-      'Stackproof is built as modular systems that hand work to each other, from first inquiry to signed client. S1 and S2 run in our own operation today, and we are onboarding our first clients onto them. The rest are on the roadmap.', // draft
+      'Stackproof is built as modular systems that hand work to each other, from first inquiry to signed client. S1, S2 and S3 run in our own operation today, and we are onboarding clients onto them. The rest are on the roadmap.', // draft
     flowLabel: 'Core flow',
     supportLabel: 'Supporting systems',
-    statusLive: 'Live in our own operation — onboarding first clients',
+    statusLive: 'Live in our own operation — onboarding clients',
     statusRoadmap: 'Roadmap',
     legendLive: 'Live',
     legendRoadmap: 'Roadmap',
@@ -112,7 +112,7 @@ export const en = {
     items: [
       { id: 'S1', name: 'Lead Intelligence', purpose: 'Finds, researches, validates and scores prospective leads.', live: true },
       { id: 'S2', name: 'CRM Command Centre', purpose: 'Keeps contacts, lifecycle stages and follow-ups in sync in your CRM.', live: true },
-      { id: 'S3', name: 'Personalised Outreach', purpose: 'Prepares personalized outreach drafts for human review before anything is sent.', live: false },
+      { id: 'S3', name: 'Personalised Outreach', purpose: 'Prepares personalized outreach drafts for human review before anything is sent.', live: true },
       { id: 'S4', name: 'Sales Pipeline Intelligence', purpose: 'Classifies deal stages and routes uncertain opportunities for review.', live: false },
       { id: 'S5', name: 'Client Onboarding', purpose: 'Turns approved wins into client records and onboarding tasks.', live: false },
       { id: 'S6', name: 'Support Intelligence', purpose: 'Organizes support requests and drafts replies from approved knowledge.', live: false },
@@ -155,7 +155,7 @@ export const en = {
     real: {
       label: 'Running in production',
       title: 'We run it on our own business first.', // draft – needs George's approval
-      text: 'S1 Lead Intelligence and S2 CRM Command Centre run in production in Stackproof’s own operation. We use them on our own leads before we recommend them for yours.', // draft – needs George's approval
+      text: 'S1 Lead Intelligence, S2 CRM Command Centre and S3 Personalised Outreach run in production in Stackproof’s own operation. We use them on our own leads before we recommend them for yours.', // draft – needs George's approval
       video: 'Watch the demo',
       videoNote: 'Plays from YouTube (privacy-enhanced mode) only after you click.',
       videoTitle: 'Stackproof AI demo video',
