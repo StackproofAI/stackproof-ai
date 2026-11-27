@@ -10,7 +10,7 @@ export const SITE = {
   name: 'Stackproof AI',
   legalName: 'STACKPROOF AI',
   tagline: 'AI Automation & Business Operations Consulting',
-  contactEmail: 'soulectiv3@gmail.com',
+  contactEmail: 'stackproofai@outlook.com',
   calUrl: 'https://cal.com/sean-fields-qf4rle/20-min',
   bookUrl: 'https://soulectiv3.gumroad.com/l/Prompttoperish',
   youtubeId: 'e7BzXK1OA7E',

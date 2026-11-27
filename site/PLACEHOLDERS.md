@@ -39,3 +39,4 @@ Nothing in this list may go live until it's marked ✅.
 - [ ] Cal.com profile renamed to "George Fields" (still shows "Sean Fields" as of 2026-11-19)
 - [x] S1, S2 **and S3** status: "Live in our own operation — onboarding clients" (George, 2026-11-26). Repo docs `docs/SYSTEM_STATUS.md` still list S3 as "Previously designed; production blockers must be resolved": update them so the two don't contradict each other
 - [x] Founder section added (George's copy and photo, 2026-11-27). Headings set in sentence case to match the site; the founder is also listed in the Organization JSON-LD
+- [x] Public contact email changed to stackproofai@outlook.com (George, 2026-11-27)
