@@ -38,6 +38,7 @@ export function initMotion(): void {
       systems();
       how(wide);
       proof();
+      founderReveal();
       finalSteps();
       return () => { lenis?.destroy(); lenisTick && gsap.ticker.remove(lenisTick); };
     },
@@ -240,6 +241,16 @@ function how(wide: boolean): void {
 function proof(): void {
   gsap.from(q('.spec-row'), { opacity: 0, y: 16, duration: 0.6, stagger: 0.08, scrollTrigger: { trigger: '.spec', start: 'top 96%', once: true } });
   gsap.from(q('.quote'), { opacity: 0, y: 24, duration: 0.7, stagger: 0.12, scrollTrigger: { trigger: '.quote-grid', start: 'top 96%', once: true } });
+}
+
+/* ───────── Founder: photo wipes in, the lime corner brackets draw ───────── */
+function founderReveal(): void {
+  const fig = document.querySelector('[data-founder-photo]');
+  if (!fig) return;
+  const tl = gsap.timeline({ scrollTrigger: { trigger: fig, start: 'top 85%', once: true } });
+  tl.from(fig.querySelector('img'), { clipPath: 'inset(0 0 100% 0 round 20px)', duration: 1.1, ease: 'power3.inOut' }, 0)
+    .from(q('.founder-frame path.g-lime', fig), { drawSVG: '0%', duration: 0.8 }, 0.6)
+    .from(q('.founder-frame path.g-steel', fig), { opacity: 0, duration: 0.6 }, 0.6);
 }
 
 /* ───────── Final CTA: the four steps light in sequence ───────── */

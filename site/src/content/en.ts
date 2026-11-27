@@ -49,6 +49,7 @@ export const en = {
       { href: '#how', label: 'How it works' },
       { href: '#systems', label: 'Systems' },
       { href: '#proof', label: 'Approach' },
+      { href: '#founder', label: 'Founder' },
       { href: '#faq', label: 'FAQ' },
     ],
     cta: 'Free assessment',
@@ -169,7 +170,7 @@ export const en = {
     ],
   },
   final: {
-    label: '07 / Start here',
+    label: '08 / Start here',
     title: 'Discover what your business could automate.', // supplied (sentence case, K-6 approved)
     text: [
       'Every business has workflows that consume valuable time. Let’s identify which ones could be simplified, connected, or improved.', // supplied
@@ -193,8 +194,32 @@ export const en = {
     contactName: 'STACKPROOF AI',
     contactTagline: 'AI Automation & Business Operations Consulting',
   },
+  founder: {
+    // supplied by George (2026-11-27); headings in sentence case to match the site
+    label: '06 / Meet the founder',
+    title: 'Building the future of intelligent business.',
+    name: 'George Seanquae Fields',
+    role: 'Founder of STACKPROOF AI',
+    photoAlt: 'Portrait of George Seanquae Fields, founder of Stackproof AI',
+    body: [
+      'I’m George Seanquae Fields, founder of STACKPROOF AI. I believe the future of business lies in combining human thinking with intelligent technology to create smarter, more efficient ways of working.',
+      'I founded STACKPROOF AI with a vision to help businesses move beyond repetitive processes and disconnected systems through practical AI automation and business intelligence.',
+      'My focus is on building intelligent business systems that streamline operations, improve lead management, connect applications, and turn business data into actionable insights.',
+    ],
+    quote: 'I believe AI should do more than impress. It should solve real problems, deliver measurable value, and give businesses more time to focus on growth and their customers.',
+    body2: [
+      'My long-term vision is to build an interconnected ecosystem of intelligent business systems that makes advanced automation more accessible, scalable, and valuable to organizations across industries.',
+      'I’m not just interested in where AI is today. I’m focused on what it can make possible for the future of business.',
+    ],
+    ctaTitle: 'Let’s build something smarter.',
+    ctaText: 'Whether you’re exploring AI for your business or looking to transform existing operations, I’d welcome the opportunity to connect.',
+    ctaButton: 'Book a 20-minute call with George',
+    signName: 'George Seanquae Fields',
+    signRole: 'Founder, STACKPROOF AI',
+    motto: 'Think Smarter. Operate Better. Build for What’s Next.',
+  },
   faq: {
-    label: '06 / FAQ',
+    label: '07 / FAQ',
     title: 'Frequently asked questions', // supplied (sentence case)
     items: [
       { q: 'What exactly does Stackproof AI do?', a: 'Stackproof AI helps businesses identify, design, and implement practical AI automation workflows that reduce repetitive administrative tasks, improve lead management, streamline follow-up, and connect existing business systems.' },

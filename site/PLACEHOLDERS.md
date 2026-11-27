@@ -38,3 +38,4 @@ Nothing in this list may go live until it's marked ✅.
 - [ ] **Approve the call-first copy** (hero subline, offer list, the 4 steps, the booking card, FAQ "different time zone"), which replaces the written-first wording
 - [ ] Cal.com profile renamed to "George Fields" (still shows "Sean Fields" as of 2026-11-19)
 - [x] S1, S2 **and S3** status: "Live in our own operation — onboarding clients" (George, 2026-11-26). Repo docs `docs/SYSTEM_STATUS.md` still list S3 as "Previously designed; production blockers must be resolved": update them so the two don't contradict each other
+- [x] Founder section added (George's copy and photo, 2026-11-27). Headings set in sentence case to match the site; the founder is also listed in the Organization JSON-LD

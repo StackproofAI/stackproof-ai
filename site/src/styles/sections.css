@@ -225,3 +225,24 @@ html.lenis, html.lenis body { height: auto; }
 .book-facts-list li::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: .5em; transform: rotate(45deg); border: 1px solid var(--sp-lime); vertical-align: 1px; }
 .book-note { font-size: .8125rem; color: var(--sp-muted); }
 .success-mark { width: 64px; height: 64px; }
+
+/* ─── Meet the founder ─── */
+.founder-grid { display: grid; gap: var(--s-7); grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 60rem) { .founder-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--s-8); } .founder-photo { position: sticky; top: 6.5rem; } }
+.founder-photo { position: relative; margin: 0; max-width: 30rem; }
+.founder-photo img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-lg); border: 1px solid var(--sp-hair); background: var(--sp-ink-1); }
+.founder-frame { position: absolute; inset: -12px; width: calc(100% + 24px); height: auto; aspect-ratio: 1; pointer-events: none; }
+.founder-photo figcaption { display: grid; gap: .2rem; margin-top: var(--s-5); }
+.founder-name, .founder-sign-name { font-weight: 600; font-size: 1.125rem; }
+.founder-role { font-size: .8125rem; color: var(--sp-lime); letter-spacing: .08em; text-transform: uppercase; }
+.founder-copy .h2 { margin-bottom: var(--s-5); }
+.founder-copy > p { color: var(--sp-muted); font-size: var(--fs-lead); line-height: 1.6; max-width: 40rem; }
+.founder-copy > p + p { margin-top: var(--s-4); }
+.founder-quote { margin: var(--s-6) 0; padding: var(--s-5) var(--s-6); border-left: 2px solid var(--sp-lime); background: var(--sp-ink-1); border-radius: 0 var(--radius) var(--radius) 0; }
+.founder-quote p { font-size: clamp(1.25rem, 1.1rem + .6vw, 1.625rem); line-height: 1.4; letter-spacing: -.015em; color: var(--sp-text); font-weight: 500; }
+.founder-cta { margin-top: var(--s-7); padding: var(--s-6); border: 1px solid var(--sp-line); border-radius: var(--radius-lg); background: radial-gradient(120% 140% at 100% 0%, rgb(198 255 0 / .07), transparent 60%), var(--sp-ink-1); display: grid; gap: var(--s-3); justify-items: start; }
+.founder-cta p { color: var(--sp-muted); max-width: 36rem; }
+.founder-cta .btn { margin-top: var(--s-2); }
+@media (max-width: 30rem) { .founder-cta .btn { width: 100%; } }
+.founder-sign { display: grid; gap: .2rem; margin-top: var(--s-6); }
+.founder-motto { margin-top: var(--s-4); color: var(--sp-steel); font-size: .8125rem; letter-spacing: .1em; text-transform: uppercase; }

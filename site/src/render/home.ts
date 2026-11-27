@@ -318,6 +318,40 @@ function proof(t: Locale): string {
 </section>`;
 }
 
+/* ───────────────────────── Meet the founder ───────────────────────── */
+function founder(t: Locale): string {
+  const f = t.founder;
+  // Frame: hairline construction square with registration marks and a lime chamfer, echoing the S mark.
+  const frame = svg('0 0 400 400', regMark(0, 0, 10) + regMark(400, 0, 10) + regMark(0, 400, 10) + regMark(400, 400, 10) +
+    `<path class="g-line g-lime g-thick" d="M330 0H380L400 20V70"/><path class="g-line g-lime g-thick" d="M70 400H20L0 380V330"/>`, 'founder-frame');
+  return `<section class="section founder" id="founder" aria-labelledby="founder-title">
+  <div class="wrap">
+    <p class="label mono">${f.label}</p>
+    <div class="founder-grid">
+      <figure class="founder-photo" data-founder-photo>
+        <img src="/images/george-fields-800.webp" srcset="/images/george-fields-440.webp 440w, /images/george-fields-800.webp 800w"
+          sizes="(min-width: 60rem) 32vw, 90vw" width="800" height="800" alt="${f.photoAlt}" loading="lazy" decoding="async">
+        ${frame}
+        <figcaption><span class="founder-name">${f.name}</span><span class="founder-role mono">${f.role}</span></figcaption>
+      </figure>
+      <div class="founder-copy">
+        <h2 id="founder-title" class="h2">${f.title}</h2>
+        ${f.body.map((x) => `<p>${x}</p>`).join('')}
+        <blockquote class="founder-quote"><p>${f.quote}</p></blockquote>
+        ${f.body2.map((x) => `<p>${x}</p>`).join('')}
+        <div class="founder-cta">
+          <h3 class="h3">${f.ctaTitle}</h3>
+          <p>${f.ctaText}</p>
+          ${calBtn(t, 'btn btn-primary btn-lg', f.ctaButton)}
+        </div>
+        <p class="founder-sign"><span class="founder-sign-name">${f.signName}</span><span class="founder-role mono">${f.signRole}</span></p>
+        <p class="founder-motto mono">${f.motto}</p>
+      </div>
+    </div>
+  </div>
+</section>`;
+}
+
 /* ───────────────────────── Final CTA: book the assessment call ───────────────────────── */
 /** Primary CTA: opens the Cal.com 20-minute booking (new tab, announced to screen readers). */
 export function calBtn(t: Locale, cls = 'btn btn-primary btn-lg', label: string = t.cta.primary): string {
@@ -400,6 +434,7 @@ function jsonLd(t: Locale): object[] {
     email: SITE.contactEmail,
     description: t.meta.description,
     areaServed: ['United States', 'Europe'],
+    founder: { '@type': 'Person', name: t.founder.name, jobTitle: 'Founder' },
     sameAs: [SITE.social.linkedin, SITE.social.instagram, SITE.social.github],
   };
   const faqLd = {
@@ -413,6 +448,6 @@ function jsonLd(t: Locale): object[] {
 export function renderHome(t: Locale): string {
   const h = head(t, { title: t.meta.title, description: t.meta.description, path: '/', jsonLd: jsonLd(t) });
   const sticky = `<div class="sticky-cta" data-sticky-cta hidden>${calBtn(t, 'btn btn-primary')}</div>`;
-  const body = [hero(t), problem(t), offer(t), systems(t), how(t), proof(t), faq(t), finalCta(t), book(t), sticky].join('\n');
+  const body = [hero(t), problem(t), offer(t), systems(t), how(t), proof(t), founder(t), faq(t), finalCta(t), book(t), sticky].join('\n');
   return page(t, h, body, { onHome: true, bodyClass: 'home' });
 }
