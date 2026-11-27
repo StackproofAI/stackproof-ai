@@ -239,6 +239,7 @@ function how(wide: boolean): void {
 
 /* ───────── Proof: spec rows stack in; quotes follow ───────── */
 function proof(): void {
+  if (!document.querySelector('.spec')) return;
   gsap.from(q('.spec-row'), { opacity: 0, y: 16, duration: 0.6, stagger: 0.08, scrollTrigger: { trigger: '.spec', start: 'top 96%', once: true } });
   gsap.from(q('.quote'), { opacity: 0, y: 24, duration: 0.7, stagger: 0.12, scrollTrigger: { trigger: '.quote-grid', start: 'top 96%', once: true } });
 }
@@ -255,5 +256,6 @@ function founderReveal(): void {
 
 /* ───────── Final CTA: the four steps light in sequence ───────── */
 function finalSteps(): void {
+  if (!document.querySelector('.steps')) return;
   gsap.from(q('.steps li'), { opacity: 0, x: -12, duration: 0.5, stagger: 0.12, scrollTrigger: { trigger: '.steps', start: 'top 96%', once: true } });
 }

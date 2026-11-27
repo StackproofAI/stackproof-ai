@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://stackproof-ai-site.stackproofai.workers.dev/</loc></url>
+  <url><loc>https://stackproof-ai-site.stackproofai.workers.dev/how-it-works/</loc></url>
+  <url><loc>https://stackproof-ai-site.stackproofai.workers.dev/systems/</loc></url>
+  <url><loc>https://stackproof-ai-site.stackproofai.workers.dev/approach/</loc></url>
+  <url><loc>https://stackproof-ai-site.stackproofai.workers.dev/founder/</loc></url>
+  <url><loc>https://stackproof-ai-site.stackproofai.workers.dev/faq/</loc></url>
 </urlset>

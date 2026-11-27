@@ -34,6 +34,13 @@ export const en = {
     privacyDescription: 'How Stackproof AI collects, uses and stores information submitted through this website.',
     notFoundTitle: 'Page not found | Stackproof AI',
     styleguideTitle: 'Styleguide | Stackproof AI',
+    pages: {
+      how: { title: 'How we work | Stackproof AI', description: 'Seven stages from first look to a running automation: discovery, architecture, build, test, secure, deploy and optimize, with human approval throughout.' },
+      systems: { title: 'The Stackproof systems | Stackproof AI', description: 'Ten connected automation systems, from lead intelligence to executive reporting. S1, S2 and S3 run in our own operation today.' },
+      approach: { title: 'Our approach | Stackproof AI', description: 'Practical automation built around your business: our operating principles, a demo, and what business owners say.' },
+      founder: { title: 'Meet the founder | Stackproof AI', description: 'George Seanquae Fields, founder of Stackproof AI, on building practical, intelligent business systems.' },
+      faq: { title: 'Frequently asked questions | Stackproof AI', description: 'Answers about the free Automation Opportunity Assessment, costs, security, your existing tools and how we work across time zones.' },
+    },
   },
   a11y: {
     skip: 'Skip to content',
@@ -46,11 +53,12 @@ export const en = {
   },
   nav: {
     items: [
-      { href: '#how', label: 'How it works' },
-      { href: '#systems', label: 'Systems' },
-      { href: '#proof', label: 'Approach' },
-      { href: '#founder', label: 'Founder' },
-      { href: '#faq', label: 'FAQ' },
+      { href: '/', label: 'Home' },
+      { href: '/how-it-works/', label: 'How it works' },
+      { href: '/systems/', label: 'Systems' },
+      { href: '/approach/', label: 'Approach' },
+      { href: '/founder/', label: 'Founder' },
+      { href: '/faq/', label: 'FAQ' },
     ],
     cta: 'Free assessment',
   },
@@ -66,7 +74,7 @@ export const en = {
     markLabel: 'Stackproof AI mark: five interlocking blocks forming an S, the centre block in lime',
   },
   problem: {
-    label: '01 / The problem',
+    label: 'The problem',
     title: 'Leads wait. Follow-up slips. Data gets typed twice.', // draft
     body: 'In real estate and professional services, the same small tasks repeat every day: answering inquiries, copying details between tools, chasing follow-ups, assembling updates. Each one looks minor. Together they pull time away from clients, and good leads go cold while they wait.', // draft
     points: [
@@ -83,7 +91,7 @@ export const en = {
     },
   },
   offer: {
-    label: '02 / The offer',
+    label: 'The offer',
     title: 'The Automation Opportunity Assessment',
     lead: 'Free, practical, and built around how your business actually runs.', // draft
     getTitle: 'What you get',
@@ -99,7 +107,7 @@ export const en = {
     next: 'If you decide to go ahead, we scope and quote the implementation of the recommended systems. Ongoing monthly management is optional.', // draft
   },
   systems: {
-    label: '03 / The system',
+    label: 'The system',
     title: 'Ten connected systems. Three already running.', // draft
     intro:
       'Stackproof is built as modular systems that hand work to each other, from first inquiry to signed client. S1, S2 and S3 run in our own operation today, and we are onboarding clients onto them. The rest are on the roadmap.', // draft
@@ -124,7 +132,7 @@ export const en = {
     ],
   },
   how: {
-    label: '04 / How we work',
+    label: 'How we work',
     title: 'From first look to a running system.', // draft
     intro: 'Seven stages, each one a deliberate step. Nothing reaches your customers until it has been tested and you have approved it.', // draft
     stages: [
@@ -139,7 +147,7 @@ export const en = {
     skip: 'Skip to the assessment',
   },
   proof: {
-    label: '05 / Approach',
+    label: 'Approach',
     title: 'Practical automation, built around your business.', // supplied, edited (C-1, approved)
     intro: [
       'We find the repetitive work in your business, then automate it with the tools you already use: lead handling, follow-up and the copying between systems.', // supplied, edited (C-2, approved)
@@ -170,7 +178,7 @@ export const en = {
     ],
   },
   final: {
-    label: '08 / Start here',
+    label: 'Start here',
     title: 'Discover what your business could automate.', // supplied (sentence case, K-6 approved)
     text: [
       'Every business has workflows that consume valuable time. Let’s identify which ones could be simplified, connected, or improved.', // supplied
@@ -196,7 +204,7 @@ export const en = {
   },
   founder: {
     // supplied by George (2026-11-27); headings in sentence case to match the site
-    label: '06 / Meet the founder',
+    label: 'Meet the founder',
     title: 'Building the future of intelligent business.',
     name: 'George Seanquae Fields',
     role: 'Founder of STACKPROOF AI',
@@ -218,8 +226,12 @@ export const en = {
     signRole: 'Founder, STACKPROOF AI',
     motto: 'Think Smarter. Operate Better. Build for What’s Next.',
   },
+  ctaBand: {
+    title: 'Start with a free Automation Opportunity Assessment.',
+    text: 'A 20-minute call, then a written summary of your top automation opportunities. No obligation.',
+  },
   faq: {
-    label: '07 / FAQ',
+    label: 'FAQ',
     title: 'Frequently asked questions', // supplied (sentence case)
     items: [
       { q: 'What exactly does Stackproof AI do?', a: 'Stackproof AI helps businesses identify, design, and implement practical AI automation workflows that reduce repetitive administrative tasks, improve lead management, streamline follow-up, and connect existing business systems.' },

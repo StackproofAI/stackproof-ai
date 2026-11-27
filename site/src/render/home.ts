@@ -42,7 +42,7 @@ function hero(t: Locale): string {
       <p class="hero-sub">${t.hero.sub}</p>
       <div class="cta-row">
         ${calBtn(t)}
-        <a class="btn btn-ghost btn-lg" href="#how">${t.cta.secondary}</a>
+        <a class="btn btn-ghost btn-lg" href="/how-it-works/">${t.cta.secondary}</a>
       </div>
       <ul class="hero-facts mono" role="list">${t.hero.facts.map((f) => `<li>${f}</li>`).join('')}</ul>
     </div>
@@ -251,7 +251,6 @@ function how(t: Locale): string {
           .join('')}
       </ol>
     </div>
-    <a class="skip-link mono" href="#assessment">${h.skip} ↓</a>
   </div>
 </section>`;
 }
@@ -445,9 +444,40 @@ function jsonLd(t: Locale): object[] {
   return [org, faqLd];
 }
 
+const sticky = (t: Locale) => `<div class="sticky-cta" data-sticky-cta hidden>${calBtn(t, 'btn btn-primary')}</div>`;
+
 export function renderHome(t: Locale): string {
-  const h = head(t, { title: t.meta.title, description: t.meta.description, path: '/', jsonLd: jsonLd(t) });
-  const sticky = `<div class="sticky-cta" data-sticky-cta hidden>${calBtn(t, 'btn btn-primary')}</div>`;
-  const body = [hero(t), problem(t), offer(t), systems(t), how(t), proof(t), founder(t), faq(t), finalCta(t), book(t), sticky].join('\n');
-  return page(t, h, body, { onHome: true, bodyClass: 'home' });
+  const h = head(t, { title: t.meta.title, description: t.meta.description, path: '/', jsonLd: [jsonLd(t)[0]] });
+  const body = [hero(t), problem(t), offer(t), finalCta(t), sticky(t)].join('\n');
+  return page(t, h, body, { current: '/', bodyClass: 'home' });
+}
+
+/** Short booking band closing every inner page. */
+function ctaBand(t: Locale): string {
+  return `<section class="section-sm cta-band" aria-labelledby="cta-band-title">
+  <div class="wrap cta-band-inner">
+    <div><h2 id="cta-band-title" class="h3 h3-lg">${t.ctaBand.title}</h2><p>${t.ctaBand.text}</p></div>
+    ${calBtn(t)}
+  </div>
+</section>`;
+}
+
+/** The page's main section heading becomes its H1 (one H1 per page). */
+const promoteH1 = (html: string) => html.replace(/<h2 (id="[\w-]+-title" class="h2")>([\s\S]*?)<\/h2>/, '<h1 $1>$2</h1>');
+
+export type InnerPage = 'how' | 'systems' | 'approach' | 'founder' | 'faq';
+const INNER: Record<InnerPage, { path: string; render: (t: Locale) => string }> = {
+  how: { path: '/how-it-works/', render: how },
+  systems: { path: '/systems/', render: systems },
+  approach: { path: '/approach/', render: proof },
+  founder: { path: '/founder/', render: (t) => founder(t) + book(t) },
+  faq: { path: '/faq/', render: faq },
+};
+
+export function renderInner(t: Locale, key: InnerPage): string {
+  const p = INNER[key];
+  const m = t.meta.pages[key];
+  const h = head(t, { title: m.title, description: m.description, path: p.path, jsonLd: key === 'faq' ? [jsonLd(t)[1]] : [] });
+  const body = [promoteH1(p.render(t)), ctaBand(t), sticky(t)].join('\n');
+  return page(t, h, body, { current: p.path, bodyClass: `inner page-${key}` });
 }

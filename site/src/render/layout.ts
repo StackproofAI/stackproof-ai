@@ -48,8 +48,7 @@ ${o.preloadFonts === false ? '' : '<link rel="preload" href="/fonts/geist-latin-
 ${ld}`;
 }
 
-export function header(t: Locale, onHome = true): string {
-  const base = onHome ? '' : '/';
+export function header(t: Locale, current = '/'): string {
   return `<a class="skip" href="#main">${t.a11y.skip}</a>
 <header class="site-header" data-header>
   <div class="wrap header-inner">
@@ -59,7 +58,7 @@ export function header(t: Locale, onHome = true): string {
         <span class="nav-toggle-bars" aria-hidden="true"></span><span class="sr-only" data-nav-label>${t.a11y.menu}</span>
       </button>
       <ul class="nav-list" id="nav-list">
-        ${t.nav.items.map((i) => `<li><a href="${base}${i.href}">${i.label}</a></li>`).join('')}
+        ${t.nav.items.map((i) => `<li><a href="${i.href}"${i.href === current ? ' aria-current="page"' : ''}>${i.label}</a></li>`).join('')}
         <li class="nav-cta-item"><a class="btn btn-sm btn-primary" href="${SITE.calUrl}" target="_blank" rel="noopener noreferrer" data-cta="book">${t.nav.cta}<span class="sr-only"> ${t.a11y.newTab}</span></a></li>
       </ul>
     </nav>
@@ -90,7 +89,7 @@ export function footer(t: Locale): string {
 </footer>`;
 }
 
-export function page(t: Locale, headHtml: string, body: string, opts: { onHome?: boolean; bodyClass?: string; script?: boolean } = {}): string {
+export function page(t: Locale, headHtml: string, body: string, opts: { current?: string; bodyClass?: string; script?: boolean } = {}): string {
   return `<!doctype html>
 <html lang="${t.lang}">
 <head>
@@ -98,7 +97,7 @@ ${headHtml}
 <link rel="stylesheet" href="/src/styles/main.css">
 </head>
 <body class="${opts.bodyClass ?? ''}">
-${header(t, opts.onHome ?? true)}
+${header(t, opts.current ?? '')}
 <main id="main" tabindex="-1">
 ${body}
 </main>

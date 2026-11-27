@@ -29,7 +29,7 @@ export function renderPrivacy(t: Locale): string {
     ${PRIVACY_SECTIONS.map(([hh, b]) => `<h2 class="h3">${hh}</h2>${b}`).join('\n')}
   </div>
 </section>`;
-  return page(t, h, body, { onHome: false, bodyClass: 'legal-page' });
+  return page(t, h, body, { current: '', bodyClass: 'legal-page' });
 }
 
 /* ───────────── 404 ───────────── */
@@ -52,7 +52,7 @@ export function renderNotFound(t: Locale): string {
     ${svg('0 0 400 400', art, 'nf-art')}
   </div>
 </section>`;
-  return page(t, h, body, { onHome: false, script: false });
+  return page(t, h, body, { current: '', script: false });
 }
 
 /* ───────────── Styleguide (noindex; internal) ───────────── */
@@ -117,7 +117,7 @@ export function renderStyleguide(t: Locale): string {
     </div>
   </div>
 </section>`;
-  return page(t, h, body, { onHome: false, bodyClass: 'styleguide', script: false });
+  return page(t, h, body, { current: '', bodyClass: 'styleguide', script: false });
 }
 
 export { esc };
