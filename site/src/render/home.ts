@@ -478,6 +478,8 @@ export function renderInner(t: Locale, key: InnerPage): string {
   const p = INNER[key];
   const m = t.meta.pages[key];
   const h = head(t, { title: m.title, description: m.description, path: p.path, jsonLd: key === 'faq' ? [jsonLd(t)[1]] : [] });
-  const body = [promoteH1(p.render(t)), ctaBand(t), sticky(t)].join('\n');
+  // The section's H2 becomes the page H1, so its sub-headings move up one level (no skipped levels).
+  const main = promoteH1(p.render(t)).replace(/<h3\b/g, '<h2').replace(/<\/h3>/g, '</h2>');
+  const body = [main, ctaBand(t), sticky(t)].join('\n');
   return page(t, h, body, { current: p.path, bodyClass: `inner page-${key}` });
 }
